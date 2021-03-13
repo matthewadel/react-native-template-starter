@@ -1,49 +1,27 @@
-import { store } from 'store'
-import { Dimensions } from 'react-native'
+import {store} from 'store';
+import {Dimensions} from 'react-native';
 
-import ActivityIndicator from './ActivityIndicator'
-import ChangeDirectionStyle from './ChangeDirectionStyle'
-import { Colors } from './Colors'
-import ConvertStyleToObject from './ConvertStyleToObject'
-import DatePicker from './DatePicker'
-import Image from './Image'
-import ImagePicker from './ImagePicker'
-import Modal from './Modal'
-import ScreenContainer from './ScreenContainer'
-import ScreenHeader from './ScreenContainer/ScreenHeader'
-import ScrollView from './ScrollView'
-import SVGImage from './SVGImage'
-import Swiper from './Swiper'
-import Text from './Text'
-import TextInput from './TextInput'
-import TouchableOpacity from './TouchableOpacity'
-import VectorIcons from './VectorIcons'
-import View from './View'
+export * from './ActivityIndicator';
+export * from './Button';
+export * from './ChangeDirectionStyle';
+export * from './Colors';
+export * from './ConvertStyleToObject';
+export * from './DatePicker';
+export * from './Image';
+export * from './ImagePicker';
+export * from './Modal';
+export * from './ScreenContainer';
+export * from './ScreenContainer/ScreenHeader';
+export * from './ScrollView';
+export * from './SVGImage';
+export * from './Swiper';
+export * from './Text';
+export * from './TextInput';
+export * from './TouchableOpacity';
+export * from './VectorIcons';
+export * from './View';
 
-const FONT_FAMILY = () => store.getState().App.lang == 'ar' ? 'Cairo-SemiBold' : 'Poppins-Regular'
-const WIDTH = () => Dimensions.get('window').width
-const HEIGHT = () => Dimensions.get('window').height
-
-export {
-  View,
-  ActivityIndicator,
-  ChangeDirectionStyle,
-  ConvertStyleToObject,
-  Text,
-  FONT_FAMILY,
-  WIDTH,
-  HEIGHT,
-  Colors,
-  Image,
-  ScreenContainer,
-  ScreenHeader,
-  SVGImage,
-  ScrollView,
-  ImagePicker,
-  TextInput,
-  TouchableOpacity,
-  VectorIcons,
-  Swiper,
-  DatePicker,
-  Modal,
-}
+export const FONT_FAMILY = () =>
+  store.getState().App.lang == 'ar' ? 'Cairo-SemiBold' : 'Poppins-Regular';
+export const WIDTH = () => Dimensions.get('window').width;
+export const HEIGHT = () => Dimensions.get('window').height;

@@ -25,10 +25,45 @@ function hexToRgbA(hex: string, alpha: number) {
 
 export const Colors = (alpha = 1) => {
   return {
-    White: hexToRgbA("#FFF", alpha),
-    Dark: hexToRgbA("#000", alpha),
-    Primary: hexToRgbA("#4C6FDE", alpha),
-    Secondary: hexToRgbA("#F1F4FD", alpha),
-    Red: hexToRgbA("#CD4631", alpha),
-  }
-}
+    App: {
+      Primary: hexToRgbA('#01A791', alpha),
+      Secondary: hexToRgbA('#FFF', alpha),
+    },
+    Text: {
+      Primary: hexToRgbA('#FFF', alpha),
+      Secondary: hexToRgbA('#01A791', alpha),
+      Error: hexToRgbA('#F00', alpha),
+      Dark: hexToRgbA('#000', alpha),
+    },
+    Input: {
+      Primary: hexToRgbA('#FFF', alpha),
+      Secondary: hexToRgbA('#01A791', alpha),
+      Error: hexToRgbA('#F00', alpha),
+      Background: hexToRgbA('#FFF', alpha),
+      Border: hexToRgbA('#01A791', alpha),
+    },
+    Button: {
+      Primary: {
+        Border: hexToRgbA('#01A791', alpha),
+        Text: hexToRgbA('#FFF', alpha),
+        Background: hexToRgbA('#01A791', alpha),
+      },
+      Secondary: {
+        Border: hexToRgbA('#01A791', alpha),
+        Text: hexToRgbA('#01A791', alpha),
+        Background: hexToRgbA('#FFF', alpha),
+      },
+    },
+    ActivityIndicator: {
+      Primary: hexToRgbA('#01A791', alpha),
+    },
+    MessageBox: {
+      Header: hexToRgbA('#ccc', alpha),
+      Title: hexToRgbA('#000', alpha),
+      CloseBackground: hexToRgbA('#aaa', alpha),
+      CloseIcon: hexToRgbA('#ccc', alpha),
+      Body: hexToRgbA('#FFF', alpha),
+      Message: hexToRgbA('#000', alpha),
+    },
+  };
+};

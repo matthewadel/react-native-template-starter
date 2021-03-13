@@ -13,11 +13,11 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import Foundation from 'react-native-vector-icons/Foundation';
 
-import { ConvertStyleToObject, TouchableOpacity, ActivityIndicator } from 'UI';
-import { ViewStyle } from 'react-native';
-import { useSelector } from 'react-redux';
-import { IRootState } from 'models';
-import { ITouchableOpacityProps } from 'UI/TouchableOpacity'
+import {ConvertStyleToObject, TouchableOpacity, ActivityIndicator} from 'UI';
+import {ViewStyle} from 'react-native';
+import {useSelector} from 'react-redux';
+import {IRootState} from 'models';
+import {ITouchableOpacityProps} from 'UI/TouchableOpacity';
 
 interface VectorIconsProps extends ITouchableOpacityProps {
   icon: string;
@@ -29,10 +29,10 @@ interface VectorIconsProps extends ITouchableOpacityProps {
   onPress?: () => void;
   style?: ViewStyle | ViewStyle[];
   noIconDirectionChange?: boolean;
-  loading?: boolean
+  loading?: boolean;
 }
 
-const VectorIcons = (props: VectorIconsProps) => {
+export const VectorIcons = (props: VectorIconsProps) => {
   let components = {
     AntDesign,
     Ionicons,
@@ -71,9 +71,9 @@ const VectorIcons = (props: VectorIconsProps) => {
 
   if (storeData.lang === 'ar' && !noIconDirectionChange) {
     if (name.includes('right')) {
-      iconName = name.replace('right', 'left')
+      iconName = name.replace('right', 'left');
     } else if (name.includes('left')) {
-      iconName = name.replace('left', 'right')
+      iconName = name.replace('left', 'right');
     } else iconName = name;
   } else iconName = name;
 
@@ -82,15 +82,17 @@ const VectorIcons = (props: VectorIconsProps) => {
       activeOpacity={props.activeOpacity || !!props.onPress ? 0 : 1}
       {...props}
       style={[
-        { padding: 0, justifyContent: 'center', alignItems: 'center' },
+        {padding: 0, justifyContent: 'center', alignItems: 'center'},
         ConvertStyleToObject(style),
       ]}>
-      {!loading && <Icon name={iconName} size={size} color={color} style={iconStyle} />}
-      {!!loading && <ActivityIndicator size="large" style={{ position: 'absolute' }} />}
+      {!loading && (
+        <Icon name={iconName} size={size} color={color} style={iconStyle} />
+      )}
+      {!!loading && (
+        <ActivityIndicator size="large" style={{position: 'absolute'}} />
+      )}
 
       {children}
     </TouchableOpacity>
   );
 };
-
-export default VectorIcons;

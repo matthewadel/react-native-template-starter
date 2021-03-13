@@ -1,12 +1,11 @@
-import React, { forwardRef, useImperativeHandle, useRef } from 'react';
-import { RFValue } from 'react-native-responsive-fontsize';
-import { View } from 'UI';
-import { Modal, Button, Text, VectorIcons, Colors } from 'UI';
+import React, {forwardRef, useImperativeHandle, useRef} from 'react';
+import {RFValue} from 'react-native-responsive-fontsize';
+import {View, Modal, Button, Text, VectorIcons, Colors} from 'UI';
 import RNImagePicker from 'react-native-image-crop-picker';
 import LocalizationContext from 'lang/i18n';
 
 interface IImageRes {
-  path: string
+  path: string;
 }
 
 interface IImagePicker {
@@ -14,7 +13,7 @@ interface IImagePicker {
   onSelect: (res: IImageRes) => void;
 }
 
-const ImagePicker = forwardRef((props: IImagePicker, ref) => {
+export const ImagePicker = forwardRef((props: IImagePicker, ref) => {
   const modalRef = useRef<any>(null);
 
   const handleModal = () => modalRef.current.handleModal();
@@ -46,10 +45,9 @@ const ImagePicker = forwardRef((props: IImagePicker, ref) => {
         const _file = response;
         props.onSelect(_file);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
-
   };
 
   //choose from gallery
@@ -64,13 +62,13 @@ const ImagePicker = forwardRef((props: IImagePicker, ref) => {
         props.onSelect(_file);
         closeModal();
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
         closeModal();
       });
   };
 
-  const { t } = React.useContext(LocalizationContext);
+  const {t} = React.useContext(LocalizationContext);
   return (
     <Modal ref={modalRef}>
       <View
@@ -79,22 +77,49 @@ const ImagePicker = forwardRef((props: IImagePicker, ref) => {
           paddingVertical: RFValue(30),
           width: '60%',
           alignItems: 'center',
-          backgroundColor: Colors().White,
+          backgroundColor: Colors().App.Secondary,
         }}>
-
-        <Button onPress={takeImage} style={{ width: '80%', paddingVertical: RFValue(20), borderRadius: RFValue(14) }}>
-          <VectorIcons icon="FontAwesome" name="camera" color={Colors().White} size={RFValue(30)} style={{ marginRight: RFValue(20) }} />
-          <Text style={{ color: Colors().White, fontWeight: 'bold' }}>{t('UI.capture')}</Text>
+        <Button
+          onPress={takeImage}
+          style={{
+            width: '80%',
+            paddingVertical: RFValue(20),
+            borderRadius: RFValue(14),
+          }}>
+          <VectorIcons
+            icon="FontAwesome"
+            name="camera"
+            color={Colors().Button.Primary.Text}
+            size={RFValue(30)}
+            style={{marginRight: RFValue(20)}}
+          />
+          <Text
+            style={{color: Colors().Button.Primary.Text, fontWeight: 'bold'}}>
+            {t('UI.capture')}
+          </Text>
         </Button>
 
-        <Button onPress={showImagePicker} style={{ width: '80%', paddingVertical: RFValue(20), borderRadius: RFValue(14), marginTop: RFValue(20), }}>
-          <VectorIcons icon="EvilIcons" name="image" color={Colors().White} size={RFValue(40)} style={{ marginRight: RFValue(20) }} />
-          <Text style={{ color: Colors().White, fontWeight: 'bold' }}>{t('UI.gallery')}</Text>
+        <Button
+          onPress={showImagePicker}
+          style={{
+            width: '80%',
+            paddingVertical: RFValue(20),
+            borderRadius: RFValue(14),
+            marginTop: RFValue(20),
+          }}>
+          <VectorIcons
+            icon="EvilIcons"
+            name="image"
+            color={Colors().Button.Primary.Text}
+            size={RFValue(40)}
+            style={{marginRight: RFValue(20)}}
+          />
+          <Text
+            style={{color: Colors().Button.Primary.Text, fontWeight: 'bold'}}>
+            {t('UI.gallery')}
+          </Text>
         </Button>
-
       </View>
     </Modal>
   );
 });
-
-export default ImagePicker;

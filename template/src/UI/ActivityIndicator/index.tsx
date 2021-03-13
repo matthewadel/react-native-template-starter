@@ -4,16 +4,16 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import { Colors } from 'UI';
+import {Colors} from 'UI';
 
-interface ActivityIndicatorProps {
+export interface ActivityIndicatorProps {
   size?: 'small' | 'large';
   color?: string;
   style?: ViewStyle | ViewStyle[];
 }
 
-const ActivityIndicator = (props: ActivityIndicatorProps) => {
-  let { size, color, style } = props;
+export const ActivityIndicator = (props: ActivityIndicatorProps) => {
+  let {size, color, style} = props;
 
   return (
     <View
@@ -28,10 +28,8 @@ const ActivityIndicator = (props: ActivityIndicatorProps) => {
       ]}>
       <RNActivityIndicator
         size={size || 'small'}
-        color={color || Colors().White}
+        color={color || Colors().ActivityIndicator.Primary}
       />
     </View>
   );
 };
-
-export default ActivityIndicator;
