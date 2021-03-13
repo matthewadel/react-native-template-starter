@@ -8,7 +8,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/StartReactNative/_Template.git"
+    "url": "git+https://github.com/StartReactNative/react-native-template-starter.git"
   },
   "keywords": [
     "react-native",
