@@ -1,1 +1,1 @@
-export { IRootState } from './IRootState'
+export { IRootState } from './Store/IRootState'

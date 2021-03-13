@@ -5,9 +5,9 @@ import {
   ViewStyle,
   ScrollView,
 } from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import {ScreenHeader, ConvertStyleToObject, ChangeDirectionStyle} from 'UI';
-import {IScreenHeader} from './ScreenHeader';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { ScreenHeader, ConvertStyleToObject, ChangeDirectionStyle } from 'UI';
+import { IScreenHeader } from './ScreenHeader';
 
 interface IScreenContainer {
   style?: ViewStyle | ViewStyle[];
@@ -21,16 +21,16 @@ export const ScreenContainer = (props: IScreenContainer) => {
   return (
     <SafeAreaView
       edges={['top']}
-      style={[{height: '100%'}, props.containerStyle]}>
+      style={[{ height: '100%' }, props.containerStyle]}>
       <ScreenHeader {...props.headerProps} />
 
       <KeyboardAvoidingView
-        style={{width: '100%', flex: 1}}
-        behavior={Platform.OS == 'android' ? 'height' : undefined}>
+        style={{ width: '100%', flex: 1 }}
+        behavior={Platform.OS == 'android' ? 'height' : 'padding'}>
         <ScrollView
           scrollEnabled={true}
           nestedScrollEnabled={true}
-          style={{flexGrow: 1}}
+          style={{ flexGrow: 1 }}
           contentContainerStyle={[
             {
               width: '100%',
@@ -46,11 +46,7 @@ export const ScreenContainer = (props: IScreenContainer) => {
           {props.children}
         </ScrollView>
       </KeyboardAvoidingView>
-      {/* <KeyboardAvoidingView style={{ width: '100%', flex: 1 }} behavior={Platform.OS == 'android' ? 'height' : undefined}>
-        <View style={[{ width: '100%', flex: 1 }, ConvertStyleToObject(props.style)]}>
-          {props.children}
-        </View>
-      </KeyboardAvoidingView> */}
+
     </SafeAreaView>
   );
 };

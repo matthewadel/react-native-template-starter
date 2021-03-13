@@ -1,9 +1,9 @@
-import React, {forwardRef, useImperativeHandle, useRef, useState} from 'react';
-import {View, Modal, TouchableOpacity, Colors, WIDTH} from 'UI';
+import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react';
+import { View, Modal, Colors, WIDTH } from 'UI';
 import RNDatePicker from 'react-native-date-picker';
 import LocalizationContext from 'lang/i18n';
-import {RFValue} from 'react-native-responsive-fontsize';
-import {Button} from 'UI/Button';
+import { RFValue } from 'react-native-responsive-fontsize';
+import { Button } from 'UI';
 
 interface DatePickerProps {
   onPress: (dateModalRef: Date) => void;
@@ -16,7 +16,7 @@ export const DatePicker = forwardRef((props: DatePickerProps, ref) => {
     (props.selectedDate && new Date(props.selectedDate)) || new Date(),
   );
   const dateModalRef = useRef<any>(null);
-  const {t} = React.useContext(LocalizationContext);
+  const { t } = React.useContext(LocalizationContext);
 
   const openModal = () => {
     dateModalRef.current.openModal();
@@ -34,9 +34,9 @@ export const DatePicker = forwardRef((props: DatePickerProps, ref) => {
   return (
     <Modal
       ref={dateModalRef}
-      containerStyle={{justifyContent: 'flex-end'}}
-      modalStyle={{justifyContent: 'flex-end'}}>
-      <View style={{width: '100%'}}>
+      containerStyle={{ justifyContent: 'flex-end' }}
+      modalStyle={{ justifyContent: 'flex-end' }}>
+      <View style={{ width: '100%' }}>
         <View
           style={{
             zIndex: 100,

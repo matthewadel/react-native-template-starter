@@ -1,7 +1,7 @@
-import React, {forwardRef, useImperativeHandle, useState} from 'react';
-import {RFValue} from 'react-native-responsive-fontsize';
-import {Modal, View, Text, VectorIcons, TouchableOpacity, Button} from 'UI';
-import {Colors} from 'UI/Colors';
+import React, { forwardRef, useImperativeHandle, useState } from 'react';
+import { RFValue } from 'react-native-responsive-fontsize';
+import { Modal, View, Text, VectorIcons, TouchableOpacity, Button } from 'UI';
+import { Colors } from 'UI';
 
 export type Action = {
   title: string;
@@ -115,7 +115,7 @@ export const MessageBox = forwardRef((_, ref) => {
           </Text>
         </View>
 
-        <View style={{flexDirection: 'row'}}>
+        <View style={{ flexDirection: 'row' }}>
           {actions.map((a, i) => {
             return (
               <Button
@@ -130,7 +130,7 @@ export const MessageBox = forwardRef((_, ref) => {
                   borderTopWidth: 1,
                   height: RFValue(20),
                 }}
-                textStyle={{fontSize: RFValue(14), fontWeight: 'bold'}}>
+                textStyle={{ fontSize: RFValue(14), fontWeight: 'bold' }}>
                 {a.title}
               </Button>
             );

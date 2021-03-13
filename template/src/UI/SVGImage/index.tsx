@@ -1,17 +1,17 @@
 import React from 'react';
-import {ViewStyle} from 'react-native';
-import {ConvertStyleToObject, TouchableOpacity} from 'UI';
-import {ITouchableOpacityProps} from 'UI/TouchableOpacity';
+import { ViewStyle } from 'react-native';
+import { ConvertStyleToObject, TouchableOpacity } from 'UI';
+import { ITouchableOpacityProps } from 'UI/TouchableOpacity';
 
 interface SVGImageInterface extends ITouchableOpacityProps {
-  svg: string;
+  source: string;
   height?: number | string;
   width?: number | string;
   style?: ViewStyle | ViewStyle[];
 }
 
 export const SVGImage = (props: SVGImageInterface) => {
-  let RNSvgImage = props.svg;
+  let RNSvgImage = props.source;
 
   return (
     // <View />
@@ -19,7 +19,7 @@ export const SVGImage = (props: SVGImageInterface) => {
       disabled={!props.onPress}
       {...props}
       style={[
-        {justifyContent: 'center', alignItems: 'center'},
+        { justifyContent: 'center', alignItems: 'center' },
         ConvertStyleToObject(props.style),
       ]}>
       <RNSvgImage
