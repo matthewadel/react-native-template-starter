@@ -1,0 +1,10 @@
+react-navigation
+redux with versions
+import from root
+svg images
+react-native-responsive-fontsize
+react-native-vector-icons
+
+fonts: {cairo - poppings - SFUI}
+language setup
+colors

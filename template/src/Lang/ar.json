@@ -1,0 +1,12 @@
+{
+    "UI": {
+        "currentLangAbbreviation": "EN",
+        "ok": "موافق",
+        "cancel": "رجوع",
+        "capture": "التقاط",
+        "gallery": "المعرض"
+    },
+    "Dashboard": {
+        "search": "بحث"
+    }
+}

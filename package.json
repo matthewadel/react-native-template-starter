@@ -1,0 +1,21 @@
+{
+  "name": "react-native-template-starter",
+  "version": "0.0.1",
+  "description": "Basic react native starter template",
+  "files": [
+    "template",
+    "template.config.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/StartReactNative/_Template.git"
+  },
+  "keywords": [
+    "react-native",
+    "typescript",
+    "jest",
+    "template",
+    "boilerplate"
+  ],
+  "author": "Matthew Adel | Andrew Emad"
+}

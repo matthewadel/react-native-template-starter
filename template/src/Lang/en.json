@@ -1,0 +1,12 @@
+{
+    "UI": {
+        "currentLangAbbreviation": "AR",
+        "ok": "Ok",
+        "cancel": "Cancel",
+        "capture": "Capture",
+        "gallery": "Gallery"
+    },
+    "Dashboard": {
+        "search": "Search"
+    }
+}
