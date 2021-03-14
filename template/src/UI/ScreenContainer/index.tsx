@@ -35,13 +35,13 @@ export const ScreenContainer = (props: IScreenContainer) => {
       <ScreenHeader {...props.headerProps} />
 
       <KeyboardAvoidingView
-        style={{ width: '100%', height: screenHeight, }}
+        style={{ width: '100%', flex: 1 }}
         behavior={Platform.OS == 'android' ? 'height' : 'padding'}>
 
         <ScrollView
           scrollEnabled={true}
           nestedScrollEnabled={true}
-          style={{ height: screenHeight, }}
+          style={{ flexGrow: 1, }}
           contentContainerStyle={[
             {
               width: '100%',
