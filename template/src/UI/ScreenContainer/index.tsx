@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
@@ -18,25 +18,36 @@ interface IScreenContainer {
 }
 
 export const ScreenContainer = (props: IScreenContainer) => {
+
+  const [screenHeight, setScreenHeight] = useState(0)
+
+  const onLayout = (e: { nativeEvent: { layout: { height: number } } }) => {
+    if (!screenHeight)
+      setScreenHeight(e.nativeEvent.layout.height)
+  }
+
   return (
     <SafeAreaView
       edges={['top']}
-      style={[{ height: '100%' }, props.containerStyle]}>
+      onLayout={onLayout}
+      style={[{ height: '100%', }, props.containerStyle]}>
+
       <ScreenHeader {...props.headerProps} />
 
       <KeyboardAvoidingView
-        style={{ width: '100%', flex: 1 }}
+        style={{ width: '100%', height: screenHeight, }}
         behavior={Platform.OS == 'android' ? 'height' : 'padding'}>
+
         <ScrollView
           scrollEnabled={true}
           nestedScrollEnabled={true}
-          style={{ flexGrow: 1 }}
+          style={{ height: screenHeight, }}
           contentContainerStyle={[
             {
               width: '100%',
-              height: '100%',
               alignItems: 'center',
               alignSelf: 'center',
+              height: screenHeight,
             },
             props.noDirectionChange
               ? ConvertStyleToObject(props.style)
@@ -45,6 +56,7 @@ export const ScreenContainer = (props: IScreenContainer) => {
           keyboardShouldPersistTaps="handled">
           {props.children}
         </ScrollView>
+
       </KeyboardAvoidingView>
 
     </SafeAreaView>

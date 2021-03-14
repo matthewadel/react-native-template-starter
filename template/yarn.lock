@@ -6246,9 +6246,9 @@ react-native-reanimated@^1.13.2:
   dependencies:
     fbjs "^1.0.0"
 
-"react-native-responsive-fontsize@https://github.com/matthewadel/react-native-responsive-fontSize.git":
+"react-native-responsive-fontsize@https://github.com/StartReactNative/react-native-responsive-fontSize.git":
   version "0.5.0"
-  resolved "https://github.com/matthewadel/react-native-responsive-fontSize.git#b5dd1fb336c80c7b8e246c802fa1bbd491ac0bd1"
+  resolved "https://github.com/StartReactNative/react-native-responsive-fontSize.git#d3a815651cbbdcbb0184473942337f1045c56ea0"
   dependencies:
     react-native-iphone-x-helper "^1.3.1"
 
