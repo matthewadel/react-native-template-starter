@@ -27,38 +27,29 @@ export const ScreenContainer = (props: IScreenContainer) => {
   }
 
   return (
-    <SafeAreaView
-      edges={['top']}
-      onLayout={onLayout}
-      style={[{ height: '100%', }, props.containerStyle]}>
 
-      <ScreenHeader {...props.headerProps} />
+    <KeyboardAvoidingView style={{ width: '100%', flex: 1 }} behavior={Platform.OS == 'android' ? 'height' : 'padding'}>
 
-      <KeyboardAvoidingView
-        style={{ width: '100%', flex: 1 }}
-        behavior={Platform.OS == 'android' ? 'height' : 'padding'}>
+      <SafeAreaView
+        edges={['top']}
+        onLayout={onLayout}
+        style={[{ height: '100%', }, props.containerStyle]}>
+
+        <ScreenHeader {...props.headerProps} />
 
         <ScrollView
           scrollEnabled={true}
           nestedScrollEnabled={true}
           style={{ flexGrow: 1, }}
-          contentContainerStyle={[
-            {
-              width: '100%',
-              alignItems: 'center',
-              alignSelf: 'center',
-              height: screenHeight,
-            },
-            props.noDirectionChange
-              ? ConvertStyleToObject(props.style)
-              : ChangeDirectionStyle(props.style),
-          ]}
-          keyboardShouldPersistTaps="handled">
+          contentContainerStyle={[{ width: '100%', alignItems: 'center', alignSelf: 'center', flexGrow: 1, }, props.noDirectionChange ? ConvertStyleToObject(props.style) : ChangeDirectionStyle((props.style))]}
+          keyboardShouldPersistTaps='handled'
+        >
           {props.children}
         </ScrollView>
 
-      </KeyboardAvoidingView>
 
-    </SafeAreaView>
+
+      </SafeAreaView>
+    </KeyboardAvoidingView >
   );
 };
