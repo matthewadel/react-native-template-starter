@@ -8,7 +8,6 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ScreenHeader, ChangeDirectionStyle, AnimatedDrawer, Colors } from 'UI';
 import { IScreenHeader } from 'models';
-import { TouchableOpacity } from 'UI/TouchableOpacity';
 import { RFValue } from 'react-native-responsive-fontsize';
 
 interface IScreenContainer {
@@ -54,7 +53,6 @@ export const ScreenContainer = (props: IScreenContainer) => {
             contentContainerStyle={[{ width: '100%', alignItems: 'center', alignSelf: 'center', flexGrow: 1, }, ChangeDirectionStyle(props.style, props.noDirectionChange, props.showStyle)]}
             keyboardShouldPersistTaps='handled'
           >
-            <TouchableOpacity onPress={openDrawer}>dddsds</TouchableOpacity>
             {props.children}
           </ScrollView>
 
