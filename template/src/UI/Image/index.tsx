@@ -1,11 +1,10 @@
 import React from 'react';
 import { Image as RNImage, ImageProps } from 'react-native';
-import { ImageStyle, ImageSourcePropType } from 'react-native';
+import { ImageStyle } from 'react-native';
 import { ConvertStyleToObject, ChangeDirectionStyle } from 'UI';
 
 interface imageProps extends ImageProps {
   style?: ImageStyle | ImageStyle[];
-  source: ImageSourcePropType;
   noDirectionChange?: boolean;
   showStyle?: boolean;
 }

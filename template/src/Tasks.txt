@@ -8,3 +8,7 @@ react-native-vector-icons
 fonts: {cairo - poppings - SFUI}
 language setup
 colors
+
+
+drawer
+changeDirectinoStyle

@@ -11,8 +11,8 @@
 // 7- alignSelf (flex-start - flex-end)
 // 8- textAlign (left - right)
 
-import {ConvertStyleToObject} from 'UI';
-import {store} from 'store';
+import { ConvertStyleToObject } from 'UI';
+import { store } from 'store';
 
 export const ChangeDirectionStyle = (style: any, showStyle = false) => {
   const storeData = {
@@ -20,6 +20,7 @@ export const ChangeDirectionStyle = (style: any, showStyle = false) => {
   };
 
   if (style && storeData.lang === 'ar') {
+
     //converting the style to an object
     let originalStyle = ConvertStyleToObject(style);
     let outputStyle = ConvertStyleToObject(style);
@@ -181,21 +182,12 @@ export const ChangeDirectionStyle = (style: any, showStyle = false) => {
     else if (originalStyle.textAlign === 'right')
       outputStyle.textAlign = 'left';
 
-    // 8-change right and left
-    // if (originalStyle.right !== undefined) {
-    //     outputStyle.left = (originalStyle.right || 0.1)
-    //     outputStyle.right = undefined
-    // }
-    // if (originalStyle.left !== undefined) {
-    //     outputStyle.right = (originalStyle.left || 0.1)
-    //     outputStyle.left = undefined
-    // }
-
     if (showStyle) {
       console.log(originalStyle);
       console.log(outputStyle);
     }
 
     return outputStyle;
-  } else return style;
+  }
+  else return style;
 };

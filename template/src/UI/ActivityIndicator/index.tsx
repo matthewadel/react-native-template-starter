@@ -4,16 +4,16 @@ import {
   View,
   ViewStyle,
 } from 'react-native';
-import {Colors} from 'UI';
+import { Colors } from 'UI';
 
-export interface ActivityIndicatorProps {
+export interface IActivityIndicatorProps {
   size?: 'small' | 'large';
   color?: string;
   style?: ViewStyle | ViewStyle[];
 }
 
-export const ActivityIndicator = (props: ActivityIndicatorProps) => {
-  let {size, color, style} = props;
+export const ActivityIndicator = (props: IActivityIndicatorProps) => {
+  let { size, color, style } = props;
 
   return (
     <View

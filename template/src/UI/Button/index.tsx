@@ -1,31 +1,26 @@
-import React, {useState} from 'react';
-import {ViewStyle, TextStyle} from 'react-native';
-import {RFValue} from 'react-native-responsive-fontsize';
+import React, { useState } from 'react';
+import { RFValue } from 'react-native-responsive-fontsize';
 import {
   Colors,
   TouchableOpacity,
   ConvertStyleToObject,
   ActivityIndicator,
 } from 'UI';
+import { ITouchableOpacityProps } from 'models';
 
-export interface IButtonProps {
-  onPress?: Function;
-  style?: ViewStyle | ViewStyle[];
-  textStyle?: TextStyle | TextStyle[];
-  children?: JSX.Element | JSX.Element[] | string | string[];
+export interface IButtonProps extends ITouchableOpacityProps {
   loading?: boolean;
-  disabled?: boolean;
   type?: 'PRIMARY' | 'SECONDARY';
 }
 
 export const Button = (props: IButtonProps) => {
-  let {children, onPress, style, textStyle, loading, disabled} = props;
+  let { children, onPress, style, textStyle, loading, disabled } = props;
 
   let [Width, setWidth] = useState(0);
   let [Height, setHeight] = useState(0);
 
   const onLayout = (event: any) => {
-    const {height, width} = event.nativeEvent.layout;
+    const { height, width } = event.nativeEvent.layout;
     setWidth(width);
     setHeight(height);
   };
@@ -59,18 +54,18 @@ export const Button = (props: IButtonProps) => {
         },
         disabled
           ? {
-              opacity: 0.5,
-            }
+            opacity: 0.5,
+          }
           : {},
         ConvertStyleToObject(style),
         props.loading
           ? {
-              width: Width,
-              height: Height,
-              paddingVertical: 0,
-              paddingHorizontal: 0,
-              padding: 0,
-            }
+            width: Width,
+            height: Height,
+            paddingVertical: 0,
+            paddingHorizontal: 0,
+            padding: 0,
+          }
           : {},
       ]}>
       {!!loading ? <ActivityIndicator size="small" /> : children}

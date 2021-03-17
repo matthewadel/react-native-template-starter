@@ -1,13 +1,11 @@
 import React from 'react';
-import { ViewStyle } from 'react-native';
 import { ConvertStyleToObject, TouchableOpacity } from 'UI';
-import { ITouchableOpacityProps } from 'UI/TouchableOpacity';
+import { ITouchableOpacityProps } from 'models';
 
 interface SVGImageInterface extends ITouchableOpacityProps {
   source: string;
   height?: number | string;
   width?: number | string;
-  style?: ViewStyle | ViewStyle[];
 }
 
 export const SVGImage = (props: SVGImageInterface) => {

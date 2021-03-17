@@ -1,14 +1,8 @@
+import { IView } from 'models';
 import React from 'react';
-import { TextStyle, View as RNView, ViewProps, ViewStyle } from 'react-native';
+import { View as RNView, } from 'react-native';
 import { ChangeDirectionStyle, ConvertStyleToObject, Text } from 'UI';
 
-export interface IView extends ViewProps {
-  noDirectionChange?: boolean;
-  style?: ViewStyle | ViewStyle[];
-  textStyle?: TextStyle | TextStyle[];
-  showStyle?: boolean;
-  children?: any;
-}
 
 export const View = (props: IView) => {
   let { noDirectionChange, style, showStyle, children, textStyle } = props;

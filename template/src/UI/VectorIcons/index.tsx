@@ -16,7 +16,7 @@ import Foundation from 'react-native-vector-icons/Foundation';
 import { ConvertStyleToObject, TouchableOpacity, ActivityIndicator } from 'UI';
 import { ViewStyle } from 'react-native';
 import { useLanguage } from 'lang/useLanguage';
-import { ITouchableOpacityProps } from 'UI/TouchableOpacity';
+import { ITouchableOpacityProps } from 'models';
 
 interface VectorIconsProps extends ITouchableOpacityProps {
   icon: string;
@@ -25,8 +25,6 @@ interface VectorIconsProps extends ITouchableOpacityProps {
   color?: string;
   iconStyle?: ViewStyle | ViewStyle[];
   children?: JSX.Element | JSX.Element[] | string | string[];
-  onPress?: () => void;
-  style?: ViewStyle | ViewStyle[];
   noIconDirectionChange?: boolean;
   loading?: boolean;
 }

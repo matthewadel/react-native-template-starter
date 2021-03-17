@@ -1,13 +1,13 @@
 import React from 'react';
-import {ScrollView as RNScrollView, ScrollViewProps} from 'react-native';
-import {ChangeDirectionStyle, ConvertStyleToObject} from 'UI';
+import { ScrollView as RNScrollView, ScrollViewProps } from 'react-native';
+import { ChangeDirectionStyle, ConvertStyleToObject } from 'UI';
 
-interface UIScrollViewProps extends ScrollViewProps {
+interface IScrollViewProps extends ScrollViewProps {
   children?: any;
   noDirectionChange?: boolean;
 }
 export const ScrollView = React.forwardRef(
-  (props: UIScrollViewProps, ref: any) => (
+  (props: IScrollViewProps, ref: any) => (
     <RNScrollView
       ref={ref}
       showsVerticalScrollIndicator={false}
@@ -22,14 +22,14 @@ export const ScrollView = React.forwardRef(
         ...ConvertStyleToObject(props.style),
       }}
       contentContainerStyle={[
-        {width: '100%', flexGrow: 1, alignItems: 'center', alignSelf: 'center'},
+        { width: '100%', flexGrow: 1, alignItems: 'center', alignSelf: 'center' },
         !props.horizontal
           ? {
-              width: '100%',
-              flexGrow: props.horizontal ? 0 : 1,
-              alignItems: 'center',
-              alignSelf: 'center',
-            }
+            width: '100%',
+            flexGrow: props.horizontal ? 0 : 1,
+            alignItems: 'center',
+            alignSelf: 'center',
+          }
           : {},
         props.noDirectionChange
           ? ConvertStyleToObject(props.contentContainerStyle)

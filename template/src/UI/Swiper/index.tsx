@@ -3,7 +3,7 @@ import { TouchableOpacity, Colors, ConvertStyleToObject, View } from 'UI';
 import RNSwiper from 'react-native-swiper';
 import { useLanguage } from 'lang/useLanguage';
 import { RFValue } from 'react-native-responsive-fontsize';
-import { IView } from 'UI/View';
+import { IView } from 'models';
 import { ViewStyle } from 'react-native';
 
 interface SwiperProps extends IView {

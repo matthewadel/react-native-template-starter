@@ -1,14 +1,9 @@
 import React from 'react';
-import { Text as RNText, Platform, TextProps } from 'react-native';
+import { Text as RNText, Platform } from 'react-native';
 import { useLanguage } from 'lang/useLanguage';
 import { ChangeDirectionStyle, FONT_FAMILY } from 'UI';
 import { RFValue } from 'react-native-responsive-fontsize';
-
-export interface ITextProps extends TextProps {
-  showStyle?: boolean;
-  children?: any;
-  boldFontFamily?: string;
-}
+import { ITextProps } from 'models';
 
 export const Text = (props: ITextProps) => {
   let style = props.style;
