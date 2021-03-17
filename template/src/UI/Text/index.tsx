@@ -7,7 +7,7 @@ import { ITextProps } from 'models';
 
 export const Text = (props: ITextProps) => {
   let style = props.style;
-  let outputStyle = ChangeDirectionStyle(style, props.showStyle);
+  let outputStyle = ChangeDirectionStyle(style, props.noDirectionChange, props.showStyle);
 
   const { locale } = useLanguage()
   return (

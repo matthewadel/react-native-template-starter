@@ -9,7 +9,7 @@ export const Welcome = () => {
   const { t, setLocale } = useLanguage()
 
   return (
-    <ScreenContainer style={{ alignItems: 'center', justifyContent: 'center', }}>
+    <ScreenContainer style={{ justifyContent: 'center', }}>
       <Text
         style={{
           marginBottom: RFValue(20),

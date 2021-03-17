@@ -1,11 +1,9 @@
+import { IScreenHeader } from 'models';
 import React from 'react';
-import {View} from 'UI';
-
-export interface IScreenHeader {
-  title?: string;
-  showLogo?: string;
-}
+import { View, Text } from 'UI';
 
 export const ScreenHeader = (props: IScreenHeader) => {
-  return <View></View>;
+  return <View>
+    <Text>{props.title}</Text>
+  </View>;
 };

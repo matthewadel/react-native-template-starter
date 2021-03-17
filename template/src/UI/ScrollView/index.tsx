@@ -5,6 +5,7 @@ import { ChangeDirectionStyle, ConvertStyleToObject } from 'UI';
 interface IScrollViewProps extends ScrollViewProps {
   children?: any;
   noDirectionChange?: boolean;
+  showStyle?: boolean
 }
 export const ScrollView = React.forwardRef(
   (props: IScrollViewProps, ref: any) => (
@@ -30,10 +31,7 @@ export const ScrollView = React.forwardRef(
             alignItems: 'center',
             alignSelf: 'center',
           }
-          : {},
-        props.noDirectionChange
-          ? ConvertStyleToObject(props.contentContainerStyle)
-          : ChangeDirectionStyle(props.contentContainerStyle),
+          : {}, ChangeDirectionStyle(props.contentContainerStyle, props.noDirectionChange, props.showStyle),
       ]}>
       {props.children}
     </RNScrollView>

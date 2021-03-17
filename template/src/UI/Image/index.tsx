@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image as RNImage, ImageProps } from 'react-native';
 import { ImageStyle } from 'react-native';
-import { ConvertStyleToObject, ChangeDirectionStyle } from 'UI';
+import { ChangeDirectionStyle } from 'UI';
 
 interface imageProps extends ImageProps {
   style?: ImageStyle | ImageStyle[];
@@ -14,10 +14,7 @@ const Image = (props: imageProps) => {
     <RNImage
       {...props}
       style={[
-        { width: '100%', height: '100%', resizeMode: 'cover' },
-        props.noDirectionChange
-          ? ConvertStyleToObject(props.style)
-          : ChangeDirectionStyle(props.style, props.showStyle),
+        { width: '100%', height: '100%', resizeMode: 'cover' }, ChangeDirectionStyle(props.style, props.noDirectionChange, props.showStyle),
       ]}
     />
   );

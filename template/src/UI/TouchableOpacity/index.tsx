@@ -14,26 +14,19 @@ export const TouchableOpacity = (props: ITouchableOpacityProps) => {
     <Touchable
       disabled={!props.onPress}
       {...props}
-      containerStyle={[
-        noDirectionChange
-          ? ConvertStyleToObject(style)
-          : ChangeDirectionStyle(style, showStyle),
-        ,
-        {
-          width: ConvertStyleToObject(props?.style)?.width,
-          marginBottom: 0,
-          marginTop: 0,
-        },
+      containerStyle={[ChangeDirectionStyle(style, noDirectionChange, showStyle),
+      {
+        width: ConvertStyleToObject(props?.style)?.width,
+        marginBottom: 0,
+        marginTop: 0,
+      },
       ]}
       style={[
         {
           justifyContent: 'center',
           alignItems: 'center',
           opacity: ConvertStyleToObject(style)?.opacity || disabled ? 0.5 : 1,
-        },
-        noDirectionChange
-          ? ConvertStyleToObject(style)
-          : ChangeDirectionStyle(style, showStyle),
+        }, ChangeDirectionStyle(style, noDirectionChange, showStyle), ,
       ]}>
       {Array.isArray(children) || children?.type ? (
         children

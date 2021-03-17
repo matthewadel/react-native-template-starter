@@ -1,5 +1,5 @@
-import React, {forwardRef, useImperativeHandle, useState} from 'react';
-import {ChangeDirectionStyle, ConvertStyleToObject, WIDTH} from 'UI';
+import React, { forwardRef, useImperativeHandle, useState } from 'react';
+import { ChangeDirectionStyle, ConvertStyleToObject, WIDTH } from 'UI';
 import RNModal from 'react-native-modal';
 import {
   KeyboardAvoidingView,
@@ -20,6 +20,7 @@ interface ModalProps {
   modalStyle?: ViewStyle | ViewStyle[];
   containerStyle?: ViewStyle | ViewStyle[];
   onBackButtonPress?: Function;
+  showStyle?: boolean
 }
 
 export const Modal = forwardRef((props: ModalProps, ref) => {
@@ -57,10 +58,7 @@ export const Modal = forwardRef((props: ModalProps, ref) => {
           borderColor: 'transparent',
           alignSelf: 'center',
           margin: 0,
-        },
-        props.noDirectionChange
-          ? ConvertStyleToObject(props.modalStyle)
-          : ChangeDirectionStyle(props.modalStyle),
+        }, ChangeDirectionStyle(props.modalStyle, props.noDirectionChange, props.showStyle),
       ]}
       animationIn="slideInUp"
       animationOut="slideOutDown"

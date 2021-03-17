@@ -10,7 +10,6 @@ import { useLanguage } from 'lang/useLanguage';
 import {
   ChangeDirectionStyle,
   Colors,
-  ConvertStyleToObject,
   FONT_FAMILY,
   VectorIcons,
 } from 'UI';
@@ -19,6 +18,7 @@ interface textInputProps extends TextInputProps {
   textInputStyle?: TextStyle | TextStyle[];
   togglePasswordButton?: boolean;
   noDirectionChange?: boolean;
+  showStyle?: boolean;
   errStyle?: {
     hasError: boolean;
     defaultColor?: string;
@@ -38,10 +38,7 @@ export const TextInput = React.forwardRef((props: textInputProps, ref: any) => {
     <Animatable.View
       animation={errStyle && errStyle.hasError ? 'shake' : ''}
       style={[
-        { flexDirection: 'row', alignItems: 'center' },
-        props.noDirectionChange
-          ? ConvertStyleToObject(style)
-          : ChangeDirectionStyle(style),
+        { flexDirection: 'row', alignItems: 'center' }, ChangeDirectionStyle(style, props.noDirectionChange, props.showStyle),
         errStyle
           ? {
             color: errStyle.hasError
@@ -74,7 +71,7 @@ export const TextInput = React.forwardRef((props: textInputProps, ref: any) => {
             fontFamily: FONT_FAMILY(),
             paddingHorizontal: !!props.togglePasswordButton ? '15%' : 0,
           },
-          ConvertStyleToObject(textInputStyle),
+          ChangeDirectionStyle(textInputStyle),
         ]}
       />
 

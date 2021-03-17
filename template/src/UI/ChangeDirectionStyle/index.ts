@@ -14,15 +14,20 @@
 import { ConvertStyleToObject } from 'UI';
 import { store } from 'store';
 
-export const ChangeDirectionStyle = (style: any, showStyle = false) => {
+export const ChangeDirectionStyle = (style: any, noDirectionChange = false, showStyle = false) => {
+
+  // checking for the language
   const storeData = {
     lang: store.getState().App.lang,
   };
 
-  if (style && storeData.lang === 'ar') {
+  //converting the style to an object
+  let originalStyle = ConvertStyleToObject(style);
 
-    //converting the style to an object
-    let originalStyle = ConvertStyleToObject(style);
+  // converting the style if the language is arabic 
+  if (style && storeData.lang === 'ar' && !noDirectionChange) {
+
+    // 0-output style
     let outputStyle = ConvertStyleToObject(style);
 
     // 1-changing flexDirection, justifyContent and AlignItems
@@ -189,5 +194,6 @@ export const ChangeDirectionStyle = (style: any, showStyle = false) => {
 
     return outputStyle;
   }
-  else return style;
+
+  else return originalStyle;
 };

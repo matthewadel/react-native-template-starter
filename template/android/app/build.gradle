@@ -129,7 +129,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.startreactnative"
+        applicationId "com.MISO.startreactnative"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

@@ -11,4 +11,4 @@ colors
 
 
 drawer
-changeDirectinoStyle
+elements not centered

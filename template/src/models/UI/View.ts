@@ -5,5 +5,6 @@ export interface IView extends ViewProps {
   style?: ViewStyle | ViewStyle[];
   textStyle?: TextStyle | TextStyle[];
   showStyle?: boolean;
+  noTextDirectionChange?: boolean;
   children?: any;
 }

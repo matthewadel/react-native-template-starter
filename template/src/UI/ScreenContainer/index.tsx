@@ -6,8 +6,8 @@ import {
   ScrollView,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { ScreenHeader, ConvertStyleToObject, ChangeDirectionStyle } from 'UI';
-import { IScreenHeader } from './ScreenHeader';
+import { ScreenHeader, ChangeDirectionStyle } from 'UI';
+import { IScreenHeader } from 'models';
 
 interface IScreenContainer {
   style?: ViewStyle | ViewStyle[];
@@ -15,6 +15,7 @@ interface IScreenContainer {
   children: any;
   headerProps?: IScreenHeader;
   noDirectionChange?: boolean;
+  showStyle?: boolean
 }
 
 export const ScreenContainer = (props: IScreenContainer) => {
@@ -41,13 +42,11 @@ export const ScreenContainer = (props: IScreenContainer) => {
           scrollEnabled={true}
           nestedScrollEnabled={true}
           style={{ flexGrow: 1, }}
-          contentContainerStyle={[{ width: '100%', alignItems: 'center', alignSelf: 'center', flexGrow: 1, }, props.noDirectionChange ? ConvertStyleToObject(props.style) : ChangeDirectionStyle((props.style))]}
+          contentContainerStyle={[{ width: '100%', alignItems: 'center', alignSelf: 'center', flexGrow: 1, }, ChangeDirectionStyle(props.style, props.noDirectionChange, props.showStyle)]}
           keyboardShouldPersistTaps='handled'
         >
           {props.children}
         </ScrollView>
-
-
 
       </SafeAreaView>
     </KeyboardAvoidingView >
