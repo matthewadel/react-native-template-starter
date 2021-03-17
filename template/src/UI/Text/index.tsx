@@ -20,7 +20,7 @@ export const Text = (props: ITextProps) => {
           textAlign: locale === 'en' ? 'left' : 'right',
           fontSize: outputStyle?.fontSize || RFValue(16),
           textShadowOffset: { width: 0, height: 0 },
-          marginVertical: -(outputStyle?.fontSize || RFValue(15)) * (0.35),
+          marginVertical: -(outputStyle?.fontSize || RFValue(15)) * (locale === 'en' ? 0.1 : 0.5),
           fontFamily: FONT_FAMILY(),
         },
         outputStyle,

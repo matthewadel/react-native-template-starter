@@ -28,6 +28,7 @@ export const Colors = (alpha = 1) => {
     App: {
       Primary: hexToRgbA('#01A791', alpha),
       Secondary: hexToRgbA('#FFF', alpha),
+      White: hexToRgbA('#FFF', alpha),
     },
     Text: {
       Primary: hexToRgbA('#FFF', alpha),
