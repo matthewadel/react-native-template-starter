@@ -1,13 +1,12 @@
-import {IRootState} from 'models';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   TextInput as RNTextInput,
   TextInputProps,
   TextStyle,
 } from 'react-native';
 import * as Animatable from 'react-native-animatable';
-import {RFValue} from 'react-native-responsive-fontsize';
-import {useSelector} from 'react-redux';
+import { RFValue } from 'react-native-responsive-fontsize';
+import { useLanguage } from 'lang/useLanguage';
 import {
   ChangeDirectionStyle,
   Colors,
@@ -29,31 +28,29 @@ interface textInputProps extends TextInputProps {
 
 // const TextInput = (props: textInputProps) => {
 export const TextInput = React.forwardRef((props: textInputProps, ref: any) => {
-  let {style, textInputStyle, errStyle} = props;
+  let { style, textInputStyle, errStyle } = props;
 
   const [showPassword, togglePassword] = useState(false);
 
-  const storeData = useSelector((state: IRootState) => ({
-    lang: state.App.lang || 'en',
-  }));
+  const { locale } = useLanguage()
 
   return (
     <Animatable.View
       animation={errStyle && errStyle.hasError ? 'shake' : ''}
       style={[
-        {flexDirection: 'row', alignItems: 'center'},
+        { flexDirection: 'row', alignItems: 'center' },
         props.noDirectionChange
           ? ConvertStyleToObject(style)
           : ChangeDirectionStyle(style),
         errStyle
           ? {
-              color: errStyle.hasError
-                ? Colors().Text.Error
-                : errStyle.defaultColor,
-              borderColor: errStyle.hasError
-                ? Colors().Text.Error
-                : errStyle.defaultColor,
-            }
+            color: errStyle.hasError
+              ? Colors().Text.Error
+              : errStyle.defaultColor,
+            borderColor: errStyle.hasError
+              ? Colors().Text.Error
+              : errStyle.defaultColor,
+          }
           : {},
       ]}>
       <RNTextInput
@@ -69,7 +66,7 @@ export const TextInput = React.forwardRef((props: textInputProps, ref: any) => {
         {...props}
         style={[
           {
-            textAlign: storeData.lang == 'ar' ? 'right' : 'left',
+            textAlign: locale == 'en' ? 'left' : 'right',
             fontSize: RFValue(16),
             flex: 1,
             height: '100%',

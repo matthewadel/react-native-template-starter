@@ -1,24 +1,10 @@
 import React from 'react';
 import { ScreenContainer, Text, TouchableOpacity } from 'UI';
-import I18n from 'react-native-i18n';
-import { useDispatch, useSelector } from 'react-redux';
-import { SaveLang } from 'store/Actions';
-import { IRootState } from 'models';
+
 import { RFValue } from 'react-native-responsive-fontsize';
 import { useLanguage } from 'lang/useLanguage';
 
 export const Welcome = () => {
-  const changeLanguage = () => {
-    let lang = storeData.lang == 'ar' ? 'en' : 'ar';
-    I18n.locale = lang;
-    dispatch(SaveLang(lang));
-    setLocale(lang);
-  };
-
-  const storeData = useSelector((state: IRootState) => ({
-    lang: state.App.lang,
-  }));
-  const dispatch = useDispatch();
 
   const { t, setLocale } = useLanguage()
 
@@ -29,13 +15,12 @@ export const Welcome = () => {
           marginBottom: RFValue(20),
           fontSize: RFValue(30),
           textAlign: 'center',
-          padding: RFValue(10),
         }}
         numberOfLines={0}>
         {t('Welcome.Title')}
       </Text>
       <TouchableOpacity
-        onPress={changeLanguage}
+        onPress={setLocale}
         style={{
           backgroundColor: '#0FF',
           padding: RFValue(20),

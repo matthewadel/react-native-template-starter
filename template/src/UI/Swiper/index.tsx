@@ -1,11 +1,10 @@
-import React, {forwardRef, useImperativeHandle, useRef, useState} from 'react';
-import {TouchableOpacity, Colors, ConvertStyleToObject, View} from 'UI';
+import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react';
+import { TouchableOpacity, Colors, ConvertStyleToObject, View } from 'UI';
 import RNSwiper from 'react-native-swiper';
-import {useSelector} from 'react-redux';
-import {IRootState} from 'models';
-import {RFValue} from 'react-native-responsive-fontsize';
-import {IView} from 'UI/View';
-import {ViewStyle} from 'react-native';
+import { useLanguage } from 'lang/useLanguage';
+import { RFValue } from 'react-native-responsive-fontsize';
+import { IView } from 'UI/View';
+import { ViewStyle } from 'react-native';
 
 interface SwiperProps extends IView {
   paginationContainerStyle?: ViewStyle | ViewStyle[];
@@ -17,10 +16,7 @@ export const Swiper = forwardRef((props: SwiperProps, ref) => {
   let [index, setIndex] = useState(0);
   const swiper = useRef<any>(null);
 
-  const storeData = useSelector((state: IRootState) => ({
-    lang: state.App.lang || 0,
-  }));
-
+  const { locale } = useLanguage()
   useImperativeHandle(ref, () => ({
     swipe,
   }));
@@ -59,7 +55,7 @@ export const Swiper = forwardRef((props: SwiperProps, ref) => {
   return (
     <View
       {...props}
-      style={[{width: '100%', flex: 1}, ConvertStyleToObject(props.style)]}>
+      style={[{ width: '100%', flex: 1 }, ConvertStyleToObject(props.style)]}>
       <RNSwiper
         showsButtons={false}
         loop={false}
@@ -83,7 +79,7 @@ export const Swiper = forwardRef((props: SwiperProps, ref) => {
               marginBottom: RFValue(30),
               height: RFValue(30),
               paddingHorizontal: 5,
-              flexDirection: storeData.lang === 'ar' ? 'row-reverse' : 'row',
+              flexDirection: locale === 'en' ? 'row' : 'row-reverse',
               justifyContent: 'space-around',
               alignSelf: 'center',
               alignItems: 'center',

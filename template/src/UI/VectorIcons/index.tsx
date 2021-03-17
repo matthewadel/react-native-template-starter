@@ -13,11 +13,10 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import Foundation from 'react-native-vector-icons/Foundation';
 
-import {ConvertStyleToObject, TouchableOpacity, ActivityIndicator} from 'UI';
-import {ViewStyle} from 'react-native';
-import {useSelector} from 'react-redux';
-import {IRootState} from 'models';
-import {ITouchableOpacityProps} from 'UI/TouchableOpacity';
+import { ConvertStyleToObject, TouchableOpacity, ActivityIndicator } from 'UI';
+import { ViewStyle } from 'react-native';
+import { useLanguage } from 'lang/useLanguage';
+import { ITouchableOpacityProps } from 'UI/TouchableOpacity';
 
 interface VectorIconsProps extends ITouchableOpacityProps {
   icon: string;
@@ -65,11 +64,9 @@ export const VectorIcons = (props: VectorIconsProps) => {
   let Icon = components[icon];
   let iconName = '';
 
-  const storeData = useSelector((state: IRootState) => ({
-    lang: state.App.lang || 'en',
-  }));
+  const { locale } = useLanguage()
 
-  if (storeData.lang === 'ar' && !noIconDirectionChange) {
+  if (!(locale === 'en') && !noIconDirectionChange) {
     if (name.includes('right')) {
       iconName = name.replace('right', 'left');
     } else if (name.includes('left')) {
@@ -79,17 +76,17 @@ export const VectorIcons = (props: VectorIconsProps) => {
 
   return (
     <TouchableOpacity
-      activeOpacity={props.activeOpacity || !!props.onPress ? 0 : 1}
+      activeOpacity={props.activeOpacity || !!onPress ? 0 : 1}
       {...props}
       style={[
-        {padding: 0, justifyContent: 'center', alignItems: 'center'},
+        { padding: 0, justifyContent: 'center', alignItems: 'center' },
         ConvertStyleToObject(style),
       ]}>
       {!loading && (
         <Icon name={iconName} size={size} color={color} style={iconStyle} />
       )}
       {!!loading && (
-        <ActivityIndicator size="large" style={{position: 'absolute'}} />
+        <ActivityIndicator size="large" style={{ position: 'absolute' }} />
       )}
 
       {children}
