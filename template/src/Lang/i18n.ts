@@ -11,11 +11,11 @@ export function t(params = '') {
     return I18n.t(params);
 }
 
-let x: "ar" | "en"
+let x: "ar" | "en" = 'en'
 const LocalizationContext = React.createContext({
     t: (key: string,): string => key,
     setLocale: (x: string): any => x,
-    locale: x = "en"
+    locale: x
 });
 
 export default LocalizationContext;
