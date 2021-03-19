@@ -21,6 +21,7 @@ export const SVGImage = (props: SVGImageInterface) => {
         ConvertStyleToObject(props.style),
       ]}>
       <RNSvgImage
+        fill='#000'
         height={props.height || '100%'}
         width={props.width || '100%'}
       />
