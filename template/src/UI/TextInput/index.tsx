@@ -12,6 +12,7 @@ import {
   Colors,
   FONT_FAMILY,
   VectorIcons,
+  ConvertStyleToObject,
 } from 'UI';
 
 interface textInputProps extends TextInputProps {
@@ -39,7 +40,7 @@ export const TextInput = React.forwardRef((props: textInputProps, ref: any) => {
     <Animatable.View
       animation={errStyle && errStyle.hasError ? 'shake' : ''}
       style={[
-        { flexDirection: 'row', alignItems: 'center' }, ChangeDirectionStyle(style, props.noDirectionChange, props.showStyle),
+        ChangeDirectionStyle(([{ flexDirection: 'row', alignItems: 'center' }, ConvertStyleToObject(style)]), props.noDirectionChange, props.showStyle),
         errStyle
           ? {
             color: errStyle.hasError
