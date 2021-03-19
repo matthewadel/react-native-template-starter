@@ -74,7 +74,8 @@ export const TextInput = React.forwardRef((props: textInputProps, ref: any) => {
             height: '100%',
             padding: 0,
             fontFamily: FONT_FAMILY(),
-            paddingHorizontal: !!props.togglePasswordButton ? '15%' : 0,
+            paddingRight: !!props.togglePasswordButton ? '15%' : RFValue(10),
+            paddingLeft: !!props.togglePasswordButton ? '15%' : !!(props.children) ? 0 : RFValue(10),
           },
           ChangeDirectionStyle(textInputStyle),
         ]}
