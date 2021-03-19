@@ -57,6 +57,9 @@ export const TextInput = React.forwardRef((props: textInputProps, ref: any) => {
       
       <RNTextInput
         ref={ref}
+        autoCapitalize='none'
+        autoCorrect={false}
+        spellCheck={false}
         placeholderTextColor={
           errStyle
             ? errStyle.hasError
@@ -75,7 +78,7 @@ export const TextInput = React.forwardRef((props: textInputProps, ref: any) => {
             padding: 0,
             fontFamily: FONT_FAMILY(),
             paddingRight: !!props.togglePasswordButton ? '15%' : RFValue(10),
-            paddingLeft: !!props.togglePasswordButton ? '15%' : !!(props.children) ? 0 : RFValue(10),
+            paddingLeft: !!(props.children) ? 0 : !!props.togglePasswordButton ? '15%' : RFValue(10),
           },
           ChangeDirectionStyle(textInputStyle),
         ]}
