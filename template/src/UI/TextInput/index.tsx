@@ -16,6 +16,7 @@ import {
 
 interface textInputProps extends TextInputProps {
   textInputStyle?: TextStyle | TextStyle[];
+  children?: any;
   togglePasswordButton?: boolean;
   noDirectionChange?: boolean;
   showStyle?: boolean;
@@ -50,6 +51,9 @@ export const TextInput = React.forwardRef((props: textInputProps, ref: any) => {
           }
           : {},
       ]}>
+      
+      {props.children}
+      
       <RNTextInput
         ref={ref}
         placeholderTextColor={
