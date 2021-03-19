@@ -70,7 +70,7 @@ export const TextInput = React.forwardRef((props: textInputProps, ref: any) => {
         secureTextEntry={!!props.togglePasswordButton && !showPassword}
         {...props}
         style={[
-          ChangeDirectionStyle({
+          ChangeDirectionStyle([{
             textAlign: locale == 'en' ? 'left' : 'right',
             fontSize: RFValue(16),
             flex: 1,
@@ -80,7 +80,7 @@ export const TextInput = React.forwardRef((props: textInputProps, ref: any) => {
             paddingRight: !!props.togglePasswordButton ? '15%' : RFValue(10),
             paddingLeft: !!(props.children) ? 0 : !!props.togglePasswordButton ? '15%' : RFValue(10),
           },
-            ConvertStyleToObject(textInputStyle)),
+            ConvertStyleToObject(textInputStyle)]),
         ]}
       />
 
