@@ -17,7 +17,7 @@ export const SVGImage = (props: SVGImageInterface) => {
       disabled={!props.onPress}
       {...props}
       style={[
-        { justifyContent: 'center', alignItems: 'center' },
+        { justifyContent: 'center', alignItems: 'center', opacity: 1 },
         ConvertStyleToObject(props.style),
       ]}>
       <RNSvgImage
