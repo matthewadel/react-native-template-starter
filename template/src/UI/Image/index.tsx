@@ -20,4 +20,4 @@ const Image = (props: imageProps) => {
   );
 };
 
-export default Image;
+export { Image };
