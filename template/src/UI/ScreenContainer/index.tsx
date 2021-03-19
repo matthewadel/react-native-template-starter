@@ -48,6 +48,8 @@ export const ScreenContainer = (props: IScreenContainer) => {
 
           <ScrollView
             scrollEnabled={true}
+            alwaysBounceVertical={false}
+            showsVerticalScrollIndicator={false}
             nestedScrollEnabled={true}
             style={{ flexGrow: 1, }}
             contentContainerStyle={[{ width: '100%', alignItems: 'center', alignSelf: 'center', flexGrow: 1, }, ChangeDirectionStyle(props.style, props.noDirectionChange, props.showStyle)]}
