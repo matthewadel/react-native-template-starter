@@ -21,7 +21,7 @@ const Image = (props: imageProps) => {
       ]}>
       <RNImage
         {...props}
-        children={() => null}
+        children={null}
         style={[
           { width: '100%', height: '100%', resizeMode: 'cover' }, ChangeDirectionStyle(props.style, props.noDirectionChange, props.showStyle),
         ]}
