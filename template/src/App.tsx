@@ -12,6 +12,8 @@ import reactotron from 'utils/Reactron';
 import I18n from "react-native-i18n";
 import LocalizationContext from 'lang/i18n';
 import Orientation from 'react-native-orientation';
+import FlashMessage from "react-native-flash-message";
+import FlashMsg from 'UI/FlashMsg';
 
 const App = () => {
 
@@ -58,6 +60,8 @@ const App = () => {
             </NavigationContainer>
           </LocalizationContext.Provider>
         </SafeAreaProvider>
+
+        <FlashMessage duration={4000} animationDuration={500} autoHide={true} hideOnPress={true} position="top" MessageComponent={(msg) => (<FlashMsg msg={msg} />)} />
       </PersistGate>
     </Provider>
   );
