@@ -12,7 +12,7 @@ export const TouchableOpacity = (props: ITouchableOpacityProps) => {
 
   return (
     <Touchable
-      disabled={!props.onPress}
+      disabled={!props.onPress || props.disabled}
       {...props}
       containerStyle={[ChangeDirectionStyle(style, noDirectionChange, showStyle),
       {
