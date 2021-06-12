@@ -31,7 +31,7 @@ const TouchableOpacity = React.forwardRef((props: ITouchableOpacityProps, ref: a
       onLayout={(event) => onLayout(event)}
       ref={ref}
       {...props}
-      disabled={!props.onPress || props.disabled}
+      disabled={!props.onPress || props.disabled || props.loading}
       containerStyle={[noDirectionChange
         ? ConvertStyleToObject(style)
         : ChangeDirectionStyle(style, showStyle), , {
