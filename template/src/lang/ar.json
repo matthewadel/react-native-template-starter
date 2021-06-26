@@ -1,0 +1,13 @@
+{
+  "UI": {
+    "currentLangAbbreviation": "EN",
+    "ok": "موافق",
+    "cancel": "رجوع",
+    "capture": "التقاط",
+    "gallery": "المعرض"
+  },
+  "Welcome": {
+    "Title": "مرحبا بك فى React Native Starter Template",
+    "ChangeLanguage": "تغيير اللغة"
+  }
+}

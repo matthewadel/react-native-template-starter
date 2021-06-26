@@ -1,0 +1,13 @@
+{
+  "UI": {
+    "currentLangAbbreviation": "AR",
+    "ok": "Ok",
+    "cancel": "Cancel",
+    "capture": "Capture",
+    "gallery": "Gallery"
+  },
+  "Welcome": {
+    "Title": "Welcome To React Native Starter Template",
+    "ChangeLanguage": "Change Language"
+  }
+}
