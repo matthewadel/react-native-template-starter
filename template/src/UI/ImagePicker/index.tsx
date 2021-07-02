@@ -82,7 +82,6 @@ export const ImagePicker = forwardRef((props: IImagePicker, ref) => {
           onPress={takeImage}
           style={{
             width: '80%',
-            paddingVertical: RFValue(20),
             borderRadius: RFValue(14),
           }}>
           <VectorIcons
@@ -102,7 +101,7 @@ export const ImagePicker = forwardRef((props: IImagePicker, ref) => {
           onPress={showImagePicker}
           style={{
             width: '80%',
-            paddingVertical: RFValue(20),
+
             borderRadius: RFValue(14),
             marginTop: RFValue(20),
           }}>
