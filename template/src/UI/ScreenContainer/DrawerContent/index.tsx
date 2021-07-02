@@ -19,7 +19,7 @@ const DrawerContent = (props: IDrawerContent) => {
       style={[{ height: '100%', }]}>
       <ScrollView style={{}} contentContainerStyle={{ justifyContent: 'flex-start', alignItems: 'flex-start', }}>
 
-        <TouchableOpacity onPress={() => { Navigation.navigate('Welcome'); props.closeDrawer() }}>Welcome</TouchableOpacity>
+        {/* <TouchableOpacity onPress={() => { Navigation.navigate('Welcome'); props.closeDrawer() }}>Welcome</TouchableOpacity> */}
 
       </ScrollView>
     </SafeAreaView>

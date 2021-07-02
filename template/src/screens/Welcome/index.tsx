@@ -7,7 +7,7 @@ export const Welcome = () => {
   const { t, setLocale } = useLanguage()
 
   return (
-    <ScreenContainer style={{ justifyContent: 'center', }}>
+    <ScreenContainer style={{ justifyContent: 'center', borderWidth: 2, borderColor: '#f00' }}>
       <Text
         style={{
           marginBottom: RFValue(20),
