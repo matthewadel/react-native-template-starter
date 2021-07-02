@@ -11,7 +11,7 @@ export function t(params = '') {
     return I18n.t(params);
 }
 
-let x: "ar" | "en" = 'en'
+let x: "ar" | "en" = 'ar'
 const LocalizationContext = React.createContext({
     t: (key: string, options?: any): string => key,
     setLocale: (x: string): any => x,

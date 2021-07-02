@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { RFValue } from 'react-native-responsive-fontsize';
 import {
+  RFValue,
   Colors,
   TouchableOpacity,
   ConvertStyleToObject,

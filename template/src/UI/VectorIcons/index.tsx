@@ -64,7 +64,7 @@ export const VectorIcons = (props: VectorIconsProps) => {
 
   const { locale } = useLanguage()
 
-  if (!(locale === 'en') && !noIconDirectionChange) {
+  if ((locale === 'ar') && !noIconDirectionChange) {
     if (name.includes('right')) {
       iconName = name.replace('right', 'left');
     } else if (name.includes('left')) {

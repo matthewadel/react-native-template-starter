@@ -1,9 +1,8 @@
 import { ITextInput } from 'models';
 import React, { useState } from 'react';
 import { TextInput as RNTextInput } from 'react-native';
-import { RFValue } from 'react-native-responsive-fontsize';
 import * as Animatable from 'react-native-animatable';
-import { ChangeDirectionStyle, Colors, ConvertStyleToObject, SVGImage, Text, VectorIcons } from 'UI';
+import { ChangeDirectionStyle, Colors, ConvertStyleToObject, SVGImage, Text, VectorIcons, RFValue } from 'UI';
 import { useLanguage } from 'lang/useLanguage';
 
 const TextInput = React.forwardRef((props: ITextInput, ref: any) => {

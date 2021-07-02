@@ -1,6 +1,5 @@
 import React, { forwardRef, useImperativeHandle, useState } from 'react';
-import { RFValue } from 'react-native-responsive-fontsize';
-import { Modal, View, Text, VectorIcons, TouchableOpacity, Button } from 'UI';
+import { Modal, View, Text, VectorIcons, TouchableOpacity, Button, RFValue } from 'UI';
 import { Colors } from 'UI';
 
 export type Action = {

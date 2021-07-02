@@ -35,6 +35,7 @@ export const Colors = (alpha = 1) => {
       Secondary: hexToRgbA('#01A791', alpha),
       Error: hexToRgbA('#F00', alpha),
       Dark: hexToRgbA('#000', alpha),
+      White: hexToRgbA('#FFF', alpha),
     },
     Input: {
       Primary: hexToRgbA('#FFF', alpha),

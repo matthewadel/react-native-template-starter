@@ -1,8 +1,7 @@
 import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react';
-import { TouchableOpacity, Colors, ConvertStyleToObject, View } from 'UI';
+import { TouchableOpacity, Colors, ConvertStyleToObject, RFValue, View } from 'UI';
 import RNSwiper from 'react-native-swiper';
 import { useLanguage } from 'lang/useLanguage';
-import { RFValue } from 'react-native-responsive-fontsize';
 import { IView } from 'models';
 import { ViewStyle } from 'react-native';
 
@@ -79,7 +78,7 @@ export const Swiper = forwardRef((props: SwiperProps, ref) => {
               marginBottom: RFValue(30),
               height: RFValue(30),
               paddingHorizontal: 5,
-              flexDirection: locale === 'en' ? 'row' : 'row-reverse',
+              flexDirection: locale === 'ar' ? 'row-reverse' : 'row',
               justifyContent: 'space-around',
               alignSelf: 'center',
               alignItems: 'center',

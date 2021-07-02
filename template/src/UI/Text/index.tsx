@@ -1,8 +1,7 @@
 import React from 'react';
 import { Text as RNText, Platform } from 'react-native';
 import { useLanguage } from 'lang/useLanguage';
-import { ChangeDirectionStyle, FONT_FAMILY } from 'UI';
-import { RFValue } from 'react-native-responsive-fontsize';
+import { ChangeDirectionStyle, FONT_FAMILY, RFValue } from 'UI';
 import { ITextProps } from 'models';
 
 export const Text = (props: ITextProps) => {
@@ -17,10 +16,10 @@ export const Text = (props: ITextProps) => {
       {...props}
       style={[
         {
-          textAlign: locale === 'en' ? 'left' : 'right',
+          textAlign: locale === 'ar' ? 'right' : 'left',
           fontSize: outputStyle?.fontSize || RFValue(16),
           textShadowOffset: { width: 0, height: 0 },
-          marginVertical: -(outputStyle?.fontSize || RFValue(15)) * (locale === 'en' ? 0.1 : 0.3),
+          marginVertical: -(outputStyle?.fontSize || RFValue(15)) * (locale === 'ar' ? 0.3 : 0.1),
           fontFamily: FONT_FAMILY(),
         },
         outputStyle,
@@ -28,9 +27,9 @@ export const Text = (props: ITextProps) => {
           ? {
             fontFamily: props.boldFontFamily
               ? props.boldFontFamily
-              : locale === 'en'
-                ? 'Poppins-Bold'
-                : `Cairo-Bold`,
+              : locale === 'ar'
+                ? `Cairo-Bold`
+                : 'Poppins-Bold',
             fontWeight: Platform.OS == 'android' ? 'normal' : 'bold',
           }
           : {},

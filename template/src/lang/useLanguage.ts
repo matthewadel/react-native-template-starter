@@ -10,7 +10,7 @@ export const useLanguage = () => {
   const dispatch = useDispatch();
 
   const changeLanguage = () => {
-    let lang = locale == 'en' ? 'ar' : 'en';
+    let lang = locale == 'ar' ? 'en' : 'ar';
     I18n.locale = lang;
     dispatch(SaveLang(lang));
     setLocale(lang);

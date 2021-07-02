@@ -1,8 +1,7 @@
 import React, { forwardRef, useImperativeHandle, useRef, useEffect, useState } from 'react'
-import { DrawerContent } from 'UI'
+import { DrawerContent, RFValue } from 'UI'
 import Drawer from "react-native-drawer";
 import { store } from 'store';
-import { RFValue } from 'react-native-responsive-fontsize';
 import { useLanguage } from 'lang/useLanguage'
 
 interface IAnimatedDrawer {

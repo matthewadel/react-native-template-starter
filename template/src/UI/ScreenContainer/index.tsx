@@ -6,9 +6,8 @@ import {
   ScrollView,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { ScreenHeader, ChangeDirectionStyle, AnimatedDrawer, Colors } from 'UI';
+import { ScreenHeader, ChangeDirectionStyle, RFValue, AnimatedDrawer, Colors } from 'UI';
 import { IScreenHeader } from 'models';
-import { RFValue } from 'react-native-responsive-fontsize';
 
 interface IScreenContainer {
   style?: ViewStyle | ViewStyle[];

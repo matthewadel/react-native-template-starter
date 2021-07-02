@@ -1,8 +1,7 @@
 import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react';
-import { View, Modal, Colors, WIDTH } from 'UI';
+import { View, Modal, Colors, WIDTH, RFValue } from 'UI';
 import RNDatePicker from 'react-native-date-picker';
 import LocalizationContext from 'lang/i18n';
-import { RFValue } from 'react-native-responsive-fontsize';
 import { Button } from 'UI';
 
 interface DatePickerProps {

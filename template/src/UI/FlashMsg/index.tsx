@@ -1,6 +1,5 @@
 import React from 'react'
-import { RFValue } from "react-native-responsive-fontsize";
-import { Text, TouchableOpacity, Colors, VectorIcons } from 'UI'
+import { Text, TouchableOpacity, RFValue, Colors, VectorIcons } from 'UI'
 import { hideMessage } from 'react-native-flash-message'
 import { useSelector } from 'react-redux';
 import { IRootState } from 'models';
@@ -39,9 +38,9 @@ const FlashMsg = (props: any) => {
 
   return (
     <TouchableOpacity style={{ backgroundColor: background, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start', paddingHorizontal: RFValue(10), paddingTop: storeData.notch }} onPress={onPressMessage}>
-      <VectorIcons icon="AntDesign" name={iconName} size={RFValue(16)} color={Colors().White} />
+      <VectorIcons icon="AntDesign" name={iconName} size={RFValue(16)} color={Colors().Text.White} />
 
-      <Text numberOfLines={0} style={{ color: Colors().White, fontSize: RFValue(16), textAlign: 'left', paddingHorizontal: RFValue(8), marginVertical: RFValue(8) }}>{msg.message.message}</Text>
+      <Text numberOfLines={0} style={{ color: Colors().Text.White, fontSize: RFValue(16), textAlign: 'left', paddingHorizontal: RFValue(8), marginVertical: RFValue(8) }}>{msg.message.message}</Text>
     </TouchableOpacity>
   )
 }

@@ -1,6 +1,5 @@
-import React, {forwardRef, useImperativeHandle, useRef} from 'react';
-import {RFValue} from 'react-native-responsive-fontsize';
-import {View, Modal, Button, Text, VectorIcons, Colors} from 'UI';
+import React, { forwardRef, useImperativeHandle, useRef } from 'react';
+import { View, Modal, Button, Text, VectorIcons, Colors, RFValue } from 'UI';
 import RNImagePicker from 'react-native-image-crop-picker';
 import LocalizationContext from 'lang/i18n';
 
@@ -68,7 +67,7 @@ export const ImagePicker = forwardRef((props: IImagePicker, ref) => {
       });
   };
 
-  const {t} = React.useContext(LocalizationContext);
+  const { t } = React.useContext(LocalizationContext);
   return (
     <Modal ref={modalRef}>
       <View
@@ -91,10 +90,10 @@ export const ImagePicker = forwardRef((props: IImagePicker, ref) => {
             name="camera"
             color={Colors().Button.Primary.Text}
             size={RFValue(30)}
-            style={{marginRight: RFValue(20)}}
+            style={{ marginRight: RFValue(20) }}
           />
           <Text
-            style={{color: Colors().Button.Primary.Text, fontWeight: 'bold'}}>
+            style={{ color: Colors().Button.Primary.Text, fontWeight: 'bold' }}>
             {t('UI.capture')}
           </Text>
         </Button>
@@ -112,10 +111,10 @@ export const ImagePicker = forwardRef((props: IImagePicker, ref) => {
             name="image"
             color={Colors().Button.Primary.Text}
             size={RFValue(40)}
-            style={{marginRight: RFValue(20)}}
+            style={{ marginRight: RFValue(20) }}
           />
           <Text
-            style={{color: Colors().Button.Primary.Text, fontWeight: 'bold'}}>
+            style={{ color: Colors().Button.Primary.Text, fontWeight: 'bold' }}>
             {t('UI.gallery')}
           </Text>
         </Button>
