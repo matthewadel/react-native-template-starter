@@ -8,7 +8,7 @@ interface imageProps extends ImageProps, ITouchableOpacityProps {
   style?: ImageStyle | ImageStyle[];
   noDirectionChange?: boolean;
   showStyle?: boolean;
-  onLayout: any
+  onLayout?: any
 }
 
 const Image = (props: imageProps) => {
