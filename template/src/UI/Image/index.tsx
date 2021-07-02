@@ -8,6 +8,7 @@ interface imageProps extends ImageProps, ITouchableOpacityProps {
   style?: ImageStyle | ImageStyle[];
   noDirectionChange?: boolean;
   showStyle?: boolean;
+  onLayout: any
 }
 
 const Image = (props: imageProps) => {
@@ -22,9 +23,7 @@ const Image = (props: imageProps) => {
       <RNImage
         {...props}
         children={null}
-        style={[
-          { width: '100%', height: '100%', resizeMode: 'cover' }, ChangeDirectionStyle(props.style, props.noDirectionChange, props.showStyle),
-        ]}
+        style={[{ width: '100%', height: '100%', resizeMode: 'cover' }, ChangeDirectionStyle(props.style, props.noDirectionChange, props.showStyle)]}
       />
       {props.children}
     </TouchableOpacity>

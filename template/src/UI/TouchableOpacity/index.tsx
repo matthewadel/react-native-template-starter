@@ -32,9 +32,7 @@ const TouchableOpacity = React.forwardRef((props: ITouchableOpacityProps, ref: a
       ref={ref}
       {...props}
       disabled={!props.onPress || props.disabled || props.loading}
-      containerStyle={[noDirectionChange
-        ? ConvertStyleToObject(style)
-        : ChangeDirectionStyle(style, showStyle), , {
+      containerStyle={[ChangeDirectionStyle(style, noDirectionChange, showStyle), {
         width: ConvertStyleToObject(props?.style)?.width,
         marginBottom: 0, marginTop: 0
       }]}
@@ -45,9 +43,7 @@ const TouchableOpacity = React.forwardRef((props: ITouchableOpacityProps, ref: a
             alignItems: 'center',
             opacity: ConvertStyleToObject(style)?.opacity || disabled ? 0.5 : 1,
           },
-          noDirectionChange
-            ? ConvertStyleToObject(style)
-            : ChangeDirectionStyle(style, showStyle),
+          ChangeDirectionStyle(style, noDirectionChange, showStyle),
           props.loading ? { width: Width, height: Height, paddingVertical: 0, paddingHorizontal: 0, padding: 0 } : {}
         ]}
     >

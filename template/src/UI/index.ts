@@ -5,6 +5,7 @@ import { RFValue as RNRFValue } from 'react-native-responsive-fontsize';
 export * from './ActivityIndicator';
 export * from './Button';
 export * from './ChangeDirectionStyle';
+export * from './CheckBox';
 export * from './Colors';
 export * from './ConvertStyleToObject';
 export * from './DatePicker';

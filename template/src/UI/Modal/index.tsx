@@ -19,7 +19,7 @@ interface ModalProps {
   onPressModal?: () => void;
   modalStyle?: ViewStyle | ViewStyle[];
   containerStyle?: ViewStyle | ViewStyle[];
-  onBackButtonPress?: Function;
+  // onBackButtonPress?: Function;
   showStyle?: boolean
 }
 
