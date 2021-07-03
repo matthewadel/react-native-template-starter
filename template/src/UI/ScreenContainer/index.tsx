@@ -20,7 +20,7 @@ interface IScreenContainer {
 
 export const ScreenContainer = (props: IScreenContainer) => {
 
-  const [screenHeight, setScreenHeight] = useState(0)
+  const [screenHeight, setScreenHeight] = useState('100%')
   const [executionCount, setExecutionCount] = useState(0)
   const [isDrawerOpen, toggleDrawer] = useState(false)
   const AnimatedDrawerRef = useRef<any>()
