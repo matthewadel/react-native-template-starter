@@ -14,6 +14,7 @@ export const Text = (props: ITextProps) => {
       allowFontScaling={false}
       numberOfLines={props.numberOfLines !== undefined ? props.numberOfLines : 1}
       {...props}
+      onPress={() => null}
       style={[
         {
           textAlign: locale === 'ar' ? 'right' : 'left',
