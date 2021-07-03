@@ -5,4 +5,5 @@ export interface ITextProps extends TextProps {
   noDirectionChange?: boolean;
   children?: any;
   boldFontFamily?: string;
+  disabled?: boolean
 }
