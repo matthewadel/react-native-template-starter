@@ -8,7 +8,7 @@ interface ICheckBox {
   checkedBackgroundColor?: string
   unCheckedBorderColor?: string
   checked: boolean
-  onValueChange: (val: boolean) => boolean
+  onValueChange?: (val: boolean) => boolean
   size?: number
   labelStyle?: StyleProp<TextStyle>
   checkStyle?: StyleProp<TextStyle>
@@ -21,9 +21,9 @@ const CheckBox = (props: ICheckBox) => {
 
   return (
     <RNCheckbox
-      label={props.label}
+      label={props.label || ''}
       checked={props.checked}
-      onValueChange={props.onValueChange}
+      onValueChange={(x: boolean) => props.onValueChange ? props.onValueChange(x) : false}
       checkedBackgroundColor={props.checkedBackgroundColor}
       unCheckedBorderColor={props.unCheckedBorderColor}
       rounded
@@ -33,9 +33,9 @@ const CheckBox = (props: ICheckBox) => {
       labelStyle={[{ padding: 0 }, props.labelStyle]}
       checkboxContainerStyle={{ padding: 0, }}
       containerStyle={[{ alignItems: 'center', }, props.containerStyle]}
-      checkStyle={[{ color: Colors().Text.White, fontSize: RFValue(18) }, props.checkStyle]}
+      checkStyle={[{ color: Colors().Text.White, fontSize: RFValue(18), }, props.checkStyle]}
       customMarker={props.customMarker}
-      borderWidth={5}
+      borderWidth={props.checked ? 1 : 5}
     />
   )
 
