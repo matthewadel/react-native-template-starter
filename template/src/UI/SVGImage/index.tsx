@@ -22,6 +22,7 @@ export const SVGImage = (props: SVGImageInterface) => {
       ]}>
       <RNSvgImage
         fill='#000'
+        preserveAspectRatio="xMinYMin slice"
         height={props.height || '100%'}
         width={props.width || '100%'}
       />
