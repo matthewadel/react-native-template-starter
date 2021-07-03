@@ -53,8 +53,8 @@ const TouchableOpacity = React.forwardRef((props: ITouchableOpacityProps, ref: a
         (Array.isArray(children) || children?.type) ?
           children
           :
-          <Text {...props} style={props.textStyle}>{children}</Text>}
-    </Touchable >
+          <Text {...props} disabled={!props.onPress || props.disabled || props.loading}  style={props.textStyle}>{children}</Text>}
+    </Touchable>
   );
 })
 export { TouchableOpacity }
