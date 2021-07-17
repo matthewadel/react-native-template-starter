@@ -30,13 +30,13 @@ const App = () => {
   useEffect(() => {
 
     //1- setting the notch
-    const getNotchHeight = async () => {
-      let result = await SafeArea.getSafeAreaInsetsForRootView()
-      store.dispatch(SetNotchHeight(result.safeAreaInsets.top || 0))
-    }
+//     const getNotchHeight = async () => {
+//       let result = await SafeArea.getSafeAreaInsetsForRootView()
+//       store.dispatch(SetNotchHeight(result.safeAreaInsets.top || 0))
+//     }
 
-    if (store.getState().App.notch === null)
-      getNotchHeight()
+//     if (store.getState().App.notch === null)
+//       getNotchHeight()
 
     // 2- setting the language
     setTimeout(() => {
