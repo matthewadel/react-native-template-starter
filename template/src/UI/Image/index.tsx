@@ -31,14 +31,16 @@ const Image = (props: imageProps) => {
           source={{ ...props.source, priority: FastImage.priority.normal, cache: FastImage.cacheControl.immutable }}
         />
         :
-        <RNImage
-          {...props}
-          children={null}
-          style={[
-            { resizeMode: 'cover' }, ChangeDirectionStyle(props.style, props.noDirectionChange, props.showStyle),
-          ]}
-        />}
-      {props.children}
+        <>
+          <RNImage
+            {...props}
+            children={null}
+            style={[
+              { resizeMode: 'cover' }, ChangeDirectionStyle(props.style, props.noDirectionChange, props.showStyle),
+            ]}
+          />
+          {props.children}
+        </>}
     </TouchableOpacity>
   );
 };
