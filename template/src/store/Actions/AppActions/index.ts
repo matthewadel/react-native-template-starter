@@ -1,4 +1,4 @@
-import { SAVE_LANG, SET_NOTCH_HEIGHT } from 'store/Actions'
+import { SAVE_LANG, SET_NOTCH_HEIGHT,SET_ACTUAL_HEIGHT } from 'store/Actions'
 
 export const SaveLang = (lang: string) => {
 
