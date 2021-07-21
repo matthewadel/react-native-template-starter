@@ -14,6 +14,7 @@ import LocalizationContext from 'lang/i18n';
 import Orientation from 'react-native-orientation';
 import FlashMessage from "react-native-flash-message";
 import FlashMsg from 'UI/FlashMsg';
+// import { SetNotchHeight } from 'store/Actions';
 
 const App = () => {
 
@@ -30,13 +31,13 @@ const App = () => {
   useEffect(() => {
 
     //1- setting the notch
-//     const getNotchHeight = async () => {
-//       let result = await SafeArea.getSafeAreaInsetsForRootView()
-//       store.dispatch(SetNotchHeight(result.safeAreaInsets.top || 0))
-//     }
+    // const getNotchHeight = async () => {
+    //   let result = await SafeArea.getSafeAreaInsetsForRootView()
+    //  store.dispatch(SetNotchHeight({ top: (result.safeAreaInsets.top || 0), bottom: (result.safeAreaInsets.bottom || 0) }))
+    // }
 
-//     if (store.getState().App.notch === null)
-//       getNotchHeight()
+    // if (store.getState().App.notch === null)
+    //   getNotchHeight()
 
     // 2- setting the language
     setTimeout(() => {
