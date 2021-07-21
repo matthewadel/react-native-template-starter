@@ -8,7 +8,10 @@ export const SaveLang = (lang: string) => {
   }
 }
 
-export const SetNotchHeight = (notch: number) => {
+export const SetNotchHeight = (notch: {
+  top: number | null
+  bottom: number | null
+}) => {
   return {
     type: SET_NOTCH_HEIGHT,
     notch: notch,
