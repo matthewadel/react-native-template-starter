@@ -16,6 +16,7 @@ interface IScreenContainer {
   headerProps?: IScreenHeader;
   noDirectionChange?: boolean;
   showStyle?: boolean
+  reduceFromScreenHeight?: number
 }
 
 export const ScreenContainer = (props: IScreenContainer) => {
@@ -55,7 +56,7 @@ export const ScreenContainer = (props: IScreenContainer) => {
             showsVerticalScrollIndicator={false}
             nestedScrollEnabled={true}
             style={{ flexGrow: 1, }}
-            contentContainerStyle={[{ width: '100%', alignItems: 'center', alignSelf: 'center', height: screenHeight, }, ChangeDirectionStyle(props.style, props.noDirectionChange, props.showStyle)]}
+            contentContainerStyle={[{ width: '100%', alignItems: 'center', alignSelf: 'center', height: screenHeight - (props.reduceFromScreenHeight || 0), }, ChangeDirectionStyle(props.style, props.noDirectionChange, props.showStyle)]}
             keyboardShouldPersistTaps='handled'
           >
             {props.children}
