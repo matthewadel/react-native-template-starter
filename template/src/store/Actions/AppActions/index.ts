@@ -17,3 +17,10 @@ export const SetNotchHeight = (notch: {
     notch: notch,
   }
 }
+
+export const SetActualhHeight = (actualHeight: number) => {
+  return {
+    type: SET_ACTUAL_HEIGHT,
+    actualHeight: actualHeight,
+  }
+}
