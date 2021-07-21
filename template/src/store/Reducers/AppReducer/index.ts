@@ -6,6 +6,7 @@ export interface IApp {
     top: number | null
     bottom: number | null
   }
+  actualHeight: number
 }
 
 const initialState: IApp = {
@@ -14,6 +15,7 @@ const initialState: IApp = {
     top: number | null
     bottom: number | null
   },
+  actualHeight: 0
 }
 
 const TextReducer = (state = initialState, action: any) => {
@@ -29,6 +31,13 @@ const TextReducer = (state = initialState, action: any) => {
       return {
         ...state,
         notch: action.notch,
+      }
+    }
+      
+    case SET_ACTUAL_HEIGHT: {
+      return {
+        ...state,
+        actualHeight: action.actualHeight,
       }
     }
 
