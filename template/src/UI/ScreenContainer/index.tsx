@@ -52,7 +52,7 @@ const [screenHeight, setScreenHeight] = useState(store.getState().App.actualHeig
           edges={['top']}
           style={[{ height: '100%', }, isDrawerOpen ? { borderWidth: 2, borderColor: Colors().App.Primary, borderRadius: RFValue(25), } : {}, props.containerStyle]}>
 
-          <ScreenHeader {...props.headerProps} />
+          {!!(store.getState().App.actualHeight) && <ScreenHeader {...props.headerProps} />}
 
           <ScrollView
             onLayout={store.getState().App.actualHeight ? () => null : onLayout}
