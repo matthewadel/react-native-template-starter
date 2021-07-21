@@ -36,7 +36,7 @@ const App = () => {
     //  store.dispatch(SetNotchHeight({ top: (result.safeAreaInsets.top || 0), bottom: (result.safeAreaInsets.bottom || 0) }))
     // }
 
-    // if (store.getState().App.notch === null)
+    // if (store.getState().App.notch.top === null)
     //   getNotchHeight()
 
     // 2- setting the language
