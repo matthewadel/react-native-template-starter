@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { TouchableOpacity as RNTouchableOpacity } from 'react-native';
 import { ConvertStyleToObject, Text, ChangeDirectionStyle, ActivityIndicator } from 'UI';
 import { TouchableOpacity as PositionAbsoluteButton } from 'react-native-gesture-handler'
-import { ITouchableOpacityProps } from 'models';
+import { ITouchableOpacity } from 'models';
 
 
-const TouchableOpacity = React.forwardRef((props: ITouchableOpacityProps, ref: any) => {
+const TouchableOpacity = React.forwardRef((props: ITouchableOpacity, ref: any) => {
   let {
     children,
     noDirectionChange,
@@ -53,7 +53,7 @@ const TouchableOpacity = React.forwardRef((props: ITouchableOpacityProps, ref: a
         (Array.isArray(children) || children?.type) ?
           children
           :
-          <Text {...props} disabled={!props.onPress || props.disabled || props.loading}  style={props.textStyle}>{children}</Text>}
+          <Text {...props} disabled={!props.onPress || props.disabled || props.loading} style={props.textStyle}>{children}</Text>}
     </Touchable>
   );
 })

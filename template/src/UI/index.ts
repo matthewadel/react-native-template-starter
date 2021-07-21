@@ -1,6 +1,12 @@
 import { store } from 'store';
 import { Dimensions } from 'react-native';
-import { RFValue as RNRFValue } from 'react-native-responsive-fontsize';
+function RNRFValue(fontSize: number, deviceHeight: number) {
+  const { height, width } = Dimensions.get("window");
+  const standardLength = width > height ? width : height;
+
+  const heightPercent = (fontSize * standardLength) / deviceHeight;
+  return Math.round(heightPercent);
+}
 
 export * from './ActivityIndicator';
 export * from './Button';

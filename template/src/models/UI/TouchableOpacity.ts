@@ -6,7 +6,7 @@ import {
   ViewStyle,
 } from 'react-native';
 
-export interface ITouchableOpacityProps extends TouchableOpacityProps, ITextProps {
+export interface ITouchableOpacity extends TouchableOpacityProps, ITextProps {
   onPress?: any;
   children?: any;
   noDirectionChange?: boolean;

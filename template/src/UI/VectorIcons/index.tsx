@@ -16,9 +16,9 @@ import Foundation from 'react-native-vector-icons/Foundation';
 import { ConvertStyleToObject, TouchableOpacity, ActivityIndicator } from 'UI';
 import { ViewStyle } from 'react-native';
 import { useLanguage } from 'lang/useLanguage';
-import { ITouchableOpacityProps } from 'models';
+import { ITouchableOpacity } from 'models';
 
-interface VectorIconsProps extends ITouchableOpacityProps {
+interface VectorIconsProps extends ITouchableOpacity {
   icon: string;
   name: string;
   size?: number;

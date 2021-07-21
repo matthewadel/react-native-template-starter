@@ -1,8 +1,8 @@
 import React from 'react';
 import { ConvertStyleToObject, TouchableOpacity } from 'UI';
-import { ITouchableOpacityProps } from 'models';
+import { ITouchableOpacity } from 'models';
 
-interface SVGImageInterface extends ITouchableOpacityProps {
+interface SVGImageInterface extends ITouchableOpacity {
   source: string;
   height?: number | string;
   width?: number | string;

@@ -6,9 +6,9 @@ import {
   ConvertStyleToObject,
   ActivityIndicator,
 } from 'UI';
-import { ITouchableOpacityProps } from 'models';
+import { ITouchableOpacity } from 'models';
 
-export interface IButtonProps extends ITouchableOpacityProps {
+export interface IButtonProps extends ITouchableOpacity {
   loading?: boolean;
   type?: 'PRIMARY' | 'SECONDARY';
 }
