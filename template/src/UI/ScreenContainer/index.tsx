@@ -8,6 +8,9 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ScreenHeader, ChangeDirectionStyle, RFValue, AnimatedDrawer, Colors } from 'UI';
 import { IScreenHeader } from 'models';
+import { useDispatch } from 'react-redux';
+import { SetActualhHeight } from 'store/Actions';
+import { store } from 'store';
 
 interface IScreenContainer {
   style?: ViewStyle | ViewStyle[];
@@ -21,16 +24,18 @@ interface IScreenContainer {
 
 export const ScreenContainer = (props: IScreenContainer) => {
 
-  const [screenHeight, setScreenHeight] = useState('100%')
+const [screenHeight, setScreenHeight] = useState(store.getState().App.actualHeight || '100%')
   const [executionCount, setExecutionCount] = useState(0)
   const [isDrawerOpen, toggleDrawer] = useState(false)
   const AnimatedDrawerRef = useRef<any>()
+  const dispatch = useDispatch()
 
   const onLayout = useCallback((e) => {
     if (executionCount == 0)
       setExecutionCount(1)
     else if (executionCount == 1) {
       setScreenHeight(e.nativeEvent.layout.height)
+      dispatch(SetActualhHeight(e.nativeEvent.layout.height))
       setExecutionCount(2)
     }
   }, [executionCount]);
@@ -50,7 +55,7 @@ export const ScreenContainer = (props: IScreenContainer) => {
           <ScreenHeader {...props.headerProps} />
 
           <ScrollView
-            onLayout={onLayout}
+            onLayout={store.getState().App.actualHeight ? () => null : onLayout}
             scrollEnabled={true}
             alwaysBounceVertical={false}
             showsVerticalScrollIndicator={false}
