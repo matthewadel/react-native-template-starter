@@ -18,7 +18,7 @@ const FlashMsg = (props: any) => {
 
   let msg = props.msg
   const storeData = useSelector((state: IRootState) => ({
-    notch: state.App.notch || 0,
+     notch: state.App?.notch?.top || 0,
   }));
 
   const onPressMessage = () => {
