@@ -45,4 +45,4 @@ const FlashMsg = (props: any) => {
   )
 }
 
-export default FlashMsg
+export { FlashMsg }
