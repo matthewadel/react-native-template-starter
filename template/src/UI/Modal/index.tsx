@@ -1,29 +1,30 @@
 import React, { forwardRef, useImperativeHandle, useState } from 'react';
 import { ChangeDirectionStyle, ConvertStyleToObject, WIDTH } from 'UI';
 import RNModal from 'react-native-modal';
-import {
-  KeyboardAvoidingView,
-  Platform,
-  ViewStyle,
-  TouchableWithoutFeedback,
-  Keyboard,
-} from 'react-native';
+import { KeyboardAvoidingView, Platform, ViewStyle, TouchableWithoutFeedback, Keyboard, } from 'react-native';
 
 interface ModalProps {
   isVisible?: boolean;
   noDirectionChange?: boolean;
   noSwipeDirection?: boolean;
-  children: any;
+  children?: any;
   noKeyboardBehavior?: boolean;
   backdropColor?: string;
   onPressModal?: () => void;
   modalStyle?: ViewStyle | ViewStyle[];
   containerStyle?: ViewStyle | ViewStyle[];
-  // onBackButtonPress?: Function;
   showStyle?: boolean
 }
 
-export const Modal = forwardRef((props: ModalProps, ref) => {
+export const ModalRef = React.createRef<any>();
+
+export const openModal = (_props: ModalProps) => {
+  ModalRef.current.open(_props);
+};
+
+export const Modal = forwardRef((_, ref) => {
+
+  const [props, setProps] = useState<ModalProps>({});
   const [showModal, setShowModal] = useState(!!props.isVisible);
 
   const handleModal = () => {
@@ -42,6 +43,10 @@ export const Modal = forwardRef((props: ModalProps, ref) => {
     handleModal,
     closeModal,
     openModal,
+    open: (_props: ModalProps) => {
+      setProps(_props);
+      setShowModal(true);
+    },
   }));
 
   return (
