@@ -13,7 +13,7 @@ import I18n from "react-native-i18n";
 import LocalizationContext from 'lang/i18n';
 import Orientation from 'react-native-orientation';
 import FlashMessage from "react-native-flash-message";
-import FlashMsg from 'UI/FlashMsg';
+import { FlashMsg, Modal, ModalRef } from 'UI';
 // import { SetNotchHeight } from 'store/Actions';
 
 const App = () => {
@@ -62,6 +62,7 @@ const App = () => {
           </LocalizationContext.Provider>
         </SafeAreaProvider>
 
+        <Modal ref={ModalRef} />
         <FlashMessage duration={4000} animationDuration={500} autoHide={true} hideOnPress={true} position="top" MessageComponent={(msg) => (<FlashMsg msg={msg} />)} />
       </PersistGate>
     </Provider>
