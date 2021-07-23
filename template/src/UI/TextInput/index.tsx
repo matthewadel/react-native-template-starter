@@ -34,7 +34,7 @@ const TextInput = React.forwardRef((props: ITextInput, ref: any) => {
           placeholderTextColor={errStyle ? (errStyle.hasError ? Colors().Text.Error : errStyle.defaultColor) : undefined}
           secureTextEntry={!!props.togglePasswordButton && !showPassword}
           {...props}
-          style={[{ textAlign: locale == 'ar' ? 'right' : 'left', fontSize: RFValue(16), flex: 1, height: '100%', paddingVertical: 0, paddingHorizontal: !!props.togglePasswordButton ? '15%' : 0 }, ConvertStyleToObject(textInputStyle),]}
+          style={[{ fontSize: RFValue(16), flex: 1, height: '100%', paddingVertical: 0, paddingHorizontal: !!props.togglePasswordButton ? '15%' : 0 }, props.noDirectionChange ? {} : { textAlign: locale == 'ar' ? 'right' : 'left', }, ConvertStyleToObject(textInputStyle),]}
         />
 
         {props.togglePasswordButton && <VectorIcons noDirectionChange style={{ width: '15%', height: '100%', position: 'absolute', alignSelf: 'center', right: 0, justifyContent: 'center', alignItems: 'center' }} onPress={() => togglePassword(prev => !prev)} icon="Feather" name={showPassword ? "eye" : "eye-off"} size={RFValue(22)} color={Colors().Text.Primary} />}
