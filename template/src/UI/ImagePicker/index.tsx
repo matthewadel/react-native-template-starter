@@ -1,31 +1,18 @@
-import React, { forwardRef, useImperativeHandle, useRef } from 'react';
-import { View, Modal, Button, Text, VectorIcons, Colors, RFValue } from 'UI';
+import React from 'react';
+import { View, Button, Text, VectorIcons, Colors, closeModal, openModal, RFValue, WIDTH } from 'UI';
 import RNImagePicker from 'react-native-image-crop-picker';
-import LocalizationContext from 'lang/i18n';
+import I18n from 'react-native-i18n';
 
 interface IImageRes {
   path: string;
 }
 
 interface IImagePicker {
-  type: 'video' | 'photo';
+  type?: 'video' | 'photo';
   onSelect: (res: IImageRes) => void;
 }
 
-export const ImagePicker = forwardRef((props: IImagePicker, ref) => {
-  const modalRef = useRef<any>(null);
-
-  const handleModal = () => modalRef.current.handleModal();
-
-  const openModal = () => modalRef.current.openModal();
-
-  const closeModal = () => modalRef.current.closeModal();
-
-  useImperativeHandle(ref, () => ({
-    handleModal,
-    closeModal,
-    openModal,
-  }));
+export const ImagePicker = (props: IImagePicker) => {
 
   // capture an image
   const takeImage = () => {
@@ -67,57 +54,56 @@ export const ImagePicker = forwardRef((props: IImagePicker, ref) => {
       });
   };
 
-  const { t } = React.useContext(LocalizationContext);
-  return (
-    <Modal ref={modalRef}>
-      <View
-        style={{
-          borderRadius: RFValue(15),
-          paddingVertical: RFValue(30),
-          width: '60%',
-          alignItems: 'center',
-          backgroundColor: Colors().App.Secondary,
-        }}>
-        <Button
-          onPress={takeImage}
+  return openModal({
+    children: (
+      <View style={{ width: WIDTH() }}>
+        <View
           style={{
-            width: '80%',
-            borderRadius: RFValue(14),
+            borderRadius: RFValue(15),
+            paddingVertical: RFValue(30),
+            width: '70%',
+            backgroundColor: Colors().App.White,
           }}>
-          <VectorIcons
-            icon="FontAwesome"
-            name="camera"
-            color={Colors().Button.Primary.Text}
-            size={RFValue(30)}
-            style={{ marginRight: RFValue(20) }}
-          />
-          <Text
-            style={{ color: Colors().Button.Primary.Text, fontWeight: 'bold' }}>
-            {t('UI.capture')}
-          </Text>
-        </Button>
+          <Button
+            onPress={takeImage}
+            style={{
+              width: '80%',
+              borderRadius: RFValue(14),
+            }}>
+            <VectorIcons
+              icon="FontAwesome"
+              name="camera"
+              color={Colors().Text.White}
+              size={RFValue(30)}
+              style={{ marginRight: RFValue(20) }}
+            />
+            <Text
+              style={{ color: Colors().Text.White, fontWeight: 'bold' }}>
+              {I18n.t('UI.capture')}
+            </Text>
+          </Button>
 
-        <Button
-          onPress={showImagePicker}
-          style={{
-            width: '80%',
-
-            borderRadius: RFValue(14),
-            marginTop: RFValue(20),
-          }}>
-          <VectorIcons
-            icon="EvilIcons"
-            name="image"
-            color={Colors().Button.Primary.Text}
-            size={RFValue(40)}
-            style={{ marginRight: RFValue(20) }}
-          />
-          <Text
-            style={{ color: Colors().Button.Primary.Text, fontWeight: 'bold' }}>
-            {t('UI.gallery')}
-          </Text>
-        </Button>
+          <Button
+            onPress={showImagePicker}
+            style={{
+              width: '80%',
+              borderRadius: RFValue(14),
+              marginTop: RFValue(20),
+            }}>
+            <VectorIcons
+              icon="EvilIcons"
+              name="image"
+              color={Colors().Text.White}
+              size={RFValue(40)}
+              style={{ marginRight: RFValue(20) }}
+            />
+            <Text
+              style={{ color: Colors().Text.White, fontWeight: 'bold' }}>
+              {I18n.t('UI.gallery')}
+            </Text>
+          </Button>
+        </View>
       </View>
-    </Modal>
-  );
-});
+    )
+  })
+}
