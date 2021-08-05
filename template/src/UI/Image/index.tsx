@@ -6,7 +6,6 @@ import FastImage from 'react-native-fast-image'
 
 interface imageProps extends ImageProps, ITouchableOpacity {
   style?: any;
-  imageStyle?: any;
   onLoad?: any
   onError?: any
   noDirectionChange?: boolean;
@@ -20,13 +19,10 @@ const Image = (props: imageProps) => {
     <TouchableOpacity
       disabled={!props.onPress}
       {...props}
-      style={[
-        { justifyContent: 'center', alignItems: 'center', opacity: 1 },
-        ConvertStyleToObject(props.style),
-      ]}>
+      style={{ opacity: 1 }}>
       {props.source.uri ?
         <FastImage
-          style={[{ width: '100%', height: '100%' }, props.imageStyle]}
+          style={[{ width: '100%', height: '100%' }, ChangeDirectionStyle(props.style, props.noDirectionChange)]}
           resizeMode={ConvertStyleToObject(props.style).resizeMode ? FastImage.resizeMode[ConvertStyleToObject(props.style).resizeMode] : FastImage.resizeMode.cover}
           source={{ ...props.source, priority: FastImage.priority.normal, cache: FastImage.cacheControl.immutable }}
         >
