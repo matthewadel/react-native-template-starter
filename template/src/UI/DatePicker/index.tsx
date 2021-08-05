@@ -1,8 +1,7 @@
-import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react';
-import { View, Modal, Colors, WIDTH, RFValue } from 'UI';
+import React, { useState } from 'react';
+import { View, Colors, WIDTH, RFValue, openModal, closeModal, TouchableOpacity } from 'UI';
 import RNDatePicker from 'react-native-date-picker';
 import LocalizationContext from 'lang/i18n';
-import { Button } from 'UI';
 
 interface DatePickerProps {
   onPress: (dateModalRef: Date) => void;
@@ -10,75 +9,62 @@ interface DatePickerProps {
   maximumDate?: Date;
 }
 
-export const DatePicker = forwardRef((props: DatePickerProps, ref) => {
+export const DatePicker = (props: DatePickerProps) => {
+  openModal({
+    // containerStyle: { justifyContent: 'flex-end' },
+    modalStyle: { justifyContent: 'flex-end' },
+    children: <DatePickerView {...props} />
+  })
+}
+
+export const DatePickerView = (props: DatePickerProps) => {
   const [selectedDate, setSelectedDate] = useState(
-    (props.selectedDate && new Date(props.selectedDate)) || new Date(),
+    (props?.selectedDate && new Date(props?.selectedDate)) || new Date(),
   );
-  const dateModalRef = useRef<any>(null);
   const { t } = React.useContext(LocalizationContext);
 
-  const openModal = () => {
-    dateModalRef.current.openModal();
-  };
-
-  const closeModal = () => {
-    dateModalRef.current.closeModal();
-  };
-
-  useImperativeHandle(ref, () => ({
-    openModal,
-    closeModal,
-  }));
-
   return (
-    <Modal
-      ref={dateModalRef}
-      containerStyle={{ justifyContent: 'flex-end' }}
-      modalStyle={{ justifyContent: 'flex-end' }}>
-      <View style={{ width: '100%' }}>
-        <View
-          style={{
-            zIndex: 100,
-            width: '100%',
-            paddingHorizontal: '3%',
-            height: RFValue(35),
-            borderBottomWidth: 1,
-            backgroundColor: Colors().Input.Background,
-            borderColor: Colors().Input.Border,
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
+
+    <View style={{ width: '100%' }}>
+      <View
+        style={{
+          zIndex: 100,
+          width: WIDTH(),
+          paddingHorizontal: '3%',
+          height: RFValue(35),
+          borderBottomWidth: 1,
+          backgroundColor: Colors().App.White,
+          borderColor: Colors().App.BorderColor,
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+        }}>
+        <TouchableOpacity style={{ height: '100%', paddingHorizontal: RFValue(15) }}
+          onPress={() => {
+            closeModal()
+            props.onPress(selectedDate);
           }}>
-          <Button
-            type="PRIMARY"
-            onPress={() => {
-              dateModalRef.current.handleModal();
-              props.onPress(selectedDate);
-            }}>
-            {t('UI.ok')}
-          </Button>
+          {t('UI.ok')}
+        </TouchableOpacity>
 
-          <Button
-            onPress={() => dateModalRef.current.handleModal()}
-            type="SECONDARY">
-            {t('UI.cancel')}
-          </Button>
-        </View>
-
-        <RNDatePicker
-          maximumDate={props.maximumDate}
-          locale="en"
-          date={selectedDate}
-          onDateChange={(dateOfbirth) => setSelectedDate(dateOfbirth)}
-          mode="date"
-          style={{
-            backgroundColor: Colors().Input.Background,
-            width: WIDTH(),
-            margin: 0,
-            padding: 0,
-          }}
-        />
+        <TouchableOpacity style={{ height: '100%', paddingHorizontal: RFValue(15) }} onPress={closeModal}>
+          {t('UI.cancel')}
+        </TouchableOpacity>
       </View>
-    </Modal>
+
+      <RNDatePicker
+        maximumDate={props?.maximumDate}
+        locale="en"
+        date={selectedDate}
+        onDateChange={(dateOfbirth) => setSelectedDate(dateOfbirth)}
+        mode="date"
+        style={{
+          backgroundColor: Colors().App.White,
+          width: WIDTH(),
+          margin: 0,
+          padding: 0,
+        }}
+      />
+    </View>
+
   );
-});
+}
