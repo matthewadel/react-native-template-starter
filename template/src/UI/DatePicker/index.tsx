@@ -34,7 +34,7 @@ export const DatePickerView = (props: DatePickerProps) => {
           height: RFValue(35),
           borderBottomWidth: 1,
           backgroundColor: Colors().App.White,
-          borderColor: Colors().App.BorderColor,
+          borderColor: borderColor: Colors().App.Dark,
           flexDirection: 'row',
           justifyContent: 'space-between',
         }}>
