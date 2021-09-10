@@ -1,8 +1,8 @@
-import { SAVE_LANG, SET_NOTCH_HEIGHT } from 'store/Actions'
+import { SAVE_LANG, SET_NOTCH_HEIGHT, SET_ACTUAL_HEIGHT } from 'store/Actions'
 
 export interface IApp {
   lang?: string
-  notch?:  {
+  notch?: {
     top: number | null
     bottom: number | null
   }
@@ -11,9 +11,9 @@ export interface IApp {
 
 const initialState: IApp = {
   lang: 'en',
-  notch:  {
-    top: number | null
-    bottom: number | null
+  notch: {
+    top: null,
+    bottom: null,
   },
   actualHeight: 0
 }
@@ -33,7 +33,7 @@ const TextReducer = (state = initialState, action: any) => {
         notch: action.notch,
       }
     }
-      
+
     case SET_ACTUAL_HEIGHT: {
       return {
         ...state,
