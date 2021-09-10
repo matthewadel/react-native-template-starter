@@ -4,12 +4,12 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '10.0'
 
-target 'retro' do
+target 'startReactNative' do
   config = use_native_modules!
 
   use_react_native!(:path => config["reactNativePath"])
 
-  target 'retroTests' do
+  target 'startReactNativeTests' do
     inherit! :complete
     # Pods for testing
   end
@@ -24,10 +24,10 @@ target 'retro' do
 #  end
 end
 
-target 'retro-tvOS' do
-  # Pods for retro-tvOS
+target 'startReactNative-tvOS' do
+  # Pods for startReactNative-tvOS
 
-  target 'retro-tvOSTests' do
+  target 'startReactNative-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end
