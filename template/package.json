@@ -22,7 +22,7 @@
     "react-native-checkbox-animated": "https://github.com/StartReactNative/react-native-checkbox-animated.git",
     "react-native-date-picker": "^3.2.10",
     "react-native-drawer": "^2.5.1",
-    "react-native-fast-image": "https://github.com/StartReactNative/react-native-fast-image.git",
+    "react-native-fast-image": "^8.3.7",
     "react-native-flash-message": "^0.1.23",
     "react-native-gesture-handler": "^1.10.1",
     "react-native-i18n": "^2.0.15",
