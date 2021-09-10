@@ -21,6 +21,10 @@ export const ModalRef = React.createRef<any>();
 export const openModal = (_props: ModalProps) => {
   ModalRef.current.open(_props);
 };
+  
+export const closeModal = () => {
+  ModalRef.current.closeModal();
+};
 
 export const Modal = forwardRef((_, ref) => {
 
