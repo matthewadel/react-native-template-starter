@@ -2,10 +2,7 @@ import React from 'react';
 import { View, Button, Text, VectorIcons, Colors, closeModal, openModal, RFValue, WIDTH } from 'UI';
 import RNImagePicker from 'react-native-image-crop-picker';
 import I18n from 'react-native-i18n';
-
-interface IImageRes {
-  path: string;
-}
+import { IImageRes } from 'models';
 
 interface IImagePicker {
   type?: 'video' | 'photo';
@@ -40,6 +37,7 @@ export const ImagePicker = (props: IImagePicker) => {
   const showImagePicker = () => {
     const options: any = {
       mediaType: props.type === 'video' ? 'video' : 'photo',
+      includeBase64: props.type === 'video' ? false : true,
     };
 
     RNImagePicker.openPicker(options)
