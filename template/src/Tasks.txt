@@ -8,3 +8,14 @@ react-native-vector-icons
 fonts: {cairo - poppings - SFUI}
 language setup
 colors
+
+
+
+
+upcoming features:
+    firebase 
+    analytics
+    notifications
+    foreground notifications
+    crashlytics
+    updates over the air
