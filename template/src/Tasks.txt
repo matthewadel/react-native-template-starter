@@ -19,6 +19,19 @@
 
 
 -- to run updates over the air
+    1- create new app in https://appcenter.ms/
+    2- change app_secret in android/app/src/main/assets/appcenter-config.json
+    3- get all my projects using (appcenter apps list)
+    4- change app you're working on using (appcenter apps set-current APP_NAME)
+    5- generate 2 keys using (appcenter codepush deployment add DEPLOYMENT_NAME) and place it in strings.xml under CodePushDeploymentKey
+    6- change react-native-code-push/android/codepush.gradle file add
+      new File(jsBundleDir).mkdirs()
+      new File(resourcesDir).mkdirs()
+        before jsBundleFile = file("$jsBundleDir/$bundleAssetName")
+    7- adding doLast block in react.gradle
+    8- generate two keys for ios and place it under record CodePushDeploymentKey in info.pilst
+    9- change app secret in info.pilst under AppSecret field
+    - you can relase a new update using this code appcenter codepush release-react -a USERNAME/APP_NAME -d DEPLOYMENT_NAME
 
 
 react-navigation
@@ -38,14 +51,20 @@ updates over the air
 
 
 
-
 upcoming features:
     crashlytics
+    fork react-native-orientation
+    fork react-native-code-push
 
 
 
 
+
+update bundle keys of firebase tollab app
 remove certificates on apple developer created today
 remove the key created today
 remove the app bundler
-remove fb developer account
+
+
+
+npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/build/intermediates/res/merged/release/ && rm -rf android/app/src/main/res/drawable-* && rm -rf android/app/src/main/res/raw/* && cd android && ./gradlew assembleRelease && cd ..

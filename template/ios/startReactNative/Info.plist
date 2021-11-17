@@ -50,6 +50,10 @@
 </array>
 <key>FacebookAppID</key>
 <string>440773644451802</string>
+<key>CodePushDeploymentKey</key>
+	<string>jmhqrO7KDC1OkrCod8GE5Q3R_R1s5UxRErim3</string>
+  <key>AppSecret</key>
+    <string>30c67d94-5d11-4dda-a36e-af2536889858</string>
 <key>FacebookClientToken</key>
 <string>20d22712d7dce714562bc6cc612f8dd4</string>
 <key>FacebookDisplayName</key>

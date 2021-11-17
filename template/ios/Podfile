@@ -13,6 +13,8 @@ target 'startReactNative' do
   
   permissions_path = '../node_modules/react-native-permissions/ios'
   pod 'Permission-AppTrackingTransparency', :path => "#{permissions_path}/AppTrackingTransparency"
+  pod 'CodePush', :path => '../node_modules/react-native-code-push'
+
   
   target 'startReactNativeTests' do
     inherit! :complete

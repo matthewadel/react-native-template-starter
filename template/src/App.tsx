@@ -16,6 +16,7 @@ import { PERMISSIONS, RESULTS, request, check } from 'react-native-permissions';
 import { Settings } from 'react-native-fbsdk-next';
 import messaging from '@react-native-firebase/messaging';
 import PushNotification from "react-native-push-notification";
+import codePush from "react-native-code-push";
 
 const App = () => {
 
@@ -131,5 +132,5 @@ const App = () => {
   );
 };
 
-// export default App;
-export default reactotron.overlay(App)
+let codePushOptions = { checkFrequency: codePush.CheckFrequency.ON_APP_RESUME };
+export default codePush(codePushOptions)(reactotron.overlay(App))

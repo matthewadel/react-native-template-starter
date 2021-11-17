@@ -1001,6 +1001,7 @@
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = startReactNative/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
