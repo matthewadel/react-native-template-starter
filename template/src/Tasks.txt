@@ -48,11 +48,11 @@ firebase
 analytics
 notifications and foreground notifications
 updates over the air
+crashlytics
 
 
 
 upcoming features:
-    crashlytics
     fork react-native-orientation
     fork react-native-code-push
 

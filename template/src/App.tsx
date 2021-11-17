@@ -17,6 +17,7 @@ import { Settings } from 'react-native-fbsdk-next';
 import messaging from '@react-native-firebase/messaging';
 import PushNotification from "react-native-push-notification";
 import codePush from "react-native-code-push";
+import crashlytics from '@react-native-firebase/crashlytics';
 
 const App = () => {
 
@@ -51,6 +52,12 @@ const App = () => {
 
     // 3- request to collect data and init fbsdk
     initFBSdk()
+
+    // 4- set crashlytics
+    crashlytics()
+      .setCrashlyticsCollectionEnabled(true)
+      .then(() => console.log('crashlytics enabled'))
+      .catch(e => console.log(e))
 
   }, [])
 

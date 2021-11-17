@@ -1,6 +1,7 @@
 import React from 'react';
 import { ScreenContainer, Text, TouchableOpacity, RFValue } from 'UI';
 import { useLanguage } from 'lang/useLanguage';
+import crashlytics from '@react-native-firebase/crashlytics';
 
 export const Welcome = () => {
 
@@ -18,7 +19,8 @@ export const Welcome = () => {
         {t('Welcome.Title')}
       </Text>
       <TouchableOpacity
-        onPress={setLocale}
+        onPress={() => crashlytics().crash()}
+        // onPress={setLocale}
         style={{
           backgroundColor: '#0FF',
           padding: RFValue(20),
