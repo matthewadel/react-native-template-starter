@@ -37,6 +37,24 @@
 			</dict>
 		</dict>
 	</dict>
+
+
+<key>CFBundleURLTypes</key>
+<array>
+  <dict>
+  <key>CFBundleURLSchemes</key>
+  <array>
+    <string>fb440773644451802D</string>
+  </array>
+  </dict>
+</array>
+<key>FacebookAppID</key>
+<string>440773644451802</string>
+<key>FacebookClientToken</key>
+<string>20d22712d7dce714562bc6cc612f8dd4</string>
+<key>FacebookDisplayName</key>
+<string>startReactNative</string>
+
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) would like to use your camera to change your profile picture</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
@@ -47,6 +65,8 @@
 	<string>$(PRODUCT_NAME) would like to save photos to your photo gallery</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>$(PRODUCT_NAME) would like access to your photo gallery to change your profile picture</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>$(PRODUCT_NAME) would like access to your data in order to improve your usage experience?</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Cairo-Black.ttf</string>

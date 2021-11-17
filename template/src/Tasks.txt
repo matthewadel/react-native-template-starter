@@ -10,23 +10,42 @@
     4- generate new key and upload it to console fire base cloudMessage settings
 
 
+-- to run fbsdk
+    1- create new app on developers.facebook.com
+    2- change app id in strings.xml
+    3- in info.Pilst under CFBundleURLTypes change (CFBundleURLSchemes, FacebookAppID, FacebookClientToken and FacebookDisplayName)
+    4- add three keyhashes in developers.facebook using this tool convert sha-1 to key hash http://tomeko.net/online_tools/hex_to_base64.php?lang=en
+     - or you can get android SHA-1 key in android folder run ./gradlew signingReport
+
+
+-- to run updates over the air
+
+
 react-navigation
 redux with versions
 import from root
 svg images
 react-native-responsive-fontsize
 react-native-vector-icons
-
 fonts: {cairo - poppings - SFUI}
 language setup
+permission to collect data
 colors
 firebase 
 analytics
 notifications and foreground notifications
+updates over the air
 
 
 
 
 upcoming features:
     crashlytics
-    updates over the air
+
+
+
+
+remove certificates on apple developer created today
+remove the key created today
+remove the app bundler
+remove fb developer account
