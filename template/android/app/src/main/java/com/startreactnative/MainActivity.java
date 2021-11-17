@@ -1,4 +1,4 @@
-package com.startreactnative;
+package com.miso.startreactnative;
 
 import com.facebook.react.modules.i18nmanager.I18nUtil;
 import com.facebook.react.ReactActivity;

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "388076386700",
+    "project_id": "tollab-c6145",
+    "storage_bucket": "tollab-c6145.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:388076386700:android:601312cdf57b3b742e3ea9",
+        "android_client_info": {
+          "package_name": "com.miso.startreactnative"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "388076386700-ab4oh60o5hqjj941perqviegggduts1k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeb4BKZpstCv_msg8omQbD2XwVwB_nxqY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "388076386700-ab4oh60o5hqjj941perqviegggduts1k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
