@@ -9,6 +9,7 @@ target 'startReactNative' do
 
   use_react_native!(:path => config["reactNativePath"])
   pod 'Firebase/Analytics'
+  pod 'RNCPushNotificationIOS', :path => '../node_modules/@react-native-community/push-notification-ios'
   target 'startReactNativeTests' do
     inherit! :complete
     # Pods for testing

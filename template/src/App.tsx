@@ -4,10 +4,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import AppStack from './navigation/AppStack';
 import { store, persistor } from 'store';
-import { SetNotchHeight } from 'store/Actions';
+// import { SetNotchHeight } from 'store/Actions';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import SafeArea from 'react-native-safe-area';
+// import SafeArea from 'react-native-safe-area';
 import reactotron from 'utils/Reactron';
 import I18n from "react-native-i18n";
 import LocalizationContext from 'lang/i18n';
@@ -15,6 +15,8 @@ import Orientation from 'react-native-orientation';
 import FlashMessage from "react-native-flash-message";
 import { FlashMsg, Modal, ModalRef } from 'UI';
 // import { SetNotchHeight } from 'store/Actions';
+import messaging from '@react-native-firebase/messaging';
+import PushNotification from "react-native-push-notification";
 
 const App = () => {
 
@@ -27,6 +29,12 @@ const App = () => {
     }),
     [locale]
   );
+
+  PushNotification.configure({
+    onNotification: function () {
+      console.log('notifications')
+    },
+  })
 
   useEffect(() => {
 
@@ -47,7 +55,46 @@ const App = () => {
 
     Orientation.lockToPortrait();
 
+    // 3- notifications request and set local notifications
+    requestNotificationsPermission()
+
   }, [])
+
+  const requestNotificationsPermission = async () => {
+    const authStatus = await messaging().requestPermission();
+    const enabled =
+      authStatus === messaging.AuthorizationStatus.AUTHORIZED ||
+      authStatus === messaging.AuthorizationStatus.PROVISIONAL;
+
+    if (enabled) {
+
+      messaging().onMessage(async remoteMessage => {
+
+        // showMessage({
+        //   message: remoteMessage.notification?.body || "",
+        //   type: "success",
+        //   onPress: () => navigate('Notifications')
+        // })
+        console.log(remoteMessage.notification?.title)
+        console.log(remoteMessage.notification?.body)
+        PushNotification.localNotification({
+          title: remoteMessage.notification?.title,
+          message: remoteMessage.notification?.body || "",
+          playSound: true,
+        })
+      });
+
+      await messaging().registerDeviceForRemoteMessages()
+        .then(() => {
+          messaging().getToken()
+            .then(token => {
+              console.log(token)
+            })
+            .catch(e => console.log(e))
+        })
+        .catch(data => console.log(data))
+    }
+  }
 
   return (
     <Provider store={store}>

@@ -3,6 +3,12 @@
     2- replace google-services with the file from firebase
 
 
+-- to run notifications
+    1- create a new identifier
+    2- choose bundle id and in it, enable notifications and upload 2 private certificates
+    3- install firebase and cloud messaging
+    4- generate new key and upload it to console fire base cloudMessage settings
+
 
 react-navigation
 redux with versions
@@ -16,12 +22,11 @@ language setup
 colors
 firebase 
 analytics
-notifications
+notifications and foreground notifications
 
 
 
 
 upcoming features:
-    foreground notifications
     crashlytics
     updates over the air
