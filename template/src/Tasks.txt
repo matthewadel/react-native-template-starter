@@ -55,16 +55,3 @@ crashlytics
 upcoming features:
     fork react-native-orientation
     fork react-native-code-push
-
-
-
-
-
-update bundle keys of firebase tollab app
-remove certificates on apple developer created today
-remove the key created today
-remove the app bundler
-
-
-
-npx react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/build/intermediates/res/merged/release/ && rm -rf android/app/src/main/res/drawable-* && rm -rf android/app/src/main/res/raw/* && cd android && ./gradlew assembleRelease && cd ..
