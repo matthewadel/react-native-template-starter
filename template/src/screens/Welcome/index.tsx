@@ -19,8 +19,8 @@ export const Welcome = () => {
         {t('Welcome.Title')}
       </Text>
       <TouchableOpacity
-        onPress={() => crashlytics().crash()}
-        // onPress={setLocale}
+        // onPress={() => crashlytics().crash()}
+        onPress={setLocale}
         style={{
           backgroundColor: '#0FF',
           padding: RFValue(20),
