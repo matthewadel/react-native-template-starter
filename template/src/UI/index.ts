@@ -1,4 +1,3 @@
-import { store } from 'store';
 import { Dimensions } from 'react-native';
 function RNRFValue(fontSize: number, deviceHeight: number) {
   const { height, width } = Dimensions.get("window");
@@ -16,6 +15,7 @@ export * from './Colors';
 export * from './ConvertStyleToObject';
 export * from './DatePicker';
 export * from './FlashMsg';
+export * from './Fonts';
 export * from './Image';
 export * from './ImagePicker';
 export * from './Modal';
@@ -34,7 +34,5 @@ export * from './TouchableOpacity';
 export * from './VectorIcons';
 export * from './View';
 export const RFValue = (x: number) => RNRFValue(x, 818)
-export const FONT_FAMILY = () =>
-  store.getState().App.lang == 'ar' ? 'Cairo-SemiBold' : 'Poppins-Regular';
 export const WIDTH = () => Dimensions.get('window').width;
 export const HEIGHT = () => Dimensions.get('window').height;
