@@ -1,3 +1,5 @@
+-- edit Colors and Fonts Folders in UI
+
 -- to run firebase
     1- create a firebase project and setup for both android and ios apps
     2- replace google-services with the file from firebase

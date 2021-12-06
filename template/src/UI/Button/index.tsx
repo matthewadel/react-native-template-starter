@@ -4,7 +4,6 @@ import {
   Colors,
   TouchableOpacity,
   ConvertStyleToObject,
-  ActivityIndicator,
 } from 'UI';
 import { ITouchableOpacity } from 'models';
 
@@ -14,7 +13,7 @@ export interface IButtonProps extends ITouchableOpacity {
 }
 
 export const Button = (props: IButtonProps) => {
-  let { children, onPress, style, textStyle, loading, disabled } = props;
+  let { onPress, style, textStyle, loading, disabled } = props;
 
   let [Width, setWidth] = useState(0);
   let [Height, setHeight] = useState(0);
@@ -67,8 +66,6 @@ export const Button = (props: IButtonProps) => {
             padding: 0,
           }
           : {},
-      ]}>
-      {!!loading ? <ActivityIndicator size="small" /> : children}
-    </TouchableOpacity>
+      ]} loading={!!loading} children={props.children} />
   );
 };

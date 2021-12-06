@@ -19,10 +19,10 @@ const Image = (props: imageProps) => {
     <TouchableOpacity
       disabled={!props.onPress}
       {...props}
-      style={{ opacity: 1 }}>
+      style={[{ opacity: 1 }, ChangeDirectionStyle(props.style, props.noDirectionChange)]}>
       {props.source.uri ?
         <FastImage
-          style={[{ width: '100%', height: '100%' }, ChangeDirectionStyle(props.style, props.noDirectionChange)]}
+          style={[{ width: '100%', height: '100%' },]}
           resizeMode={ConvertStyleToObject(props.style).resizeMode ? FastImage.resizeMode[ConvertStyleToObject(props.style).resizeMode] : FastImage.resizeMode.cover}
           source={{ ...props.source, priority: FastImage.priority.normal, cache: FastImage.cacheControl.immutable }}
         >
@@ -33,9 +33,7 @@ const Image = (props: imageProps) => {
           <RNImage
             {...props}
             children={null}
-            style={[
-              { resizeMode: 'cover', width: '100%', height: '100%', position: 'absolute', zIndex: -200 }, ChangeDirectionStyle(props.style, props.noDirectionChange, props.showStyle),
-            ]}
+            style={{ resizeMode: ConvertStyleToObject(props.style).resizeMode ? ConvertStyleToObject(props.style).resizeMode : 'cover', width: '100%', height: '100%', position: 'absolute', zIndex: -200 }}
           />
           {props.children}
         </>}

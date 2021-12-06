@@ -12,32 +12,28 @@ const ARMedium = 'Cairo-Medium'
 const ARSemiBold = 'Cairo-SemiBold'
 const ARRegular = 'Cairo-Regular'
 
-enum IFONT_FAMILY {
-  "BOLD", "MEDIUM", "SEMIBOLD", "REGULAR"
-}
-
-export function FONT_FAMILY(fontType?: IFONT_FAMILY) {
+export function FONT_FAMILY(fontType?: "BOLD" | "MEDIUM" | "SEMIBOLD" | "REGULAR") {
 
   // english fonts
   if (store.getState().App.lang == 'ar') {
-    if (fontType === IFONT_FAMILY.MEDIUM)
-      return Medium
-    else if (fontType === IFONT_FAMILY.BOLD)
-      return Bold
-    else if (fontType === IFONT_FAMILY.SEMIBOLD)
-      return SemiBold
-    else
-      return Regular
-  }
-  // arabic fonts
-  else {
-    if (fontType === IFONT_FAMILY.MEDIUM)
+    if (fontType === "MEDIUM")
       return ARMedium
-    else if (fontType === IFONT_FAMILY.BOLD)
+    else if (fontType === "BOLD")
       return ARBold
-    else if (fontType === IFONT_FAMILY.SEMIBOLD)
+    else if (fontType === "SEMIBOLD")
       return ARSemiBold
     else
       return ARRegular
+  }
+  // arabic fonts
+  else {
+    if (fontType === "MEDIUM")
+      return Medium
+    else if (fontType === "BOLD")
+      return Bold
+    else if (fontType === "SEMIBOLD")
+      return SemiBold
+    else
+      return Regular
   }
 }
