@@ -2,6 +2,7 @@ import React from 'react';
 import { Image as RNImage, ImageProps } from 'react-native';
 import { ChangeDirectionStyle, ConvertStyleToObject, TouchableOpacity } from 'UI';
 import { ITouchableOpacity } from 'models';
+import { SvgUri } from 'react-native-svg';
 import FastImage from 'react-native-fast-image'
 
 interface imageProps extends ImageProps, ITouchableOpacity {
@@ -20,7 +21,15 @@ const Image = (props: imageProps) => {
       disabled={!props.onPress}
       {...props}
       style={[{ opacity: 1 }, ChangeDirectionStyle(props.style, props.noDirectionChange)]}>
-      {props.source.uri ?
+      {props.source.uri?.endsWith(".svg") ?
+        <SvgUri
+          width={props.style?.width}
+          height={props.style?.height}
+          style={props.style}
+          uri={props.source.uri}
+        />
+        :
+        props.source.uri ?
         <FastImage
           style={[{ width: '100%', height: '100%' },]}
           resizeMode={ConvertStyleToObject(props.style).resizeMode ? FastImage.resizeMode[ConvertStyleToObject(props.style).resizeMode] : FastImage.resizeMode.cover}
