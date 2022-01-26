@@ -76,7 +76,7 @@ const ScreenContainerComponent = (props: IScreenContainer) => {
           
           {props.headerProps && !!(props.App?.actualHeight) && <ScreenHeader openDrawer={openDrawer} {...props.headerProps} />}
 
-                <KeyboardAvoidingView style={{ width: '100%', flex: 1, }} behavior={Platform.OS == 'android' ? 'height' : 'padding'}>
+                <KeyboardAvoidingView style={{marginBottom: isKeyboardVisible ? RFValue(30) : 0, width: '100%', flex: 1, }} behavior={Platform.OS == 'android' ? 'height' : 'padding'}>
                   
                   <View style={[{flex:1,},props.scrollViewStyle]}>
           <ScrollView
