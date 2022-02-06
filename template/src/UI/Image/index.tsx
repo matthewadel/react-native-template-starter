@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Image as RNImage, ImageProps } from 'react-native'
 import FastImage from 'react-native-fast-image'
-import { ChangeDirectionStyle, View, TouchableOpacity } from 'UI'
+import { ChangeDirectionStyle, View, TouchableOpacity, ConvertStyleToObject } from 'UI'
 import { Modal } from 'react-native'
 import ImageViewer from 'react-native-image-zoom-viewer'
 import { SvgUri } from 'react-native-svg';
@@ -59,7 +59,7 @@ const Image = (props: imageProps) => {
           <FastImage
             {...props}
             style={[{ resizeMode: 'contain', }, ChangeDirectionStyle(props.style, props.noDirectionChange, props.showStyle)]}
-            resizeMode={props.style.resizeMode ? FastImage.resizeMode[props.style.resizeMode] : FastImage.resizeMode.cover}
+            resizeMode={ConvertStyleToObject(props.style).resizeMode ? FastImage.resizeMode[props.style.resizeMode] : FastImage.resizeMode.cover}
             source={{ ...normalisedSource(), priority: FastImage.priority.normal, cache: FastImage.cacheControl.immutable }}
           >
             <TouchableOpacity activeOpacity={1} onPress={onPressImage} style={{ width: '100%', height: '100%' }} >
@@ -69,7 +69,7 @@ const Image = (props: imageProps) => {
 
           :
           <View style={[ChangeDirectionStyle(props.style, props.noDirectionChange, props.showStyle)]}>
-            <RNImage {...props} children={null} style={[{ resizeMode: 'cover', width: '100%', height: '100%' },]} />
+            <RNImage {...props} children={null} style={{ resizeMode: ConvertStyleToObject(props.style).resizeMode || 'cover', width: '100%', height: '100%' }} />
             <TouchableOpacity activeOpacity={1} onPress={onPressImage} style={{ position: 'absolute', right: 0, left: 0, top: 0, bottom: 0 }} >
               {props.children}
             </TouchableOpacity>

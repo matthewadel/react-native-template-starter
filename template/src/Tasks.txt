@@ -54,5 +54,7 @@ crashlytics
 
 upcoming features:
     flatlist UI component
+    upgrade react-native to work with android 12
+    export all the keys to external file
     fork react-native-orientation
     fork react-native-code-push
