@@ -53,6 +53,6 @@ crashlytics
 
 
 upcoming features:
+    flatlist UI component
     fork react-native-orientation
     fork react-native-code-push
-    flatlist UI component
