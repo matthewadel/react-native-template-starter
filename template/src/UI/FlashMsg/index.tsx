@@ -1,25 +1,11 @@
 import React from 'react'
 import { Text, TouchableOpacity, RFValue, Colors, VectorIcons } from 'UI'
 import { hideMessage } from 'react-native-flash-message'
-import { useSelector } from 'react-redux';
-import { IRootState } from 'models';
-
-// export interface IFlashMsg {
-//   msg: {
-//     message: {
-//       onPress: Function
-//       type: string
-//       message: string
-//     }
-//   }
-// }
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const FlashMsg = (props: any) => {
 
   let msg = props.msg
-  const storeData = useSelector((state: IRootState) => ({
-     notch: state.App?.notch?.top || 0,
-  }));
 
   const onPressMessage = () => {
     if (msg && msg.message && msg.message.onPress)
@@ -37,11 +23,13 @@ const FlashMsg = (props: any) => {
       msg.message.type === 'success' ? 'checkcircleo' : 'frowno'
 
   return (
-    <TouchableOpacity style={{ backgroundColor: background, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start', paddingHorizontal: RFValue(10), paddingTop: storeData.notch }} onPress={onPressMessage}>
-      <VectorIcons icon="AntDesign" name={iconName} size={RFValue(16)} color={Colors().Text.White} />
+    <SafeAreaView edges={['top']} style={{ backgroundColor: background, width: '100%' }}>
+      <TouchableOpacity style={{ paddingVertical: RFValue(6), backgroundColor: background, flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start', paddingHorizontal: RFValue(10), }} onPress={onPressMessage}>
+        <VectorIcons icon="AntDesign" name={iconName} size={RFValue(16)} color={Colors().Text.White} />
 
-      <Text numberOfLines={0} style={{ color: Colors().Text.White, fontSize: RFValue(16), textAlign: 'left', paddingHorizontal: RFValue(8), marginVertical: RFValue(8) }}>{msg.message.message}</Text>
-    </TouchableOpacity>
+        <Text numberOfLines={0} style={{ color: Colors().Text.White, fontSize: RFValue(16), textAlign: 'left', paddingHorizontal: RFValue(8), marginVertical: RFValue(8) }}>{msg.message.message}</Text>
+      </TouchableOpacity>
+    </SafeAreaView>
   )
 }
 

@@ -31,6 +31,6 @@
     "baseUrl": "./src",
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "include": [ "src/custom.d.ts"]
   }
+  // "include": ["./custom.d.ts"]
 }

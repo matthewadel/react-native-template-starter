@@ -29,6 +29,7 @@ export const Colors = (alpha = 1) => {
       Primary: hexToRgbA('#01A791', alpha),
       Secondary: hexToRgbA('#FFF', alpha),
       White: hexToRgbA('#FFF', alpha),
+      Grey: hexToRgbA('#B3B2B2', alpha),
       Dark: hexToRgbA('#000', alpha),
     },
     Text: {

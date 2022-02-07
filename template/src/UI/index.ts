@@ -7,7 +7,8 @@ function RNRFValue(fontSize: number, deviceHeight: number) {
   return Math.round(heightPercent);
 }
 
-export * from './ActivityIndicator';
+export * from './Loading/ActivityIndicator';
+export * from './Loading/LoadingScreen';
 export * from './Button';
 export * from './ChangeDirectionStyle';
 export * from './CheckBox';

@@ -21,7 +21,8 @@ module.exports = {
     'no-debugger': 0,
     "no-extra-boolean-cast": 0,
     "dot-notation": 0,
-    "consistent-this": 0
+    "consistent-this": 0,
+    "@typescript-eslint/no-unused-vars": 0
   },
 };
 
