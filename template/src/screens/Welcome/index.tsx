@@ -1,14 +1,13 @@
 import React from 'react';
-import { ScreenContainer, Text, TouchableOpacity, RFValue } from 'UI';
+import { ScreenContainer, Text, TouchableOpacity, RFValue, TextInput, View } from 'UI';
 import { useLanguage } from 'lang/useLanguage';
-import crashlytics from '@react-native-firebase/crashlytics';
 
 export const Welcome = () => {
 
   const { t, setLocale } = useLanguage()
 
   return (
-    <ScreenContainer style={{ justifyContent: 'center', borderWidth: 2, borderColor: '#f00' }}>
+    <ScreenContainer style={{ justifyContent: 'center', }}>
       <Text
         style={{
           marginBottom: RFValue(20),
@@ -18,8 +17,13 @@ export const Welcome = () => {
         numberOfLines={0}>
         {t('Welcome.Title')}
       </Text>
+      <View style={{ height: 200 }} />
+      <View style={{ height: 200 }} />
+      <View style={{ height: 200 }} />
+      <View style={{ height: 200 }} />
+      <View style={{ height: 200 }} />
+      <TextInput style={{ width: '100%', height: RFValue(56), borderWidth: 2 }} />
       <TouchableOpacity
-        // onPress={() => crashlytics().crash()}
         onPress={setLocale}
         style={{
           backgroundColor: '#0FF',

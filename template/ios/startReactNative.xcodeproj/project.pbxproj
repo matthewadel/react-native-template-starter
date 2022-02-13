@@ -54,7 +54,6 @@
 		D737DA8B0B8043A98D91B146 /* Cairo-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 68261D67C96846A3B936FD94 /* Cairo-Bold.ttf */; };
 		D7C90D52C7DA41CD8048E2B1 /* Poppins-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 019648BBDBB1482AAD8FC022 /* Poppins-LightItalic.ttf */; };
 		D88C9123DFB948D8AE4391F5 /* SFUIText-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C238A793F3C74669B95A4A38 /* SFUIText-MediumItalic.ttf */; };
-		DE1998AD88E548A2BE8FD6D5 /* Poppins-Light_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 01A88E66F1A846BE8B5E6949 /* Poppins-Light_bold.ttf */; };
 		E07FE6E56C4F464B9777E88F /* Cairo-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 10765B2BB32F4D1F80BB6287 /* Cairo-SemiBold.ttf */; };
 		E89D2C9CBF56453B8FEF859A /* SFUIText-HeavyItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 513E32B3012946A7BEA475DE /* SFUIText-HeavyItalic.ttf */; };
 		EF211B269F324FB2A60A077B /* Poppins-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEDDDEE60352444E8A90BCF2 /* Poppins-SemiBoldItalic.ttf */; };
@@ -522,7 +521,6 @@
 				D20937F2518D43F5A42827C3 /* Poppins-ExtraLight.ttf in Resources */,
 				60B792F49D124036872DB033 /* Poppins-ExtraLightItalic.ttf in Resources */,
 				5023A08612464A03887A85FC /* Poppins-Italic.ttf in Resources */,
-				DE1998AD88E548A2BE8FD6D5 /* Poppins-Light_bold.ttf in Resources */,
 				A62F5DD30D5F494D80CD33D0 /* Poppins-Light.ttf in Resources */,
 				D7C90D52C7DA41CD8048E2B1 /* Poppins-LightItalic.ttf in Resources */,
 				F59BD1614B0A449C8B498DB5 /* Poppins-Medium.ttf in Resources */,
@@ -1014,6 +1012,7 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = startReactNative/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
@@ -1040,6 +1039,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = startReactNative/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",

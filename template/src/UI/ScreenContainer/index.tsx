@@ -91,7 +91,7 @@ const ScreenContainerComponent = (props: IScreenContainer) => {
               showsVerticalScrollIndicator={false}
               nestedScrollEnabled={true}
               style={{ flexGrow: 1, }}
-              contentContainerStyle={[{ width: '100%', alignItems: 'center', alignSelf: 'center', height: ((props.App?.actualHeight || Dimensions.get('window').height) - (props.reduceFromScreenHeight || 0) - (props.headerProps ? RFValue(52) : 0)) }, ChangeDirectionStyle(props.style, props.noDirectionChange, props.showStyle)]}
+              contentContainerStyle={[{ width: '100%', alignItems: 'center', alignSelf: 'center', height: 'auto', }, ChangeDirectionStyle(props.style, props.noDirectionChange, props.showStyle)]}
               keyboardShouldPersistTaps='handled'
             >
               {!!props.loading ? <LoadingScreen /> : props.children}
