@@ -1,19 +1,20 @@
 import React from 'react';
-import {createStackNavigator,CardStyleInterpolators} from '@react-navigation/stack';
-import {Welcome} from 'screens';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { Welcome } from 'screens';
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator();
 
 export default function RootStack() {
   return (
     <Stack.Navigator
-       screenOptions={{
+      screenOptions={{
         gestureEnabled: true,
-        gestureDirection: 'horizontal',
-        cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
+        headerShown: false
       }}
-      initialRouteName="Welcome" headerMode="none">
+      initialRouteName="Welcome">
       <Stack.Screen name="Welcome" component={Welcome} />
     </Stack.Navigator>
   );
 }
+
+// options={{ stackAnimation: 'none' }}

@@ -4,7 +4,6 @@ import {
   Platform,
   ViewStyle,
   ScrollView,
-  Dimensions,
   Keyboard,
   View,
 } from 'react-native';
