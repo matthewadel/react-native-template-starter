@@ -32,6 +32,8 @@ export const Welcome = () => {
         }}>
         {t('Welcome.ChangeLanguage')}
       </TouchableOpacity>
+
+      <Text>startReactNative</Text>
     </ScreenContainer>
   );
 };
