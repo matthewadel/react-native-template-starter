@@ -30,6 +30,7 @@ const TextInput = React.forwardRef((props: ITextInput, ref: any) => {
         {!!props.svgSource && <SVGImage source={props.svgSource} width='70%' height='60%' style={{ borderTopLeftRadius: RFValue(10), borderBottomLeftRadius: RFValue(10), height: '100%', width: RFValue(50), backgroundColor: Colors().App.White }} />}
 
         <RNTextInput
+          autoCorrect={false}
           ref={ref}
           placeholderTextColor={errStyle ? (errStyle.hasError ? Colors().Text.Error : errStyle.defaultColor) : undefined}
           secureTextEntry={!!props.togglePasswordButton && !showPassword}

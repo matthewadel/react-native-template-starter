@@ -8,7 +8,7 @@ import {
   View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { ScreenHeader, ChangeDirectionStyle, RFValue, AnimatedDrawer, Colors, LoadingScreen } from 'UI';
+import { ScreenHeader, ChangeDirectionStyle, RFValue, AnimatedDrawer, Colors, LoadingScreen, WIDTH } from 'UI';
 import { IRootState, IScreenHeader } from 'models';
 import { connect, useDispatch } from 'react-redux';
 import { SetActualhHeight } from 'store/Actions';
@@ -38,13 +38,13 @@ const ScreenContainerComponent = (props: IScreenContainer) => {
 
   useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener(
-      'keyboardWillChangeFrame',
+      Platform.OS == "android" ? 'keyboardDidShow' : 'keyboardWillChangeFrame',
       () => {
         setKeyboardVisible(true); // or some other action
       }
     );
     const keyboardDidHideListener = Keyboard.addListener(
-      'keyboardWillHide',
+      Platform.OS == "android" ? 'keyboardDidHide' : 'keyboardWillHide',
       () => {
         setKeyboardVisible(false); // or some other action
       }
@@ -90,11 +90,11 @@ const ScreenContainerComponent = (props: IScreenContainer) => {
               showsVerticalScrollIndicator={false}
               nestedScrollEnabled={true}
               style={{ flexGrow: 1, }}
-              contentContainerStyle={[{ width: '100%', alignItems: 'center', alignSelf: 'center', height: 'auto', }, ChangeDirectionStyle(props.style, props.noDirectionChange, props.showStyle)]}
+              contentContainerStyle={[{ width: '100%', alignItems: 'center', alignSelf: 'center', height: 'auto', flexGrow: (props.loading || props.overlayLoading) ? 1 : 0, }, ChangeDirectionStyle(props.style, props.noDirectionChange, props.showStyle)]}
               keyboardShouldPersistTaps='handled'
             >
               {!!props.loading ? <LoadingScreen /> : props.children}
-              {!!props.overlayLoading && <LoadingScreen style={{ position: 'absolute', zIndex: 200, backgroundColor: Colors(0.6).App.Grey }} />}
+              {!!props.overlayLoading && <LoadingScreen style={{ position: 'absolute', width: WIDTH(), zIndex: 200, backgroundColor: Colors(0.6).App.Grey }} />}
             </ScrollView>
             {!isKeyboardVisible && props.outScrollingComponents && props.outScrollingComponents()}
 
