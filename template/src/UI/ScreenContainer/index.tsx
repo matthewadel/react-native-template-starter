@@ -78,7 +78,7 @@ const ScreenContainerComponent = (props: IScreenContainer) => {
         style={[{ height: '100%', backgroundColor: props.headerProps ? Colors().App.Primary : 'transparent' }, isDrawerOpen ? { borderWidth: 2, borderColor: Colors().App.Primary, borderRadius: RFValue(25), } : {}, props.containerStyle]}>
 
 
-        {props.headerProps && !!(props.App?.actualHeight) && <ScreenHeader openDrawer={openDrawer} {...props.headerProps} />}
+        {props.headerProps && <ScreenHeader openDrawer={openDrawer} {...props.headerProps} />}
 
         <KeyboardAvoidingView style={{ marginBottom: isKeyboardVisible ? RFValue(30) : 0, width: '100%', flex: 1, }} behavior={Platform.OS == 'android' ? 'height' : 'padding'}>
 

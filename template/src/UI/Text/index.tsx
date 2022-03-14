@@ -28,9 +28,7 @@ export const Text = (props: ITextProps) => {
           ? {
             fontFamily: props.boldFontFamily
               ? props.boldFontFamily
-              : locale === 'ar'
-                ? `Cairo-Bold`
-                : 'Poppins-Bold',
+              : FONT_FAMILY("BOLD"),
             fontWeight: Platform.OS == 'android' ? 'normal' : 'bold',
           }
           : {},

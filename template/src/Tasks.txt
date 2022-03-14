@@ -1,4 +1,5 @@
--- edit Colors and Fonts Folders in UI
+-- add new Fonts in react-native.config file and run npx react-native link and remove unused fonts from copy bundle resources
+-- edit Colors in UI
 
 -- to run firebase
     1- create a firebase project and setup for both android and ios apps
@@ -55,5 +56,4 @@ crashlytics
 upcoming features:
     export all the keys to external file
     flatlist UI component
-    fork react-native-orientation
     fork react-native-code-push
