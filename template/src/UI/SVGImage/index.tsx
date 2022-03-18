@@ -4,6 +4,7 @@ import { ITouchableOpacity } from 'models';
 
 interface SVGImageInterface extends ITouchableOpacity {
   source: string;
+  preserveAspectRatio?: string;
   height?: number | string;
   width?: number | string;
 }
@@ -22,7 +23,7 @@ export const SVGImage = (props: SVGImageInterface) => {
       ]}>
       <RNSvgImage
         fill='#000'
-        preserveAspectRatio="xMinYMin slice"
+        preserveAspectRatio={props.preserveAspectRatio || "xMinYMin meet"}
         height={props.height || '100%'}
         width={props.width || '100%'}
       />

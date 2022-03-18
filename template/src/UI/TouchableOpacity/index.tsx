@@ -23,7 +23,6 @@ const TouchableOpacity = React.forwardRef((props: ITouchableOpacity, ref: any) =
     const { height, width } = event.nativeEvent.layout;
     setWidth(width)
     setHeight(height)
-    props?.onLayout && props.onLayout(event)
   }
 
   return (

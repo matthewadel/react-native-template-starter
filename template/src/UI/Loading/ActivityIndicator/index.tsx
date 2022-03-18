@@ -28,7 +28,7 @@ export const ActivityIndicator = (props: IActivityIndicatorProps) => {
       ]}>
       <RNActivityIndicator
         size={size || 'small'}
-        color={color || Colors().ActivityIndicator.Primary}
+        color={color || Colors().App.White}
       />
     </View>
   );

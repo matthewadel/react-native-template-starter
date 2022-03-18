@@ -2,11 +2,11 @@ import React from 'react';
 import { View, Button, Text, VectorIcons, Colors, closeModal, openModal, RFValue, WIDTH } from 'UI';
 import RNImagePicker from 'react-native-image-crop-picker';
 import I18n from 'react-native-i18n';
-import { IImageRes } from 'models';
+import { FONT_FAMILY } from 'UI/Fonts';
 
 interface IImagePicker {
   type?: 'video' | 'photo';
-  onSelect: (res: IImageRes) => void;
+  onSelect: (res: any) => void;
 }
 
 export const ImagePicker = (props: IImagePicker) => {
@@ -24,7 +24,7 @@ export const ImagePicker = (props: IImagePicker) => {
     };
 
     RNImagePicker.openCamera(options)
-      .then((response: IImageRes) => {
+      .then((response: any) => {
         const _file = response;
         props.onSelect(_file);
       })
@@ -41,7 +41,7 @@ export const ImagePicker = (props: IImagePicker) => {
     };
 
     RNImagePicker.openPicker(options)
-      .then((response: IImageRes | IImageRes[]) => {
+      .then((response: any) => {
         const _file = Array.isArray(response) ? response[0] : response;
         props.onSelect(_file);
         closeModal();
@@ -76,7 +76,7 @@ export const ImagePicker = (props: IImagePicker) => {
               style={{ marginRight: RFValue(20) }}
             />
             <Text
-              style={{ color: Colors().Text.White, fontWeight: 'bold' }}>
+              style={{ color: Colors().Text.White, fontFamily: FONT_FAMILY("BOLD"), }}>
               {I18n.t('UI.capture')}
             </Text>
           </Button>
@@ -96,7 +96,7 @@ export const ImagePicker = (props: IImagePicker) => {
               style={{ marginRight: RFValue(20) }}
             />
             <Text
-              style={{ color: Colors().Text.White, fontWeight: 'bold' }}>
+              style={{ color: Colors().Text.White, fontFamily: FONT_FAMILY("BOLD"), }}>
               {I18n.t('UI.gallery')}
             </Text>
           </Button>

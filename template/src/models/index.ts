@@ -1,7 +1,8 @@
-export { IRootState } from './Store/IRootState'
+export * from './Store/IRootState'
+export * from './Store/IApp'
+
 export * from 'models/UI/TouchableOpacity'
 export * from 'models/UI/View'
 export * from 'models/UI/Text'
-export * from 'models/UI/IImageRes'
 export * from 'models/UI/ScreenHeader'
 export * from 'models/UI/ITextInput'

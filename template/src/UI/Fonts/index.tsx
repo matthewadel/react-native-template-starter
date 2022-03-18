@@ -5,14 +5,16 @@ const Bold = 'Poppins-Bold'
 const Medium = 'Poppins-Medium'
 const SemiBold = 'Poppins-SemiBold'
 const Regular = 'Poppins-Regular'
+const Light = 'Poppins-Light'
 
 // arabic fonts
 const ARBold = 'Cairo-Bold'
 const ARMedium = 'Cairo-Medium'
 const ARSemiBold = 'Cairo-SemiBold'
 const ARRegular = 'Cairo-Regular'
+const ARLight = 'Cairo-Light'
 
-export function FONT_FAMILY(fontType?: "BOLD" | "MEDIUM" | "SEMIBOLD" | "REGULAR") {
+export function FONT_FAMILY(fontType?: "BOLD" | "MEDIUM" | "SEMIBOLD" | "REGULAR" | "LIGHT") {
 
   // english fonts
   if (store.getState().App.lang == 'ar') {
@@ -22,6 +24,8 @@ export function FONT_FAMILY(fontType?: "BOLD" | "MEDIUM" | "SEMIBOLD" | "REGULAR
       return ARBold
     else if (fontType === "SEMIBOLD")
       return ARSemiBold
+    else if (fontType === "LIGHT")
+      return ARLight
     else
       return ARRegular
   }
@@ -33,6 +37,8 @@ export function FONT_FAMILY(fontType?: "BOLD" | "MEDIUM" | "SEMIBOLD" | "REGULAR
       return Bold
     else if (fontType === "SEMIBOLD")
       return SemiBold
+    else if (fontType === "LIGHT")
+      return Light
     else
       return Regular
   }

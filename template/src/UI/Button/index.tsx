@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   RFValue,
   Colors,
   TouchableOpacity,
   ConvertStyleToObject,
+  FONT_FAMILY
 } from 'UI';
 import { ITouchableOpacity } from 'models';
 
@@ -15,15 +16,6 @@ export interface IButtonProps extends ITouchableOpacity {
 export const Button = (props: IButtonProps) => {
   let { onPress, style, textStyle, loading, disabled } = props;
 
-  let [Width, setWidth] = useState(0);
-  let [Height, setHeight] = useState(0);
-
-  const onLayout = (event: any) => {
-    const { height, width } = event.nativeEvent.layout;
-    setWidth(width);
-    setHeight(height);
-  };
-
   return (
     <TouchableOpacity
       onPress={onPress}
@@ -32,13 +24,12 @@ export const Button = (props: IButtonProps) => {
         {
           color:
             props.type == 'SECONDARY'
-              ? Colors().Button.Secondary.Text
-              : Colors().Button.Primary.Text,
-          fontWeight: 'bold',
+              ? Colors().App.Secondary
+              : Colors().App.Primary,
+          fontFamily: FONT_FAMILY("BOLD"),
         },
         ConvertStyleToObject(textStyle),
       ]}
-      onLayout={(event: any) => onLayout(event)}
       style={[
         {
           flexDirection: 'row',
@@ -46,8 +37,8 @@ export const Button = (props: IButtonProps) => {
           alignItems: 'center',
           backgroundColor:
             props.type == 'SECONDARY'
-              ? Colors().Button.Secondary.Background
-              : Colors().Button.Primary.Background,
+              ? Colors().App.Secondary
+              : Colors().App.Primary,
           width: '50%',
           borderRadius: RFValue(14),
         },
@@ -57,15 +48,6 @@ export const Button = (props: IButtonProps) => {
           }
           : {},
         ConvertStyleToObject(style),
-        props.loading
-          ? {
-            width: Width,
-            height: Height,
-            paddingVertical: 0,
-            paddingHorizontal: 0,
-            padding: 0,
-          }
-          : {},
       ]} loading={!!loading} children={props.children} />
   );
 };
