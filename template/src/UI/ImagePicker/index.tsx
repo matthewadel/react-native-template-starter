@@ -23,14 +23,19 @@ export const ImagePicker = (props: IImagePicker) => {
       cropping: false,
     };
 
-    RNImagePicker.openCamera(options)
-      .then((response: any) => {
-        const _file = response;
-        props.onSelect(_file);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    setTimeout(() => {
+
+      RNImagePicker.openCamera(options)
+        .then((response: any) => {
+          const _file = response;
+          props.onSelect(_file);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+    }, 500);
+
   };
 
   //choose from gallery

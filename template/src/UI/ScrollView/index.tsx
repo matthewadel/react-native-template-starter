@@ -19,7 +19,7 @@ export const ScrollView = React.forwardRef(
       style={{
         width: '100%',
         flexGrow: 0,
-        height: '100%',
+        height: props.horizontal ? 'auto' : '100%',
         ...ConvertStyleToObject(props.style),
       }}
       contentContainerStyle={[

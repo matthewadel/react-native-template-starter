@@ -27,6 +27,7 @@ export * from './ScreenContainer/AnimatedDrawer';
 export * from './ScreenContainer/DrawerContent';
 
 export * from './ScrollView';
+export * from './Shadow';
 export * from './SVGImage';
 export * from './Swiper';
 export * from './Text';
