@@ -12,12 +12,13 @@ const TextInput = React.forwardRef((props: ITextInput, ref: any) => {
   const [showPassword, togglePassword] = useState(false)
   const { locale } = useLanguage()
 
+  let AnimatableView: any = Animatable.View
   return (
     <>
 
       {!!props.label && <Text style={[{ marginVertical: RFValue(14), width: '100%' }, props.labelStyle]}>{props.label}</Text>}
 
-      <Animatable.View
+      <AnimatableView
         animation={props.hasError ? 'shake' : ''}
         style={ChangeDirectionStyle([
           { flexDirection: 'row', alignItems: 'center' },
@@ -39,9 +40,9 @@ const TextInput = React.forwardRef((props: ITextInput, ref: any) => {
           props.noDirectionChange ? {} : { textAlign: locale == 'ar' ? 'right' : 'left', }, ConvertStyleToObject(props.textInputStyle)]}
         />
 
-        {props.togglePasswordButton && <VectorIcons noDirectionChange style={{ width: '15%', height: '100%', position: 'absolute', alignSelf: 'center', right: 0, justifyContent: 'center', alignItems: 'center' }} onPress={() => togglePassword(prev => !prev)} icon="Feather" name={showPassword ? "eye" : "eye-off"} size={RFValue(22)} color={Colors().Text.Primary} />}
+        {props.togglePasswordButton && <VectorIcons noDirectionChange style={{ width: '15%', height: '100%', position: 'absolute', alignSelf: 'center', right: 0, justifyContent: 'center', alignItems: 'center' }} dontClosekeyboard onPress={() => togglePassword(prev => !prev)} icon="Feather" name={showPassword ? "eye" : "eye-off"} size={RFValue(22)} color={Colors().Text.Primary} />}
 
-      </Animatable.View>
+      </AnimatableView>
     </>
   );
 })

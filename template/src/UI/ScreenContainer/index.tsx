@@ -7,13 +7,14 @@ import {
   Keyboard,
   View,
 } from 'react-native';
+import { useSelector } from 'react-redux';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ScreenHeader, ChangeDirectionStyle, RFValue, AnimatedDrawer, Colors, LoadingScreen, WIDTH } from 'UI';
 import { IRootState, IScreenHeader } from 'models';
-import { connect, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { SetActualhHeight } from 'store/Actions';
 
-interface IScreenContainer extends IRootState {
+interface IScreenContainer {
   style?: ViewStyle | ViewStyle[];
   containerStyle?: ViewStyle | ViewStyle[];
   children: any;
@@ -27,12 +28,15 @@ interface IScreenContainer extends IRootState {
   reduceFromScreenHeight?: number
 }
 
-const ScreenContainerComponent = (props: IScreenContainer) => {
+const ScreenContainer = (props: IScreenContainer) => {
 
   const [executionCount, setExecutionCount] = useState(0)
   const [isDrawerOpen, toggleDrawer] = useState(false)
   const AnimatedDrawerRef = useRef<any>()
   const dispatch = useDispatch()
+  const { actualHeight } = useSelector((state: IRootState) => ({
+    actualHeight: state.App,
+  }));
 
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
 
@@ -84,7 +88,7 @@ const ScreenContainerComponent = (props: IScreenContainer) => {
 
           <View style={[{ flex: 1, }, props.scrollViewStyle]}>
             <ScrollView
-              onLayout={props.App?.actualHeight ? () => null : onLayout}
+              onLayout={actualHeight ? () => null : onLayout}
               scrollEnabled={true}
               alwaysBounceVertical={false}
               showsVerticalScrollIndicator={false}
@@ -107,5 +111,4 @@ const ScreenContainerComponent = (props: IScreenContainer) => {
   );
 };
 
-const ScreenContainer = connect(({ App }: IRootState) => ({ App }))(ScreenContainerComponent);
 export { ScreenContainer }

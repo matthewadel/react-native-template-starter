@@ -1,6 +1,6 @@
 import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react';
-import { TouchableOpacity, Colors, ConvertStyleToObject, RFValue, View } from 'UI';
-import RNSwiper from 'react-native-swiper';
+import { TouchableOpacity, Colors, ConvertStyleToObject, RFValue, View, WIDTH } from 'UI';
+import Carousel from 'react-native-snap-carousel';
 import { useLanguage } from 'lang/useLanguage';
 import { IView } from 'models';
 import { ViewStyle } from 'react-native';
@@ -9,6 +9,10 @@ interface SwiperProps extends IView {
   paginationContainerStyle?: ViewStyle | ViewStyle[];
   onIndexChanged?: (x: number) => void;
   showPagination?: boolean;
+  initialIndex?: number
+  loop?: boolean
+  data: any
+  renderItem: Function
 }
 
 export const Swiper = forwardRef((props: SwiperProps, ref) => {
@@ -22,14 +26,13 @@ export const Swiper = forwardRef((props: SwiperProps, ref) => {
 
   const swipe = (i: number | undefined) => {
     if (i !== undefined) {
-      var offset = swiper.current.state.width * i;
-      swiper.current.scrollView.scrollTo(0, offset);
-    } else swiper.current.scrollBy(1, true);
+      swiper.current.snapToItem(i, true);
+    } else swiper.current?.snapToNext()
   };
 
   const renderPagination = () => {
     let pages = [];
-    for (let i = 0; i < props.children.length; i++) {
+    for (let i = 0; i < props.data.length; i++) {
       pages.push(
         <TouchableOpacity
           onPress={() => {
@@ -55,7 +58,26 @@ export const Swiper = forwardRef((props: SwiperProps, ref) => {
     <View
       {...props}
       style={[{ width: '100%', flex: 1 }, ConvertStyleToObject(props.style)]}>
-      <RNSwiper
+      <Carousel
+        onSnapToItem={(i: number) => {
+          if (props.showPagination)
+            setIndex(i);
+          !!props.onIndexChanged && props.onIndexChanged(i);
+        }}
+        loop={props.loop}
+        inactiveSlideScale={1}
+        lockScrollWhileSnapping
+        ref={swiper}
+        itemWidth={WIDTH()}
+        sliderWidth={WIDTH()}
+        firstItem={props.initialIndex || 0}
+        containerCustomStyle={{ flex: 1 }}
+        data={props.data}
+        renderItem={({ item, index }: { item: any, index: number }) => {
+          return props.renderItem({ item, index })
+        }}
+      />
+      {/* <RNSwiper
         showsButtons={false}
         loop={false}
         removeClippedSubviews={false}
@@ -66,14 +88,14 @@ export const Swiper = forwardRef((props: SwiperProps, ref) => {
           !!props.onIndexChanged && props.onIndexChanged(i);
         }}>
         {props.children}
-      </RNSwiper>
+      </RNSwiper> */}
 
       {/* pagination */}
       {!!props.showPagination && (
         <View
           style={[
             {
-              width: RFValue(25) * props.children.length,
+              width: RFValue(25) * props.data.length,
               marginTop: RFValue(10),
               marginBottom: RFValue(30),
               height: RFValue(30),

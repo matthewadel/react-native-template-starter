@@ -8,6 +8,6 @@ export interface ITextInput extends TextInputProps {
   label?: string
   svgSource?: string
   onChangeText?: any
-  hasError: boolean,
+  hasError?: boolean,
   changeDirecton?: boolean
 }
