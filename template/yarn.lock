@@ -1092,6 +1092,13 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
+"@persian-tools/persian-tools@^3.3.0":
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/@persian-tools/persian-tools/-/persian-tools-3.3.0.tgz#82e134db16832dba0e0e7590412eb3a9f15dd8af"
+  integrity sha512-2BcRumbS7f/cSQwDREzHAmkHJNH54P2WN76ooP0xydVMD3JaMDjrgWZjO+jmAESJ7/jgy6QWRlaAc/6r6DMB1w==
+  dependencies:
+    fastest-levenshtein "^1.0.12"
+
 "@react-native-community/art@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@react-native-community/art/-/art-1.2.0.tgz#386d95393f6042d9006f9d4bc6063fb898794460"
@@ -3635,6 +3642,11 @@ fast-safe-stringify@^2.0.6, fast-safe-stringify@^2.0.7:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/fast-safe-stringify/-/fast-safe-stringify-2.1.1.tgz#c406a83b6e70d9e35ce3b30a81141df30aeba884"
   integrity sha512-W+KJc2dmILlPplD/H4K9l9LcAHAfPtP6BY84uVLXQ6Evcz9Lcg33Y2z1IVblT6xdY54PXYVHEv+0Wpq8Io6zkA==
+
+fastest-levenshtein@^1.0.12:
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/fastest-levenshtein/-/fastest-levenshtein-1.0.12.tgz#9990f7d3a88cc5a9ffd1f1745745251700d497e2"
+  integrity sha512-On2N+BpYJ15xIC974QNVuYGMOlEVt4s0EOI3wwMqOmK1fdDY+FN/zltPV8vosq4ad4c/gJ1KHScUn/6AWIgiow==
 
 fb-watchman@^2.0.0:
   version "2.0.1"

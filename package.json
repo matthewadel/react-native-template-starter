@@ -17,5 +17,8 @@
     "template",
     "boilerplate"
   ],
-  "author": "Matthew Adel | Andrew Emad"
+  "author": "Matthew Adel | Andrew Emad",
+  "dependencies": {
+    "@persian-tools/persian-tools": "^3.3.0"
+  }
 }

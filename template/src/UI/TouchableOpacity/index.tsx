@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TouchableOpacity as RNTouchableOpacity } from 'react-native';
+import { Keyboard, TouchableOpacity as RNTouchableOpacity } from 'react-native';
 import { ConvertStyleToObject, Text, ChangeDirectionStyle, ActivityIndicator } from 'UI';
 import { TouchableOpacity as PositionAbsoluteButton } from 'react-native-gesture-handler'
 import { ITouchableOpacity } from 'models';
@@ -30,6 +30,10 @@ const TouchableOpacity = React.forwardRef((props: ITouchableOpacity, ref: any) =
       onLayout={(event) => onLayout(event)}
       ref={ref}
       {...props}
+      onPress={() => {
+        !props.dontClosekeyboard && Keyboard.dismiss()
+        props.onPress && props.onPress()
+      }}
       disabled={!props.onPress || props.disabled || props.loading}
       containerStyle={[ChangeDirectionStyle(style, noDirectionChange, showStyle), {
         width: ConvertStyleToObject(props?.style)?.width,

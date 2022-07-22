@@ -17,6 +17,7 @@ export interface ITouchableOpacity extends TouchableOpacityProps, ITextProps {
   activeOpacity?: number;
   boldFontFamily?: string;
   positionAbsoluteButton?: boolean;
+  dontClosekeyboard?: boolean;
   textProps?: ITextProps;
   style?: ViewStyle | ViewStyle[];
   onLongPress?:

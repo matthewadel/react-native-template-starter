@@ -54,6 +54,8 @@ crashlytics
 
 
 upcoming features:
-    export all the keys to external file
-    flatlist UI component
-    fork react-native-code-push
+1- upgrade react-native to 0.69
+2- upgrade react-navigation
+3- upgrade react-native-firebase
+4- fork react-native-code-push
+5- flatlist UI component
