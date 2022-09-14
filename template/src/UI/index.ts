@@ -16,6 +16,7 @@ export * from './Colors';
 export * from './ConvertStyleToObject';
 export * from './DatePicker';
 export * from './FlashMsg';
+export * from './FlatList';
 export * from './Fonts';
 export * from './Image';
 export * from './ImagePicker';

@@ -3,6 +3,8 @@ import { View, Button, Text, VectorIcons, Colors, closeModal, openModal, RFValue
 import RNImagePicker from 'react-native-image-crop-picker';
 import I18n from 'react-native-i18n';
 import { FONT_FAMILY } from 'UI/Fonts';
+import { launchImageLibrary } from 'react-native-image-picker';
+import { Platform } from 'react-native';
 
 interface IImagePicker {
   type?: 'video' | 'photo';
@@ -45,16 +47,38 @@ export const ImagePicker = (props: IImagePicker) => {
       includeBase64: props.type === 'video' ? false : true,
     };
 
-    RNImagePicker.openPicker(options)
-      .then((response: any) => {
-        const _file = Array.isArray(response) ? response[0] : response;
-        props.onSelect(_file);
-        closeModal();
-      })
-      .catch((err) => {
-        console.log(err);
-        closeModal();
-      });
+    {
+      (Platform.OS == 'android') ?
+        launchImageLibrary(options)
+          .then((response: any) => {
+            const _file = Array.isArray(response.assets) ? response.assets[0] : response.assets;
+            console.log(_file)
+            props.onSelect({
+              ..._file,
+              data: _file.base64,
+              mime: _file.type,
+              path: _file.uri,
+            });
+            closeModal();
+          })
+          .catch((err: any) => {
+            console.log(err);
+            closeModal();
+          })
+        :
+        RNImagePicker.openPicker(options)
+          .then((response: any) => {
+            const _file = Array.isArray(response) ? response[0] : response;
+            console.log(_file)
+            props.onSelect(_file);
+            closeModal();
+          })
+          .catch((err) => {
+            console.log(err);
+            closeModal();
+          })
+
+    }
   };
 
   return openModal({

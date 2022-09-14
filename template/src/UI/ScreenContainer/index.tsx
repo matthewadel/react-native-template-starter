@@ -6,6 +6,7 @@ import {
   ScrollView,
   Keyboard,
   View,
+  StatusBar,
 } from 'react-native';
 import { useSelector } from 'react-redux';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -81,6 +82,10 @@ const ScreenContainer = (props: IScreenContainer) => {
         edges={['top']}
         style={[{ height: '100%', backgroundColor: props.headerProps ? Colors().App.Primary : 'transparent' }, isDrawerOpen ? { borderWidth: 2, borderColor: Colors().App.Primary, borderRadius: RFValue(25), } : {}, props.containerStyle]}>
 
+        <StatusBar
+          animated={true}
+          barStyle={'dark-content'}
+          backgroundColor='#fff' />
 
         {props.headerProps && <ScreenHeader openDrawer={openDrawer} {...props.headerProps} />}
 
