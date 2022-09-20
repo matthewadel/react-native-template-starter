@@ -59,6 +59,8 @@ export const Swiper = forwardRef((props: SwiperProps, ref) => {
       {...props}
       style={[{ width: '100%', flex: 1 }, ConvertStyleToObject(props.style)]}>
       <Carousel
+        keyboardShouldPersistTaps={'always'}
+
         onSnapToItem={(i: number) => {
           if (props.showPagination)
             setIndex(i);

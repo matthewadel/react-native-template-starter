@@ -46,6 +46,12 @@ const Image = (props: imageProps) => {
     return () => BackHandler.removeEventListener('hardwareBackPress', onBackPress);
   }, [showModal])
 
+  useEffect(() => {
+    if (props.source.uri)
+      RNImage.prefetch(props.source.uri)
+  }, [])
+
+
   const onBackPress = () => {
 
     if (showModal) {

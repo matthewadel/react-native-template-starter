@@ -77,7 +77,6 @@ const App = () => {
         }
       }
     }
-
     Settings.initializeSDK();
     Settings.setAdvertiserTrackingEnabled(true);
 

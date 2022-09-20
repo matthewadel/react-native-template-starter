@@ -57,3 +57,12 @@ upcoming features:
 1- upgrade react-native to 0.69
 2- upgrade react-native-firebase
 3- fork react-native-code-push
+
+
+// node_modules/react-native-orientation/android/build.gradle
+// replace compile with implementation
+
+
+// ------------------------------------------------------------------------------------------
+// node_modules/@babel/runtime/helpers/objectDestructuringEmpty.js
+// console.log("Cannot destructure undefined");

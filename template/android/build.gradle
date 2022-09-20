@@ -2,19 +2,21 @@
 
 buildscript {
     ext {
-        buildToolsVersion = "30.0.2"
+        buildToolsVersion = "31.0.0"
         minSdkVersion = 21          // starts from android 5
-        compileSdkVersion = 30      // ends with android 12
-        targetSdkVersion = 30       // ends with android 12
+        compileSdkVersion = 31      // ends with android 12
+        targetSdkVersion = 29       // ends with android 12
+        kotlinVersion = '1.5.20'
     }
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:3.5.4")
+        classpath("com.android.tools.build:gradle:7.3.0")
         classpath 'com.google.gms:google-services:4.3.10'
         classpath 'com.google.firebase:firebase-crashlytics-gradle:2.8.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
