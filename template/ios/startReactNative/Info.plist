@@ -58,8 +58,6 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) would like to use your camera to change your profile picture</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>$(PRODUCT_NAME) would like to use your microphone to record your Voice</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>

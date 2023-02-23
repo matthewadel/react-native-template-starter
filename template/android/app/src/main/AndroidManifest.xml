@@ -1,10 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.miso.startreactnative">
+  package="com.miso.startreactnative" xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-feature android:name="android.hardware.camera" android:required="false" />
     <uses-feature android:name="android.hardware.camera.front" android:required="false" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
       android:name=".MainApplication"
@@ -12,11 +13,13 @@
       android:icon="@mipmap/ic_launcher"
       android:roundIcon="@mipmap/ic_launcher_round"
       android:allowBackup="false"
-      android:theme="@style/AppTheme">
+      android:theme="@style/AppTheme"
+      tools:node="replace">
 
-      <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
-      <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_client_token"/>
-      
+      <!-- <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/facebook_app_id"/>
+      <meta-data android:name="com.facebook.sdk.ClientToken" android:value="@string/facebook_client_token"/> -->
+      <meta-data android:name="com.google.android.gms.version" android:value="12451000" />
+
       <activity
         android:exported="true"
         android:name=".MainActivity"
@@ -29,7 +32,7 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
       </activity>
-      <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+      <activity android:exported="true" android:name="com.facebook.react.devsupport.DevSettingsActivity" />
     </application>
 
 </manifest>
