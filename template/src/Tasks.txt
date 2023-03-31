@@ -67,6 +67,7 @@ upcoming features:
 3- upgrade react-native-code-push and use its patch in kashcool
 4- screenContainer useFocusEffect in return will cancel axios requests of this screen
 5- flatlist auto calculate page number and use @shopify/flashlist for better performance
+6- patch changes
 
 
 // ------------------------------------------------------------------------------------------
