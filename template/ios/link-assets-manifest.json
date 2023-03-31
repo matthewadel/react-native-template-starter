@@ -1,0 +1,153 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/Fonts/Cairo/Cairo-Black.ttf",
+      "sha1": "a459e0e6bd573bf2d37a4d9d2396dd2ed476e2bf"
+    },
+    {
+      "path": "src/assets/Fonts/Cairo/Cairo-Bold.ttf",
+      "sha1": "449ba679b8fefd01cb7c374980b4fd9c69ed90bc"
+    },
+    {
+      "path": "src/assets/Fonts/Cairo/Cairo-ExtraLight.ttf",
+      "sha1": "ee3dd493a8c567a75c5e8e9128cebe0bcba3d3ac"
+    },
+    {
+      "path": "src/assets/Fonts/Cairo/Cairo-Light.ttf",
+      "sha1": "87ae406a65f41e14610f507f376a7f62a086c035"
+    },
+    {
+      "path": "src/assets/Fonts/Cairo/Cairo-Regular.ttf",
+      "sha1": "87ae406a65f41e14610f507f376a7f62a086c035"
+    },
+    {
+      "path": "src/assets/Fonts/Cairo/Cairo-SemiBold.ttf",
+      "sha1": "be46c146d0c9d5371f576db23aa81bbde0c4c19c"
+    },
+    {
+      "path": "src/assets/Fonts/Cairo/Cairo.ttf",
+      "sha1": "3b23cb165725ef2f87c2409f1195c37f693ebc27"
+    },
+    {
+      "path": "src/assets/Fonts/Poppins/Poppins-Black.ttf",
+      "sha1": "6b1dd041c24de51d8859c4d83909c35c099a8219"
+    },
+    {
+      "path": "src/assets/Fonts/Poppins/Poppins-BlackItalic.ttf",
+      "sha1": "d7574b5facaf4baa69a1ad73bcd627503874fdaf"
+    },
+    {
+      "path": "src/assets/Fonts/Poppins/Poppins-Bold.ttf",
+      "sha1": "f68e7e93da3f4a710d28b0ee5f744b5112351401"
+    },
+    {
+      "path": "src/assets/Fonts/Poppins/Poppins-BoldItalic.ttf",
+      "sha1": "fcdff71a7e46fac6078dcbede38d415506d6f2cd"
+    },
+    {
+      "path": "src/assets/Fonts/Poppins/Poppins-ExtraBold.ttf",
+      "sha1": "f83d4a3a977b69dce924f490d4be0736b2f240b0"
+    },
+    {
+      "path": "src/assets/Fonts/Poppins/Poppins-ExtraBoldItalic.ttf",
+      "sha1": "89f0ead6b7e4da053f2565fdfc90b261372a6b7b"
+    },
+    {
+      "path": "src/assets/Fonts/Poppins/Poppins-ExtraLight.ttf",
+      "sha1": "e43759127fe5f6acb8c53b9bf79245d9af828b22"
+    },
+    {
+      "path": "src/assets/Fonts/Poppins/Poppins-ExtraLightItalic.ttf",
+      "sha1": "bf67c0e6d1f1288edc80390fa266f31fc5ff891e"
+    },
+    {
+      "path": "src/assets/Fonts/Poppins/Poppins-Italic.ttf",
+      "sha1": "b2c040a2e8fa61c93c7c13814da0c5de5bae1220"
+    },
+    {
+      "path": "src/assets/Fonts/Poppins/Poppins-Light.ttf",
+      "sha1": "987ef3e07d6361fbb658624e297750133f2343bd"
+    },
+    {
+      "path": "src/assets/Fonts/Poppins/Poppins-LightItalic.ttf",
+      "sha1": "ff206afee6ed7c9a4a46d1a32fc53b1bc443a84e"
+    },
+    {
+      "path": "src/assets/Fonts/Poppins/Poppins-Medium.ttf",
+      "sha1": "72b668cb1639c6b0588c6fffa1ae9a967409e8ae"
+    },
+    {
+      "path": "src/assets/Fonts/Poppins/Poppins-MediumItalic.ttf",
+      "sha1": "9c2ad2bd21d13b5fdeec19e1144d48fb5b8553bf"
+    },
+    {
+      "path": "src/assets/Fonts/Poppins/Poppins-Regular.ttf",
+      "sha1": "a4ef48c17479236fea2197b9a68bf7c6163e0388"
+    },
+    {
+      "path": "src/assets/Fonts/Poppins/Poppins-SemiBold.ttf",
+      "sha1": "e1a01a240fb449797ac08a37490d59b61a059e6d"
+    },
+    {
+      "path": "src/assets/Fonts/Poppins/Poppins-SemiBoldItalic.ttf",
+      "sha1": "c596a0296a30531a3a4b4cc18e78c8ac9c3254d6"
+    },
+    {
+      "path": "src/assets/Fonts/Poppins/Poppins-Thin.ttf",
+      "sha1": "561e8929100d5e1b8e6bba314ef1e59c22906eba"
+    },
+    {
+      "path": "src/assets/Fonts/Poppins/Poppins-ThinItalic.ttf",
+      "sha1": "217e495815aa9e9789337ba55074510fa4b33fa9"
+    },
+    {
+      "path": "src/assets/Fonts/SFUI/SFUIText-Bold.ttf",
+      "sha1": "2dab717b50898aae6f20760246e8247a169f90ad"
+    },
+    {
+      "path": "src/assets/Fonts/SFUI/SFUIText-BoldItalic.ttf",
+      "sha1": "00e2ab6714db3a95ddbb14c371c3b43e0872a27e"
+    },
+    {
+      "path": "src/assets/Fonts/SFUI/SFUIText-Heavy.ttf",
+      "sha1": "860bfaa6fcbacf11fb7cd02c8b604cc6803139f8"
+    },
+    {
+      "path": "src/assets/Fonts/SFUI/SFUIText-HeavyItalic.ttf",
+      "sha1": "a68af89487340a68d5b4dd0636b334c0bd4cfd8e"
+    },
+    {
+      "path": "src/assets/Fonts/SFUI/SFUIText-Light.ttf",
+      "sha1": "e32749bfe88efceee7f11f7c1468c888c3af7c23"
+    },
+    {
+      "path": "src/assets/Fonts/SFUI/SFUIText-LightItalic.ttf",
+      "sha1": "f228028a341fd3dac5111f84bcd8f261f15e455d"
+    },
+    {
+      "path": "src/assets/Fonts/SFUI/SFUIText-Medium.ttf",
+      "sha1": "8bb2974facd7f868bf1da515ead929ec10652126"
+    },
+    {
+      "path": "src/assets/Fonts/SFUI/SFUIText-MediumItalic.ttf",
+      "sha1": "08646efb6a838116caa659cf12cbbd4a8b4e1826"
+    },
+    {
+      "path": "src/assets/Fonts/SFUI/SFUIText-Regular.ttf",
+      "sha1": "e263555168b2190641311cae112f5d8d8b4d642d"
+    },
+    {
+      "path": "src/assets/Fonts/SFUI/SFUIText-RegularItalic.ttf",
+      "sha1": "bf759d21949548862ecd6d9e38defacdfe0e2328"
+    },
+    {
+      "path": "src/assets/Fonts/SFUI/SFUIText-Semibold.ttf",
+      "sha1": "6dd66399a98fb5eab05553281f2ac718f896d23a"
+    },
+    {
+      "path": "src/assets/Fonts/SFUI/SFUIText-SemiboldItalic.ttf",
+      "sha1": "d3186690a292daa33db6bb17e55ec904cd89ee2e"
+    }
+  ]
+}

@@ -15,7 +15,7 @@ import { FlashMsg, Modal, ModalRef } from 'UI';
 import { PERMISSIONS, RESULTS, request, check, requestNotifications } from 'react-native-permissions';
 import { Settings } from 'react-native-fbsdk-next';
 import messaging from '@react-native-firebase/messaging';
-import PushNotification from "react-native-push-notification";
+import notifee, { AndroidImportance } from '@notifee/react-native';
 import codePush from "react-native-code-push";
 import crashlytics from '@react-native-firebase/crashlytics';
 import { navigationRef } from 'navigation/useNavigationHook';
@@ -31,12 +31,6 @@ const App: any = () => {
     }),
     [locale]
   );
-
-  PushNotification.configure({
-    onNotification: function () {
-      console.log('notifications')
-    },
-  })
 
   useEffect(() => {
 
@@ -99,20 +93,29 @@ const App: any = () => {
 
     if (enabled) {
 
+      if (Platform.OS == 'android')
+        await notifee.createChannel({
+          id: 'default',
+          name: 'default',
+          vibration: true,
+        })
+          .then(data => console.log(data))
+          .catch(data => console.log(data))
+
       messaging().onMessage(async remoteMessage => {
 
-        // showMessage({
-        //   message: remoteMessage.notification?.body || "",
-        //   type: "success",
-        //   onPress: () => navigate('Notifications')
-        // })
-        console.log(remoteMessage.notification?.title)
-        console.log(remoteMessage.notification?.body)
-        PushNotification.localNotification({
+        notifee.displayNotification({
+          data: { ...remoteMessage.data },
           title: remoteMessage.notification?.title,
-          message: remoteMessage.notification?.body || "",
-          playSound: true,
-        })
+          body: remoteMessage.notification?.body || "",
+          android: {
+            channelId: 'tollab',
+            pressAction: {
+              id: 'default',
+            },
+            importance: AndroidImportance.HIGH,
+          }
+        });
       });
 
       await messaging().registerDeviceForRemoteMessages()

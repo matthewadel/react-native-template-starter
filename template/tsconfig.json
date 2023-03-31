@@ -20,7 +20,6 @@
     "strictPropertyInitialization": true,
     "noImplicitThis": true,
     "alwaysStrict": true,
-    "suppressImplicitAnyIndexErrors": true,
     /* Additional Checks */
     "noUnusedLocals": true,
     "noUnusedParameters": true,
