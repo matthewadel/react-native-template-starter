@@ -10,7 +10,7 @@ interface SVGImageInterface extends ITouchableOpacity {
 }
 
 export const SVGImage = (props: SVGImageInterface) => {
-  let RNSvgImage = props.source;
+  let RNSvgImage: any = props.source;
 
   return (
     // <View />

@@ -3,8 +3,6 @@ import { View, Button, Text, VectorIcons, Colors, closeModal, openModal, RFValue
 import RNImagePicker from 'react-native-image-crop-picker';
 import I18n from 'react-native-i18n';
 import { FONT_FAMILY } from 'UI/Fonts';
-// import { launchImageLibrary } from 'react-native-image-picker';
-import { Platform } from 'react-native';
 
 interface IImagePicker {
   type?: 'video' | 'photo';

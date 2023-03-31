@@ -75,8 +75,8 @@ export const Swiper = forwardRef((props: SwiperProps, ref) => {
         firstItem={props.initialIndex || 0}
         containerCustomStyle={{ flex: 1 }}
         data={props.data}
-        renderItem={({ item, index }: { item: any, index: number }) => {
-          return props.renderItem({ item, index })
+        renderItem={({ item, index: it }: { item: any, index: number }) => {
+          return props.renderItem({ item, index: it })
         }}
       />
       {/* <RNSwiper
