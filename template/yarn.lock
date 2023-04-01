@@ -1814,12 +1814,12 @@
   dependencies:
     invariant "^2.2.4"
 
-"@react-native-firebase/analytics@^17.4.0":
+"@react-native-firebase/analytics@^17.4.1":
   version "17.4.1"
   resolved "https://registry.yarnpkg.com/@react-native-firebase/analytics/-/analytics-17.4.1.tgz#093da22912ec4d72ae83c482c1237b50a57e2bc2"
   integrity sha512-ihhWVOki9nt3xHYaaftm7zC0hV89/M1H6+zGrnwLyzsqC6ljzqFBvqq10swZ7MtMOsKkNP+mjdAlAHycN/Fvjw==
 
-"@react-native-firebase/app@^17.4.0":
+"@react-native-firebase/app@^17.4.1":
   version "17.4.1"
   resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-17.4.1.tgz#ad0151344348a8890c98a64bc287756db5895c5a"
   integrity sha512-Fv4ArGXXeLPKikHpGt0t821Sd/fpNEsN+akcXEzrrfSx5wxYTBWd74IS3Pq2gHjHl9DS0fzXPJIfevQT8aXKzw==
@@ -1828,7 +1828,7 @@
     opencollective-postinstall "^2.0.1"
     superstruct "^0.6.2"
 
-"@react-native-firebase/crashlytics@^17.4.0":
+"@react-native-firebase/crashlytics@^17.4.1":
   version "17.4.1"
   resolved "https://registry.yarnpkg.com/@react-native-firebase/crashlytics/-/crashlytics-17.4.1.tgz#38850442ca7d7dada60951b41f1572795067ead5"
   integrity sha512-brpc/KI9woDeyaZovdWiwL6/A7P9kVqw2XbbR5GkFswwr2S6o8wDfw5ACOljvG1GTSErL8oI8wo3tHJ4HLcGZg==
@@ -1836,7 +1836,7 @@
     "@expo/config-plugins" "^5.0.4"
     stacktrace-js "^2.0.0"
 
-"@react-native-firebase/messaging@^17.4.0":
+"@react-native-firebase/messaging@^17.4.1":
   version "17.4.1"
   resolved "https://registry.yarnpkg.com/@react-native-firebase/messaging/-/messaging-17.4.1.tgz#11ed73db7eb5b026204a46760e1a1d3a3e8b2499"
   integrity sha512-Sn4YVD2yOqAZfrY5KMeIFoh2f+JaQX/V/I7dSQX5vZ8RjP9cWVPJlA/CdLdORCe0DhusZMBJJfsJzCteQi8iiw==
