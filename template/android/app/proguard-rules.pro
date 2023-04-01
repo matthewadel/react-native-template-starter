@@ -9,6 +9,7 @@
 
 # Add any project specific keep options here:
 -keep public class com.horcrux.svg.** {*;}
+
 -keep public class com.dylanvann.fastimage.* {*;}
 -keep public class com.dylanvann.fastimage.** {*;}
 -keep public class * implements com.bumptech.glide.module.GlideModule
