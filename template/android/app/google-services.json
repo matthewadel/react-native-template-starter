@@ -1,34 +1,41 @@
 {
   "project_info": {
-    "project_number": "388076386700",
-    "project_id": "tollab-c6145",
-    "storage_bucket": "tollab-c6145.appspot.com"
+    "project_number": "718132234619",
+    "project_id": "startreactnative-1b490",
+    "storage_bucket": "startreactnative-1b490.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:388076386700:android:601312cdf57b3b742e3ea9",
+        "mobilesdk_app_id": "1:718132234619:android:de8ef5825fe4c0763a55de",
         "android_client_info": {
           "package_name": "com.miso.startreactnative"
         }
       },
       "oauth_client": [
         {
-          "client_id": "388076386700-ab4oh60o5hqjj941perqviegggduts1k.apps.googleusercontent.com",
+          "client_id": "718132234619-tnd4cnl3b133o3dq9ch244m4a5pdhj0e.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDeb4BKZpstCv_msg8omQbD2XwVwB_nxqY"
+          "current_key": "AIzaSyDKwmlDm6pf5GJhg1IqDY8a23iNYwOGJKY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "388076386700-ab4oh60o5hqjj941perqviegggduts1k.apps.googleusercontent.com",
+              "client_id": "718132234619-tnd4cnl3b133o3dq9ch244m4a5pdhj0e.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "718132234619-ajdulmmrl5m3n9ff8pmt3kk035absu7t.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.miso.startreactnative"
+              }
             }
           ]
         }

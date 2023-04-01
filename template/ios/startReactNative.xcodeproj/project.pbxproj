@@ -35,8 +35,8 @@
 		8F82035B6458421098871438 /* SFUIText-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A7D61392BB14381B4DE402B /* SFUIText-SemiboldItalic.ttf */; };
 		95C88132247C4506AEB115EF /* Cairo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FD37120E9A604DA985639792 /* Cairo.ttf */; };
 		9B0F9C1C29D728EC0004DB80 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B0F9C1B29D728EC0004DB80 /* File.swift */; };
-		9BB92FAD29D6050000DF5F1F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BB92FAC29D6050000DF5F1F /* GoogleService-Info.plist */; };
-		9BB92FAE29D6050000DF5F1F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BB92FAC29D6050000DF5F1F /* GoogleService-Info.plist */; };
+		9BE8A46529D8AB24007AD485 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BE8A46429D8AB24007AD485 /* GoogleService-Info.plist */; };
+		9BE8A46729D8AB37007AD485 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BE8A46629D8AB37007AD485 /* GoogleService-Info.plist */; };
 		9D73DE8A10564363A5487023 /* SFUIText-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9B33CE1DA90B4EE8BDE1417B /* SFUIText-Heavy.ttf */; };
 		A5C623F8D23D434595D48275 /* Poppins-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 958FB66A787F4FBC918BD6D5 /* Poppins-ExtraLightItalic.ttf */; };
 		AC44C0324ED741139D3E9680 /* Poppins-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2EB5E4D5A0FE47CB83726982 /* Poppins-SemiBoldItalic.ttf */; };
@@ -122,7 +122,8 @@
 		9BAF5A1529D7A2D00014DAC2 /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Feather.ttf; sourceTree = "<group>"; };
 		9BAF5A1629D7A2D00014DAC2 /* Foundation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Foundation.ttf; sourceTree = "<group>"; };
 		9BAF5A1729D7A2D00014DAC2 /* EvilIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EvilIcons.ttf; sourceTree = "<group>"; };
-		9BB92FAC29D6050000DF5F1F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9BE8A46429D8AB24007AD485 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9BE8A46629D8AB37007AD485 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A05EEA1C1BCE4568A6693CE8 /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-MediumItalic.ttf"; path = "../src/assets/Fonts/Poppins/Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
 		A57BC8F350114993BA799D45 /* Cairo-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Cairo-Light.ttf"; path = "../src/assets/Fonts/Cairo/Cairo-Light.ttf"; sourceTree = "<group>"; };
 		B0577CEC58A34E568DFFD44A /* SFUIText-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "SFUIText-BoldItalic.ttf"; path = "../src/assets/Fonts/SFUI/SFUIText-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -183,9 +184,9 @@
 		13B07FAE1A68108700A75B9A /* startReactNative */ = {
 			isa = PBXGroup;
 			children = (
+				9BE8A46629D8AB37007AD485 /* GoogleService-Info.plist */,
 				9BAF5A0729D7A2BE0014DAC2 /* Fonts */,
 				9B0F9C1D29D73A590004DB80 /* startReactNative.entitlements */,
-				9BB92FAC29D6050000DF5F1F /* GoogleService-Info.plist */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				9B0F9C1B29D728EC0004DB80 /* File.swift */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
@@ -262,6 +263,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				9BE8A46429D8AB24007AD485 /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* startReactNative */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* startReactNativeTests */,
@@ -407,7 +409,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BB92FAE29D6050000DF5F1F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,7 +418,6 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				9BB92FAD29D6050000DF5F1F /* GoogleService-Info.plist in Resources */,
 				C5B672F8CD68486AAD175745 /* Cairo-Black.ttf in Resources */,
 				D6BA1FBCE71745B9838672CC /* Cairo-Bold.ttf in Resources */,
 				81C0C58CF701462E800F1FA3 /* Cairo-ExtraLight.ttf in Resources */,
@@ -433,6 +433,7 @@
 				4BCF30A07D954962B5D21EFF /* Poppins-ExtraBoldItalic.ttf in Resources */,
 				FBB10954F435464E92000359 /* Poppins-ExtraLight.ttf in Resources */,
 				A5C623F8D23D434595D48275 /* Poppins-ExtraLightItalic.ttf in Resources */,
+				9BE8A46529D8AB24007AD485 /* GoogleService-Info.plist in Resources */,
 				13E24D0A06F9459C8A297C38 /* Poppins-Italic.ttf in Resources */,
 				165233A431D54FA79B8AC701 /* Poppins-Light.ttf in Resources */,
 				4088C015E6104AD1A7CB1DD3 /* Poppins-LightItalic.ttf in Resources */,
@@ -454,6 +455,7 @@
 				C284CA7212494CFEAAC2AEB2 /* SFUIText-Regular.ttf in Resources */,
 				C58F6334533A403287BB007D /* SFUIText-RegularItalic.ttf in Resources */,
 				38504BCAFA1D47209F10C7A7 /* SFUIText-Semibold.ttf in Resources */,
+				9BE8A46729D8AB37007AD485 /* GoogleService-Info.plist in Resources */,
 				8F82035B6458421098871438 /* SFUIText-SemiboldItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -728,6 +730,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = startReactNative/startReactNative.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NW27BA3X4B;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = startReactNative/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -740,7 +743,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.miso.startreactnative;
 				PRODUCT_NAME = startReactNative;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -761,6 +764,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = startReactNative/startReactNative.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NW27BA3X4B;
 				INFOPLIST_FILE = startReactNative/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -772,7 +776,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.miso.startreactnative;
 				PRODUCT_NAME = startReactNative;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
