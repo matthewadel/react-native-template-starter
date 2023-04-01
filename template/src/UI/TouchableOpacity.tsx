@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Keyboard, TouchableOpacity as RNTouchableOpacity } from 'react-native';
 import { ConvertStyleToObject, Text, ChangeDirectionStyle, ActivityIndicator } from 'UI';
-import { TouchableOpacity as PositionAbsoluteButton } from 'react-native-gesture-handler'
 import { ITouchableOpacity } from 'models';
 
 
@@ -14,8 +13,6 @@ const TouchableOpacity = React.forwardRef((props: ITouchableOpacity, ref: any) =
     disabled,
   } = props;
 
-  let Touchable = props.positionAbsoluteButton ? PositionAbsoluteButton : RNTouchableOpacity
-
   let [Width, setWidth] = useState(0)
   let [Height, setHeight] = useState(0)
 
@@ -26,7 +23,7 @@ const TouchableOpacity = React.forwardRef((props: ITouchableOpacity, ref: any) =
   }
 
   return (
-    <Touchable
+    <RNTouchableOpacity
       onLayout={(event) => onLayout(event)}
       ref={ref}
       {...props}
@@ -35,10 +32,6 @@ const TouchableOpacity = React.forwardRef((props: ITouchableOpacity, ref: any) =
         props.onPress && props.onPress()
       }}
       disabled={!props.onPress || props.disabled || props.loading}
-      containerStyle={[ChangeDirectionStyle(style, noDirectionChange, showStyle), {
-        width: ConvertStyleToObject(props?.style)?.width,
-        marginBottom: 0, marginTop: 0
-      }]}
       style={
         [
           {
@@ -57,7 +50,7 @@ const TouchableOpacity = React.forwardRef((props: ITouchableOpacity, ref: any) =
           children
           :
           <Text {...props} disabled={!props.onPress || props.disabled || props.loading} style={props.textStyle}>{children}</Text>}
-    </Touchable>
+    </RNTouchableOpacity>
   );
 })
 export { TouchableOpacity }
