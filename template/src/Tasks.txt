@@ -63,7 +63,6 @@ handle safe area view for android and ios
 upcoming features:
 1- test code push
 2- test notifications
-3- upgrade react-native-code-push and use its patch in kashcool
-4- screenContainer useFocusEffect in return will cancel axios requests of this screen
-5- flatlist auto calculate page number and use @shopify/flashlist for better performance
-6- check image caching on android and ios
+3- screenContainer useFocusEffect in return will cancel axios requests of this screen
+4- flatlist auto calculate page number and use @shopify/flashlist for better performance
+5- check image caching on android and ios
