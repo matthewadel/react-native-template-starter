@@ -130,6 +130,10 @@ const App: any = () => {
     }
   }
 
+  const renderMessagesComponent = (msg: any) => {
+    return (<FlashMsg msg={msg} />)
+  }
+
   return (
     <Provider store={store}>
       <PersistGate loading={<View style={{ height: '100%', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
@@ -144,11 +148,11 @@ const App: any = () => {
         </SafeAreaProvider>
 
         <Modal ref={ModalRef} />
-        <FlashMessage duration={4000} animationDuration={500} autoHide={true} hideOnPress={true} position="top" MessageComponent={(msg: any) => (<FlashMsg msg={msg} />)} />
+        <FlashMessage duration={4000} animationDuration={500} autoHide={true} hideOnPress={true} position="top" MessageComponent={renderMessagesComponent} />
       </PersistGate>
     </Provider>
   );
 };
 
 let codePushOptions = { checkFrequency: codePush.CheckFrequency.ON_APP_RESUME };
-export default codePush(codePushOptions)(reactotron.overlay(App))
+export default __DEV__ ? reactotron.overlay(App) : codePush(codePushOptions)(App)

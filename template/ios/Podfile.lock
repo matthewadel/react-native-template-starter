@@ -558,25 +558,23 @@ PODS:
     - React-Core
     - SDWebImage (~> 5.11.1)
     - SDWebImageWebPCoder (~> 0.8.4)
-  - RNFBAnalytics (17.4.0):
+  - RNFBAnalytics (17.4.1):
     - Firebase/Analytics (= 10.7.0)
     - React-Core
     - RNFBApp
-  - RNFBApp (17.4.0):
+  - RNFBApp (17.4.1):
     - Firebase/CoreOnly (= 10.7.0)
     - React-Core
-  - RNFBCrashlytics (17.4.0):
+  - RNFBCrashlytics (17.4.1):
     - Firebase/Crashlytics (= 10.7.0)
     - FirebaseCoreExtension (= 10.7.0)
     - React-Core
     - RNFBApp
-  - RNFBMessaging (17.4.0):
+  - RNFBMessaging (17.4.1):
     - Firebase/Messaging (= 10.7.0)
     - FirebaseCoreExtension (= 10.7.0)
     - React-Core
     - RNFBApp
-  - RNGestureHandler (2.9.0):
-    - React-Core
   - RNI18n (2.0.15):
     - React-Core
   - RNImageCropPicker (0.38.0):
@@ -693,7 +691,6 @@ DEPENDENCIES:
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBCrashlytics (from `../node_modules/@react-native-firebase/crashlytics`)"
   - "RNFBMessaging (from `../node_modules/@react-native-firebase/messaging`)"
-  - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNI18n (from `../node_modules/react-native-i18n`)
   - RNImageCropPicker (from `../node_modules/react-native-image-crop-picker`)
   - "RNNotifee (from `../node_modules/@notifee/react-native`)"
@@ -842,8 +839,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-firebase/crashlytics"
   RNFBMessaging:
     :path: "../node_modules/@react-native-firebase/messaging"
-  RNGestureHandler:
-    :path: "../node_modules/react-native-gesture-handler"
   RNI18n:
     :path: "../node_modules/react-native-i18n"
   RNImageCropPicker:
@@ -939,11 +934,10 @@ SPEC CHECKSUMS:
   RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
   RNCPushNotificationIOS: 87b8d16d3ede4532745e05b03c42cff33a36cc45
   RNFastImage: 5c9c9fed9c076e521b3f509fe79e790418a544e8
-  RNFBAnalytics: 253b87e6a5903f72561b515b0717bfe4171b3e18
-  RNFBApp: b0f0c53ed8a00395ceb4863910a2c1ff6e24d9f6
-  RNFBCrashlytics: 43358406044e9fa98f949b3fd7129df33bd6a9a8
-  RNFBMessaging: e683adf735d2afb847bce161dce0e4006e88a3a2
-  RNGestureHandler: 071d7a9ad81e8b83fe7663b303d132406a7d8f39
+  RNFBAnalytics: 79a41751a4dab4594ef14ff9a1be3c08d12f742f
+  RNFBApp: ac422b09f963ae32cd732953610553bddd4c2b12
+  RNFBCrashlytics: 1d413d478fd4fa302e43e53c93516b81d4c834a3
+  RNFBMessaging: 912d2ae75161a0c18238dd5893b8fae6cab5ccb4
   RNI18n: 5fa3974eb5050dee2cb6ad4876864e2774920b87
   RNImageCropPicker: ffbba608264885c241cbf3a8f78eb7aeeb978241
   RNNotifee: bdc064c29f4d558046f51f0c3ae02bab4fd3cd85
