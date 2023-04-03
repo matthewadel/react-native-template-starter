@@ -109,7 +109,7 @@ const App: any = () => {
           title: remoteMessage.notification?.title,
           body: remoteMessage.notification?.body || "",
           android: {
-            channelId: 'tollab',
+            channelId: 'default',
             pressAction: {
               id: 'default',
             },
