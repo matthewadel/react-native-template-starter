@@ -145,10 +145,10 @@ const App: any = () => {
               <AppStack />
             </NavigationContainer>
           </LocalizationContext.Provider>
+          <Modal ref={ModalRef} />
+          <FlashMessage duration={4000} animationDuration={500} autoHide={true} hideOnPress={true} position="top" MessageComponent={renderMessagesComponent} />
         </SafeAreaProvider>
 
-        <Modal ref={ModalRef} />
-        <FlashMessage duration={4000} animationDuration={500} autoHide={true} hideOnPress={true} position="top" MessageComponent={renderMessagesComponent} />
       </PersistGate>
     </Provider>
   );
