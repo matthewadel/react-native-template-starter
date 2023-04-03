@@ -30,7 +30,7 @@ interface VectorIconsProps extends ITouchableOpacity {
 }
 
 export const VectorIcons = (props: VectorIconsProps) => {
-  let components = {
+  let components: any = {
     AntDesign,
     Ionicons,
     Entypo,

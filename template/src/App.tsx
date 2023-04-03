@@ -6,7 +6,7 @@ import AppStack from './navigation/AppStack';
 import { store, persistor } from 'store';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import Reactotron from 'reactotron-react-native';
+import Reactotron from 'utils/Reactron';
 import I18n from "react-native-i18n";
 import LocalizationContext from 'lang/i18n';
 import Orientation from 'react-native-orientation';
@@ -130,9 +130,9 @@ const App: any = () => {
     }
   }
 
-  const RenderMessagesComponent = (msg: any) => (
-    <FlashMsg msg={msg} />
-  )
+  const renderMessagesComponent = (msg: any) => {
+    return (<FlashMsg msg={msg} />)
+  }
 
   return (
     <Provider store={store}>
@@ -148,7 +148,7 @@ const App: any = () => {
         </SafeAreaProvider>
 
         <Modal ref={ModalRef} />
-        <FlashMessage duration={4000} animationDuration={500} autoHide={true} hideOnPress={true} position="top" MessageComponent={RenderMessagesComponent} />
+        <FlashMessage duration={4000} animationDuration={500} autoHide={true} hideOnPress={true} position="top" MessageComponent={renderMessagesComponent} />
       </PersistGate>
     </Provider>
   );
