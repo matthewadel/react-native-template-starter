@@ -6,7 +6,7 @@ import AppStack from './navigation/AppStack';
 import { store, persistor } from 'store';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import reactotron from 'utils/Reactron';
+import Reactotron from 'reactotron-react-native';
 import I18n from "react-native-i18n";
 import LocalizationContext from 'lang/i18n';
 import Orientation from 'react-native-orientation';
@@ -130,6 +130,10 @@ const App: any = () => {
     }
   }
 
+  const RenderMessagesComponent = (msg: any) => (
+    <FlashMsg msg={msg} />
+  )
+
   return (
     <Provider store={store}>
       <PersistGate loading={<View style={{ height: '100%', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
@@ -144,11 +148,11 @@ const App: any = () => {
         </SafeAreaProvider>
 
         <Modal ref={ModalRef} />
-        <FlashMessage duration={4000} animationDuration={500} autoHide={true} hideOnPress={true} position="top" MessageComponent={(msg: any) => (<FlashMsg msg={msg} />)} />
+        <FlashMessage duration={4000} animationDuration={500} autoHide={true} hideOnPress={true} position="top" MessageComponent={RenderMessagesComponent} />
       </PersistGate>
     </Provider>
   );
 };
 
 let codePushOptions = { checkFrequency: codePush.CheckFrequency.ON_APP_RESUME };
-export default codePush(codePushOptions)(reactotron.overlay(App))
+export default __DEV__ ? Reactotron.overlay(App) : codePush(codePushOptions)(App)
