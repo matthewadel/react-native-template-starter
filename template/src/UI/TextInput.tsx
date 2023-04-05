@@ -34,7 +34,7 @@ const TextInput = React.forwardRef((props: ITextInput, ref: any) => {
           secureTextEntry={!!props.togglePasswordButton && !showPassword}
           {...props}
           value={props.keyboardType ? digitsArToEn(props.value || "")?.replace(/\D/g, '') : props.value}
-          onChangeText={text => props.onChangeText(props.keyboardType ? digitsArToEn(text || "")?.replace(/\D/g, '') : text)}
+          onChangeText={text => !!props.onChangeText && props.onChangeText(props.keyboardType ? digitsArToEn(text || "")?.replace(/\D/g, '') : text)}
           style={[{ fontFamily: FONT_FAMILY("LIGHT"), fontSize: RFValue(16), flex: 1, height: '100%', paddingVertical: 0, paddingHorizontal: '5%' },
           props.togglePasswordButton ? { paddingRight: '15%' } : {},
           props.noDirectionChange ? {} : { textAlign: locale == 'ar' ? 'right' : 'left', }, ConvertStyleToObject(props.textInputStyle)]}
