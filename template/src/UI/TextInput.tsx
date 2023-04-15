@@ -33,7 +33,6 @@ const TextInput = React.forwardRef((props: ITextInput, ref: any) => {
           placeholderTextColor={props.hasError ? Colors().Text.Error : "#A7A7A7"}
           secureTextEntry={!!props.togglePasswordButton && !showPassword}
           {...props}
-          value={props.keyboardType ? digitsArToEn(props.value || "")?.replace(/\D/g, '') : props.value}
           onChangeText={text => !!props.onChangeText && props.onChangeText(props.keyboardType ? digitsArToEn(text || "")?.replace(/\D/g, '') : text)}
           style={[{ fontFamily: FONT_FAMILY("LIGHT"), fontSize: RFValue(16), flex: 1, height: '100%', paddingVertical: 0, paddingHorizontal: '5%' },
           props.togglePasswordButton ? { paddingRight: '15%' } : {},

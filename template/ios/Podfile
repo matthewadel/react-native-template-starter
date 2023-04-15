@@ -57,22 +57,15 @@ target 'startReactNative' do
       # necessary for Mac Catalyst builds
       :mac_catalyst_enabled => false
     )
-    __apply_Xcode_12_5_M1_post_install_workaround(installer)
     
-    installer.pods_project.targets.each do |target|
-         target.build_configurations.each do |config|
-                config.build_settings['SWIFT_VERSION'] = '5.0'
+    installer.generated_projects.each do |project|
+        project.targets.each do |target|
+            target.build_configurations.each do |config|
                 config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.4'
+            end
         end
     end
+    
+    __apply_Xcode_12_5_M1_post_install_workaround(installer)
   end
 end
-
-#post_install do |installer|
-#   installer.pods_project.targets.each do |target|
-#        target.build_configurations.each do |config|
-#               config.build_settings['SWIFT_VERSION'] = '5.0'
-#               config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.4'
-#       end
-#   end
-#end

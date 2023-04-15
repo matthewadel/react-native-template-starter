@@ -1,3 +1,501 @@
+diff --git a/node_modules/react-native/Libraries/Components/TextInput/TextInput.d.ts b/node_modules/react-native/Libraries/Components/TextInput/TextInput.d.ts
+index 5bc4318..0e1ee4a 100644
+--- a/node_modules/react-native/Libraries/Components/TextInput/TextInput.d.ts
++++ b/node_modules/react-native/Libraries/Components/TextInput/TextInput.d.ts
+@@ -8,22 +8,22 @@
+  */
+ 
+ import type * as React from 'react';
+-import {Constructor} from '../../../types/private/Utilities';
+-import {TimerMixin} from '../../../types/private/TimerMixin';
++import { Constructor } from '../../../types/private/Utilities';
++import { TimerMixin } from '../../../types/private/TimerMixin';
+ import {
+   HostComponent,
+   NativeMethods,
+ } from '../../../types/public/ReactNativeTypes';
+-import {ColorValue, StyleProp} from '../../StyleSheet/StyleSheet';
+-import {TextStyle} from '../../StyleSheet/StyleSheetTypes';
++import { ColorValue, StyleProp } from '../../StyleSheet/StyleSheet';
++import { TextStyle } from '../../StyleSheet/StyleSheetTypes';
+ import {
+   NativeSyntheticEvent,
+   NativeTouchEvent,
+   TargetedEvent,
+ } from '../../Types/CoreEventTypes';
+-import {EventEmitter} from '../../vendor/emitter/EventEmitter';
+-import {AccessibilityProps} from '../View/ViewAccessibility';
+-import {ViewProps} from '../View/ViewPropTypes';
++import { EventEmitter } from '../../vendor/emitter/EventEmitter';
++import { AccessibilityProps } from '../View/ViewAccessibility';
++import { ViewProps } from '../View/ViewPropTypes';
+ 
+ export type KeyboardType =
+   | 'default'
+@@ -88,7 +88,7 @@ type DataDetectorTypes =
+  * components re-render.
+  */
+ export interface DocumentSelectionState extends EventEmitter {
+-  new (anchor: number, focus: number): DocumentSelectionState;
++  new(anchor: number, focus: number): DocumentSelectionState;
+ 
+   /**
+    * Apply an update to the state. If either offset value has changed,
+@@ -127,11 +127,11 @@ export interface TextInputIOSProps {
+    * When the clear button should appear on the right side of the text view
+    */
+   clearButtonMode?:
+-    | 'never'
+-    | 'while-editing'
+-    | 'unless-editing'
+-    | 'always'
+-    | undefined;
++  | 'never'
++  | 'while-editing'
++  | 'unless-editing'
++  | 'always'
++  | undefined;
+ 
+   /**
+    * If true, clears the text field automatically when editing begins
+@@ -238,35 +238,35 @@ export interface TextInputIOSProps {
+    *
+    */
+   textContentType?:
+-    | 'none'
+-    | 'URL'
+-    | 'addressCity'
+-    | 'addressCityAndState'
+-    | 'addressState'
+-    | 'countryName'
+-    | 'creditCardNumber'
+-    | 'emailAddress'
+-    | 'familyName'
+-    | 'fullStreetAddress'
+-    | 'givenName'
+-    | 'jobTitle'
+-    | 'location'
+-    | 'middleName'
+-    | 'name'
+-    | 'namePrefix'
+-    | 'nameSuffix'
+-    | 'nickname'
+-    | 'organizationName'
+-    | 'postalCode'
+-    | 'streetAddressLine1'
+-    | 'streetAddressLine2'
+-    | 'sublocality'
+-    | 'telephoneNumber'
+-    | 'username'
+-    | 'password'
+-    | 'newPassword'
+-    | 'oneTimeCode'
+-    | undefined;
++  | 'none'
++  | 'URL'
++  | 'addressCity'
++  | 'addressCityAndState'
++  | 'addressState'
++  | 'countryName'
++  | 'creditCardNumber'
++  | 'emailAddress'
++  | 'familyName'
++  | 'fullStreetAddress'
++  | 'givenName'
++  | 'jobTitle'
++  | 'location'
++  | 'middleName'
++  | 'name'
++  | 'namePrefix'
++  | 'nameSuffix'
++  | 'nickname'
++  | 'organizationName'
++  | 'postalCode'
++  | 'streetAddressLine1'
++  | 'streetAddressLine2'
++  | 'sublocality'
++  | 'telephoneNumber'
++  | 'username'
++  | 'password'
++  | 'newPassword'
++  | 'oneTimeCode'
++  | undefined;
+ 
+   /**
+    * If false, scrolling of the text view will be disabled. The default value is true. Only works with multiline={true}
+@@ -326,44 +326,44 @@ export interface TextInputAndroidProps {
+    * - `off`
+    */
+   autoComplete?:
+-    | 'birthdate-day'
+-    | 'birthdate-full'
+-    | 'birthdate-month'
+-    | 'birthdate-year'
+-    | 'cc-csc'
+-    | 'cc-exp'
+-    | 'cc-exp-day'
+-    | 'cc-exp-month'
+-    | 'cc-exp-year'
+-    | 'cc-number'
+-    | 'email'
+-    | 'gender'
+-    | 'name'
+-    | 'name-family'
+-    | 'name-given'
+-    | 'name-middle'
+-    | 'name-middle-initial'
+-    | 'name-prefix'
+-    | 'name-suffix'
+-    | 'password'
+-    | 'password-new'
+-    | 'postal-address'
+-    | 'postal-address-country'
+-    | 'postal-address-extended'
+-    | 'postal-address-extended-postal-code'
+-    | 'postal-address-locality'
+-    | 'postal-address-region'
+-    | 'postal-code'
+-    | 'street-address'
+-    | 'sms-otp'
+-    | 'tel'
+-    | 'tel-country-code'
+-    | 'tel-national'
+-    | 'tel-device'
+-    | 'username'
+-    | 'username-new'
+-    | 'off'
+-    | undefined;
++  | 'birthdate-day'
++  | 'birthdate-full'
++  | 'birthdate-month'
++  | 'birthdate-year'
++  | 'cc-csc'
++  | 'cc-exp'
++  | 'cc-exp-day'
++  | 'cc-exp-month'
++  | 'cc-exp-year'
++  | 'cc-number'
++  | 'email'
++  | 'gender'
++  | 'name'
++  | 'name-family'
++  | 'name-given'
++  | 'name-middle'
++  | 'name-middle-initial'
++  | 'name-prefix'
++  | 'name-suffix'
++  | 'password'
++  | 'password-new'
++  | 'postal-address'
++  | 'postal-address-country'
++  | 'postal-address-extended'
++  | 'postal-address-extended-postal-code'
++  | 'postal-address-locality'
++  | 'postal-address-region'
++  | 'postal-code'
++  | 'street-address'
++  | 'sms-otp'
++  | 'tel'
++  | 'tel-country-code'
++  | 'tel-national'
++  | 'tel-device'
++  | 'username'
++  | 'username-new'
++  | 'off'
++  | undefined;
+ 
+   /**
+    * When provided it will set the color of the cursor (or "caret") in the component.
+@@ -389,12 +389,12 @@ export interface TextInputAndroidProps {
+    * - `yesExcludeDescendants` - this view is important for autofill but its children aren't
+    */
+   importantForAutofill?:
+-    | 'auto'
+-    | 'no'
+-    | 'noExcludeDescendants'
+-    | 'yes'
+-    | 'yesExcludeDescendants'
+-    | undefined;
++  | 'auto'
++  | 'no'
++  | 'noExcludeDescendants'
++  | 'yes'
++  | 'yesExcludeDescendants'
++  | undefined;
+ 
+   /**
+    * When false, if there is a small amount of space available around a text input (e.g. landscape orientation on a phone),
+@@ -465,7 +465,7 @@ export interface TextInputFocusEventData extends TargetedEvent {
+  * @see TextInputProps.onScroll
+  */
+ export interface TextInputScrollEventData {
+-  contentOffset: {x: number; y: number};
++  contentOffset: { x: number; y: number };
+ }
+ 
+ /**
+@@ -497,7 +497,7 @@ export interface TextInputChangeEventData extends TargetedEvent {
+  * @see TextInputProps.onContentSizeChange
+  */
+ export interface TextInputContentSizeChangeEventData {
+-  contentSize: {width: number; height: number};
++  contentSize: { width: number; height: number };
+ }
+ 
+ /**
+@@ -520,7 +520,7 @@ export interface TextInputSubmitEditingEventData {
+ export interface TextInputTextInputEventData {
+   text: string;
+   previousText: string;
+-  range: {start: number; end: number};
++  range: { start: number; end: number };
+ }
+ 
+ /**
+@@ -528,9 +528,9 @@ export interface TextInputTextInputEventData {
+  */
+ export interface TextInputProps
+   extends ViewProps,
+-    TextInputIOSProps,
+-    TextInputAndroidProps,
+-    AccessibilityProps {
++  TextInputIOSProps,
++  TextInputAndroidProps,
++  AccessibilityProps {
+   /**
+    * Specifies whether fonts should scale to respect Text Size accessibility settings.
+    * The default is `true`.
+@@ -618,15 +618,15 @@ export interface TextInputProps
+    * Callback that is called when the text input is blurred
+    */
+   onBlur?:
+-    | ((e: NativeSyntheticEvent<TextInputFocusEventData>) => void)
+-    | undefined;
++  | ((e: NativeSyntheticEvent<TextInputFocusEventData>) => void)
++  | undefined;
+ 
+   /**
+    * Callback that is called when the text input's text changes.
+    */
+   onChange?:
+-    | ((e: NativeSyntheticEvent<TextInputChangeEventData>) => void)
+-    | undefined;
++  | ((e: NativeSyntheticEvent<TextInputChangeEventData>) => void)
++  | undefined;
+ 
+   /**
+    * Callback that is called when the text input's text changes.
+@@ -634,6 +634,8 @@ export interface TextInputProps
+    */
+   onChangeText?: ((text: string) => void) | undefined;
+ 
++  letterSpacing?: number
++
+   /**
+    * Callback that is called when the text input's content size changes.
+    * This will be called with
+@@ -642,15 +644,15 @@ export interface TextInputProps
+    * Only called for multiline text inputs.
+    */
+   onContentSizeChange?:
+-    | ((e: NativeSyntheticEvent<TextInputContentSizeChangeEventData>) => void)
+-    | undefined;
++  | ((e: NativeSyntheticEvent<TextInputContentSizeChangeEventData>) => void)
++  | undefined;
+ 
+   /**
+    * Callback that is called when text input ends.
+    */
+   onEndEditing?:
+-    | ((e: NativeSyntheticEvent<TextInputEndEditingEventData>) => void)
+-    | undefined;
++  | ((e: NativeSyntheticEvent<TextInputEndEditingEventData>) => void)
++  | undefined;
+ 
+   /**
+    * Callback that is called when a touch is engaged.
+@@ -661,29 +663,29 @@ export interface TextInputProps
+    * Callback that is called when a touch is released.
+    */
+   onPressOut?:
+-    | ((e: NativeSyntheticEvent<NativeTouchEvent>) => void)
+-    | undefined;
++  | ((e: NativeSyntheticEvent<NativeTouchEvent>) => void)
++  | undefined;
+ 
+   /**
+    * Callback that is called when the text input is focused
+    */
+   onFocus?:
+-    | ((e: NativeSyntheticEvent<TextInputFocusEventData>) => void)
+-    | undefined;
++  | ((e: NativeSyntheticEvent<TextInputFocusEventData>) => void)
++  | undefined;
+ 
+   /**
+    * Callback that is called when the text input selection is changed.
+    */
+   onSelectionChange?:
+-    | ((e: NativeSyntheticEvent<TextInputSelectionChangeEventData>) => void)
+-    | undefined;
++  | ((e: NativeSyntheticEvent<TextInputSelectionChangeEventData>) => void)
++  | undefined;
+ 
+   /**
+    * Callback that is called when the text input's submit button is pressed.
+    */
+   onSubmitEditing?:
+-    | ((e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => void)
+-    | undefined;
++  | ((e: NativeSyntheticEvent<TextInputSubmitEditingEventData>) => void)
++  | undefined;
+ 
+   /**
+    * Callback that is called on new text input with the argument
+@@ -692,8 +694,8 @@ export interface TextInputProps
+    * This prop requires multiline={true} to be set.
+    */
+   onTextInput?:
+-    | ((e: NativeSyntheticEvent<TextInputTextInputEventData>) => void)
+-    | undefined;
++  | ((e: NativeSyntheticEvent<TextInputTextInputEventData>) => void)
++  | undefined;
+ 
+   /**
+    * Invoked on content scroll with
+@@ -702,8 +704,8 @@ export interface TextInputProps
+    * May also contain other properties from ScrollEvent but on Android contentSize is not provided for performance reasons.
+    */
+   onScroll?:
+-    | ((e: NativeSyntheticEvent<TextInputScrollEventData>) => void)
+-    | undefined;
++  | ((e: NativeSyntheticEvent<TextInputScrollEventData>) => void)
++  | undefined;
+ 
+   /**
+    * Callback that is called when a key is pressed.
+@@ -715,8 +717,8 @@ export interface TextInputProps
+    * Note: on Android only the inputs from soft keyboard are handled, not the hardware keyboard inputs.
+    */
+   onKeyPress?:
+-    | ((e: NativeSyntheticEvent<TextInputKeyPressEventData>) => void)
+-    | undefined;
++  | ((e: NativeSyntheticEvent<TextInputKeyPressEventData>) => void)
++  | undefined;
+ 
+   /**
+    * The string that will be rendered before text input has been entered
+@@ -749,7 +751,7 @@ export interface TextInputProps
+    * The start and end of the text input's selection. Set start and end to
+    * the same value to position the cursor.
+    */
+-  selection?: {start: number; end?: number | undefined} | undefined;
++  selection?: { start: number; end?: number | undefined } | undefined;
+ 
+   /**
+    * The highlight (and cursor on ios) color of the text input
+@@ -833,7 +835,7 @@ interface TextInputState {
+ /**
+  * @see https://reactnative.dev/docs/textinput#methods
+  */
+-declare class TextInputComponent extends React.Component<TextInputProps> {}
++declare class TextInputComponent extends React.Component<TextInputProps> { }
+ declare const TextInputBase: Constructor<NativeMethods> &
+   Constructor<TimerMixin> &
+   typeof TextInputComponent;
+diff --git a/node_modules/react-native/Libraries/Core/ExceptionsManager.js b/node_modules/react-native/Libraries/Core/ExceptionsManager.js
+index 4616569..9e93db5 100644
+--- a/node_modules/react-native/Libraries/Core/ExceptionsManager.js
++++ b/node_modules/react-native/Libraries/Core/ExceptionsManager.js
+@@ -10,8 +10,8 @@
+ 
+ 'use strict';
+ 
+-import type {ExtendedError} from './ExtendedError';
+-import type {ExceptionData} from './NativeExceptionsManager';
++import type { ExtendedError } from './ExtendedError';
++import type { ExceptionData } from './NativeExceptionsManager';
+ 
+ class SyntheticError extends Error {
+   name: string = '';
+@@ -155,7 +155,7 @@ function handleException(e: mixed, isFatal: boolean) {
+  * LTI update could not be added via codemod */
+ function reactConsoleErrorHandler(...args) {
+   // bubble up to any original handlers
+-  console._errorOriginal(...args);
++  // console._errorOriginal(...args);
+   if (!console.reportErrorsAsExceptions) {
+     return;
+   }
+diff --git a/node_modules/react-native/Libraries/LogBox/LogBox.js b/node_modules/react-native/Libraries/LogBox/LogBox.js
+index a597ca5..2679db2 100644
+--- a/node_modules/react-native/Libraries/LogBox/LogBox.js
++++ b/node_modules/react-native/Libraries/LogBox/LogBox.js
+@@ -8,13 +8,13 @@
+  * @format
+  */
+ 
+-import type {IgnorePattern, LogData} from './Data/LogBoxData';
+-import type {ExtendedExceptionData} from './Data/parseLogBoxLog';
++import type { IgnorePattern, LogData } from './Data/LogBoxData';
++import type { ExtendedExceptionData } from './Data/parseLogBoxLog';
+ 
+ import Platform from '../Utilities/Platform';
+ import RCTLog from '../Utilities/RCTLog';
+ 
+-export type {LogData, ExtendedExceptionData, IgnorePattern};
++export type { LogData, ExtendedExceptionData, IgnorePattern };
+ 
+ let LogBox;
+ 
+@@ -23,10 +23,10 @@ interface ILogBox {
+   uninstall(): void;
+   isInstalled(): boolean;
+   ignoreLogs($ReadOnlyArray<IgnorePattern>): void;
+-  ignoreAllLogs(?boolean): void;
+-  clearAllLogs(): void;
+-  addLog(log: LogData): void;
+-  addException(error: ExtendedExceptionData): void;
++ignoreAllLogs(?boolean): void;
++clearAllLogs(): void;
++addLog(log: LogData): void;
++addException(error: ExtendedExceptionData): void;
+ }
+ 
+ /**
+@@ -34,7 +34,7 @@ interface ILogBox {
+  */
+ if (__DEV__) {
+   const LogBoxData = require('./Data/LogBoxData');
+-  const {parseLogBoxLog, parseInterpolation} = require('./Data/parseLogBoxLog');
++  const { parseLogBoxLog, parseInterpolation } = require('./Data/parseLogBoxLog');
+ 
+   let originalConsoleError;
+   let originalConsoleWarn;
+@@ -145,12 +145,12 @@ if (__DEV__) {
+       return;
+     } else {
+       // Be sure to pass LogBox warnings through.
+-      originalConsoleWarn(...args);
++      // originalConsoleWarn(...args);
+     }
+ 
+     try {
+       if (!isRCTLogAdviceWarning(...args)) {
+-        const {category, message, componentStack} = parseLogBoxLog(args);
++        const { category, message, componentStack } = parseLogBoxLog(args);
+ 
+         if (!LogBoxData.isMessageIgnored(message.content)) {
+           LogBoxData.addLog({
+@@ -203,7 +203,7 @@ if (__DEV__) {
+ 
+       // Unfortunately, we need to add the Warning: prefix back for downstream dependencies.
+       args[0] = `Warning: ${filterResult.finalFormat}`;
+-      const {category, message, componentStack} = parseLogBoxLog(args);
++      const { category, message, componentStack } = parseLogBoxLog(args);
+ 
+       // Interpolate the message so they are formatted for adb and other CLIs.
+       // This is different than the message.content above because it includes component stacks.
 diff --git a/node_modules/react-native/react.gradle b/node_modules/react-native/react.gradle
 index 250299b..f54ea4c 100644
 --- a/node_modules/react-native/react.gradle
@@ -48,11 +546,12 @@ index 250299b..f54ea4c 100644
  
 diff --git a/node_modules/react-native/scripts/.packager.env b/node_modules/react-native/scripts/.packager.env
 new file mode 100644
-index 0000000..361f5fb
+index 0000000..21a13cf
 --- /dev/null
 +++ b/node_modules/react-native/scripts/.packager.env
 @@ -0,0 +1 @@
 +export RCT_METRO_PORT=8081
+\ No newline at end of file
 diff --git a/node_modules/react-native/sdks/hermes/hermes-engine.podspec b/node_modules/react-native/sdks/hermes/hermes-engine.podspec
 new file mode 100644
 index 0000000..b800547
