@@ -222,11 +222,11 @@ PODS:
   - React-callinvoker (0.71.5)
   - React-Codegen (0.71.5):
     - FBReactNativeSpec
-    - hermes-engine
     - RCT-Folly
     - RCTRequired
     - RCTTypeSafety
     - React-Core
+    - React-jsc
     - React-jsi
     - React-jsiexecutor
     - ReactCommon/turbomodule/bridging
@@ -418,6 +418,11 @@ PODS:
     - React-jsiexecutor (= 0.71.5)
     - React-jsinspector (= 0.71.5)
     - React-perflogger (= 0.71.5)
+  - React-jsc (0.71.5):
+    - React-jsc/Fabric (= 0.71.5)
+    - React-jsi (= 0.71.5)
+  - React-jsc/Fabric (0.71.5):
+    - React-jsi (= 0.71.5)
   - React-jsi (0.71.5):
     - boost (= 1.76.0)
     - DoubleConversion
@@ -660,6 +665,7 @@ DEPENDENCIES:
   - React-CoreModules (from `../node_modules/react-native/React/CoreModules`)
   - React-cxxreact (from `../node_modules/react-native/ReactCommon/cxxreact`)
   - React-hermes (from `../node_modules/react-native/ReactCommon/hermes`)
+  - React-jsc (from `../node_modules/react-native/ReactCommon/jsc`)
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
@@ -777,6 +783,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/cxxreact"
   React-hermes:
     :path: "../node_modules/react-native/ReactCommon/hermes"
+  React-jsc:
+    :path: "../node_modules/react-native/ReactCommon/jsc"
   React-jsi:
     :path: "../node_modules/react-native/ReactCommon/jsi"
   React-jsiexecutor:
@@ -902,11 +910,12 @@ SPEC CHECKSUMS:
   RCTTypeSafety: c06d9f906faa69dd1c88223204c3a24767725fd8
   React: b9ea33557ef1372af247f95d110fbdea114ed3b2
   React-callinvoker: 112f941fcb98722c72736b8e229edcb3c1d84b45
-  React-Codegen: df704c74e2563b0f73fa44f533b6bfef6534ae81
+  React-Codegen: 2b31baa3a0bd3be7c7e68cb495b79032cd401d8b
   React-Core: c40d8ec76944536e6d4f8306cbda17a7c254585c
   React-CoreModules: 7dec7d883bf29bd0d753a93f37326e3031f8f546
   React-cxxreact: 63154d7b113bd6e74ae221c1091e10591d7ae651
   React-hermes: 187e42638c92a54ad7d270079dda4d59cf8c7229
+  React-jsc: a3d99b97ce0dcc630db523c3ff3e75dbfcec05f0
   React-jsi: 6a633d20f5bb094d8f43c3f23c03f724acab005e
   React-jsiexecutor: 1579bf3207afadc72ac3638a66a102d1bf5263e3
   React-jsinspector: 14a342151ab810862998dfc99e2720746734e9b3
@@ -952,6 +961,6 @@ SPEC CHECKSUMS:
   TOCropViewController: edfd4f25713d56905ad1e0b9f5be3fbe0f59c863
   Yoga: cd7d7f509dbfac14ee7f31a6c750acb957cd5022
 
-PODFILE CHECKSUM: cbf919ad4612702577550f041e304483ca43aaff
+PODFILE CHECKSUM: 05722afa3aad17549eea48f9d329af4410161a0e
 
 COCOAPODS: 1.11.3
