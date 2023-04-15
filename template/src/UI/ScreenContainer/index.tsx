@@ -1,23 +1,21 @@
-import React, { useRef, useState, useCallback, useEffect } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
   ViewStyle,
   ScrollView,
-  Keyboard,
-  View,
   StatusBar,
+  Keyboard,
 } from 'react-native';
+import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import { ScreenHeader, ChangeDirectionStyle, RFValue, AnimatedDrawer, Colors, LoadingScreen, WIDTH, HEIGHT } from 'UI';
 import { useSelector } from 'react-redux';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { ScreenHeader, ChangeDirectionStyle, RFValue, AnimatedDrawer, Colors, LoadingScreen, WIDTH } from 'UI';
 import { IRootState, IScreenHeader } from 'models';
 import { useDispatch } from 'react-redux';
-import { SetActualhHeight } from 'store/Actions';
+import { SetActualhHeight, SetNotchHeight } from 'store/Actions';
 
 interface IScreenContainer {
   style?: ViewStyle | ViewStyle[];
-  containerStyle?: ViewStyle | ViewStyle[];
   children: any;
   headerProps?: IScreenHeader;
   outScrollingComponents?: any;
@@ -25,21 +23,18 @@ interface IScreenContainer {
   loading?: boolean;
   overlayLoading?: boolean;
   showStyle?: boolean
-  scrollViewStyle?: ViewStyle | ViewStyle[];
-  reduceFromScreenHeight?: number
 }
 
 const ScreenContainer = (props: IScreenContainer) => {
 
-  const [executionCount, setExecutionCount] = useState(0)
   const [isDrawerOpen, toggleDrawer] = useState(false)
   const AnimatedDrawerRef = useRef<any>()
-  const dispatch = useDispatch()
-  const { actualHeight } = useSelector((state: IRootState) => ({
-    actualHeight: state.App,
-  }));
-
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+  const { actualHeight } = useSelector((state: IRootState) => ({
+    actualHeight: state.App.actualHeight,
+  }));
+  const insets = useSafeAreaInsets();
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener(
@@ -61,15 +56,15 @@ const ScreenContainer = (props: IScreenContainer) => {
     };
   }, []);
 
-  const onLayout = useCallback((e) => {
-    if (executionCount == 0)
-      setExecutionCount(1)
-    else if (executionCount == 1) {
-      console.log('native height', e.nativeEvent.layout.height)
-      dispatch(SetActualhHeight(e.nativeEvent.layout.height))
-      setExecutionCount(2)
+  useEffect(() => {
+
+    let statusBarHeight = StatusBar.currentHeight ? 2 * StatusBar.currentHeight : 0
+    if (!actualHeight) {
+      dispatch(SetActualhHeight(HEIGHT() - (insets.top + statusBarHeight)))
+      dispatch(SetNotchHeight({ top: insets.top + statusBarHeight, bottom: 0 }))
     }
-  }, [executionCount]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [actualHeight])
 
   const openDrawer = () => AnimatedDrawerRef.current.openDrawer()
   // const closeDrawer = () => AnimatedDrawerRef.current.closeDrawer()
@@ -80,34 +75,39 @@ const ScreenContainer = (props: IScreenContainer) => {
 
       <SafeAreaView
         edges={['top']}
-        style={[{ height: '100%', backgroundColor: props.headerProps ? Colors().App.Primary : 'transparent' }, isDrawerOpen ? { borderWidth: 2, borderColor: Colors().App.Primary, borderRadius: RFValue(25), } : {}, props.containerStyle]}>
+        style={[{ height: '100%', backgroundColor: Colors().App.White }, isDrawerOpen ? { borderWidth: 2, borderColor: Colors().App.Primary, borderRadius: RFValue(25), } : {}]}>
+
+        {props.headerProps && <ScreenHeader openDrawer={openDrawer} {...props.headerProps} />}
 
         <StatusBar
           animated={true}
           barStyle={'dark-content'}
           backgroundColor='#fff' />
 
-        {props.headerProps && <ScreenHeader openDrawer={openDrawer} {...props.headerProps} />}
+        <KeyboardAvoidingView style={{ width: '100%', flex: 1, }} behavior={Platform.OS == 'android' ? undefined : 'padding'}>
 
-        <KeyboardAvoidingView style={{ marginBottom: isKeyboardVisible ? RFValue(30) : 0, width: '100%', flex: 1, }} behavior={Platform.OS == 'android' ? 'height' : 'padding'}>
-
-          <View style={[{ flex: 1, }, props.scrollViewStyle]}>
+          {props.loading ?
+            <LoadingScreen style={{ flex: 1 }} />
+            :
             <ScrollView
-              onLayout={actualHeight ? () => null : onLayout}
               scrollEnabled={true}
               alwaysBounceVertical={false}
               showsVerticalScrollIndicator={false}
               nestedScrollEnabled={true}
               style={{ flexGrow: 1, }}
-              contentContainerStyle={[{ width: '100%', alignItems: 'center', alignSelf: 'center', height: 'auto', flexGrow: (props.loading || props.overlayLoading) ? 1 : 0, }, ChangeDirectionStyle(props.style, props.noDirectionChange, props.showStyle)]}
+              contentContainerStyle={[
+                { paddingHorizontal: RFValue(16), alignItems: 'center', height: 'auto', flexGrow: 0 },
+                ChangeDirectionStyle(props.style, props.noDirectionChange, props.showStyle)
+              ]}
               keyboardShouldPersistTaps='handled'
             >
-              {!!props.loading ? <LoadingScreen /> : props.children}
-              {!!props.overlayLoading && <LoadingScreen style={{ position: 'absolute', width: WIDTH(), zIndex: 200, backgroundColor: Colors(0.6).App.Grey }} />}
-            </ScrollView>
-            {!isKeyboardVisible && props.outScrollingComponents && props.outScrollingComponents()}
+              {props.children}
+            </ScrollView>}
 
-          </View>
+          {!isKeyboardVisible && props.outScrollingComponents && props.outScrollingComponents()}
+
+          {!!props.overlayLoading && <LoadingScreen style={{ height: '100%', position: 'absolute', width: WIDTH(), zIndex: 200, backgroundColor: Colors(0.4).App.Grey }} />}
+
         </KeyboardAvoidingView>
       </SafeAreaView>
 

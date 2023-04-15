@@ -99,8 +99,6 @@ const App: any = () => {
           name: 'default',
           vibration: true,
         })
-          .then(data => console.log(data))
-          .catch(data => console.log(data))
 
       messaging().onMessage(async remoteMessage => {
 
