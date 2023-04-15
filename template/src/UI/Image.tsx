@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { Image as RNImage, ImageProps, BackHandler } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import { ChangeDirectionStyle, View, ActivityIndicator, TouchableOpacity, ConvertStyleToObject, RFValue, VectorIcons, Colors } from 'UI'
@@ -41,18 +41,7 @@ const Image = (props: imageProps) => {
       setShowModal(true)
   }
 
-  useEffect(() => {
-    BackHandler.addEventListener('hardwareBackPress', onBackPress);
-    return () => BackHandler.removeEventListener('hardwareBackPress', onBackPress);
-  }, [showModal])
-
-  useEffect(() => {
-    if (props.source.uri)
-      RNImage.prefetch(props.source.uri)
-  }, [])
-
-
-  const onBackPress = () => {
+  const onBackPress = useCallback(() => {
 
     if (showModal) {
       setShowModal(false)
@@ -60,13 +49,25 @@ const Image = (props: imageProps) => {
     }
     return false
 
-  }
+  }, [showModal])
+
+  useEffect(() => {
+    BackHandler.addEventListener('hardwareBackPress', onBackPress);
+    return () => BackHandler.removeEventListener('hardwareBackPress', onBackPress);
+  }, [onBackPress])
+
+  useEffect(() => {
+    if (props.source.uri)
+      RNImage.prefetch(props.source.uri)
+  }, [props.source.uri])
+
+  const renderLoader = () => <ActivityIndicator size='large' />
 
   return (
     <>
       {!!props.openImage && <Modal onRequestClose={() => setShowModal(false)} visible={showModal} transparent={true}>
         <ImageViewer
-          loadingRender={() => <ActivityIndicator size='large' />}
+          loadingRender={renderLoader}
           renderIndicator={() => <View />}
           renderHeader={() => (
             <SafeAreaView

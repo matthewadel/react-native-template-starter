@@ -35,18 +35,18 @@ export const Modal = forwardRef((_, ref) => {
     setShowModal((val) => !val);
   };
 
-  const closeModal = () => {
+  const closeModalFunc = () => {
     setShowModal(false);
   };
 
-  const openModal = () => {
+  const openModalFunc = () => {
     setShowModal(true);
   };
 
   useImperativeHandle(ref, () => ({
     handleModal,
-    closeModal,
-    openModal,
+    closeModal: closeModalFunc,
+    openModal: openModalFunc,
     open: (_props: ModalProps) => {
       setProps(_props);
       setShowModal(true);
@@ -56,8 +56,8 @@ export const Modal = forwardRef((_, ref) => {
   return (
     <RNModal
       isVisible={showModal}
-      onBackdropPress={closeModal}
-      onBackButtonPress={closeModal}
+      onBackdropPress={closeModalFunc}
+      onBackButtonPress={closeModalFunc}
       onSwipeComplete={handleModal}
       useNativeDriver
       propagateSwipe={true}
