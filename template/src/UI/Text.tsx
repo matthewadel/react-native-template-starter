@@ -19,7 +19,7 @@ export const Text = (props: ITextProps) => {
         {
           fontSize: outputStyle?.fontSize || RFValue(16),
           textShadowOffset: { width: 0, height: 0 },
-          marginVertical: -(outputStyle?.fontSize || RFValue(15)) * (locale === 'ar' ? 0.3 : 0.1),
+          marginVertical: -(outputStyle?.fontSize || RFValue(16)) * (locale === 'ar' ? 0.3 : 0.1),
           fontFamily: FONT_FAMILY(),
         },
         props.noDirectionChange ? {} : { textAlign: locale === 'ar' ? 'right' : 'left', },
