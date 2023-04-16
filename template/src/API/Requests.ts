@@ -1,1 +1,1 @@
-export const verifyUserInputsUrl = `user/verify`;
+export const login = { url: `user/login`, requestId: 1 };

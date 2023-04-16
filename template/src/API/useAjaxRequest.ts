@@ -9,11 +9,10 @@ axiosCancel(axios, {
 });
 
 interface IAPI_Request {
-  url: string,
+  url: { url: string, requestId?: number, },
   onErrorWithMessage?: Function,
   onResponse?: Function,
-  requestId?: number,
-  method: string,
+  method?: string,
   body?: any,
   incomingHeaders?: any,
   noCancellation?: any,
@@ -28,7 +27,6 @@ export const useAjaxRequest = (inputloading?: boolean) => {
   const [data, setData] = useState<any>()
 
   const API_Request = ({
-    requestId,
     url: receivedUrl,
     method,
     body = null,
@@ -39,7 +37,7 @@ export const useAjaxRequest = (inputloading?: boolean) => {
     onErrorWithMessage
   }: IAPI_Request) => {
 
-    let url = `${rootUrl}${receivedUrl}`
+    let url = `${rootUrl}${receivedUrl.url}`
     setloading(true)
 
     let headers = incomingHeaders ?
@@ -54,21 +52,21 @@ export const useAjaxRequest = (inputloading?: boolean) => {
         {}
 
     let request = null
-    if (method.toLowerCase() == 'get')
+    if (method?.toLowerCase() == 'get')
       request = axios.get(url, {
         headers,
-        requestId: noCancellation ? null : `${requestId}`
+        requestId: noCancellation ? null : `${receivedUrl.requestId}`
       }
       )
-    else if (method.toLowerCase() == 'delete')
+    else if (method?.toLowerCase() == 'delete')
       request = axios.delete(url, {
         headers,
-        requestId: noCancellation ? null : `${requestId}`
+        requestId: noCancellation ? null : `${receivedUrl.requestId}`
       }, body)
     else
       request = axios.post(url, body, {
         headers,
-        requestId: noCancellation ? null : `${requestId}`
+        requestId: noCancellation ? null : `${receivedUrl.requestId}`
       })
 
     request
