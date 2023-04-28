@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, useCallback } from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
@@ -13,6 +13,8 @@ import { useSelector } from 'react-redux';
 import { IRootState, IScreenHeader } from 'models';
 import { useDispatch } from 'react-redux';
 import { SetActualhHeight, SetNotchHeight } from 'store/Actions';
+import { useFocusEffect } from '@react-navigation/native';
+import { useAjaxRequest } from 'API';
 
 interface IScreenContainer {
   style?: ViewStyle | ViewStyle[];
@@ -23,6 +25,7 @@ interface IScreenContainer {
   loading?: boolean;
   overlayLoading?: boolean;
   showStyle?: boolean
+  requestIdsInPage?: number[]
 }
 
 const ScreenContainer = (props: IScreenContainer) => {
@@ -35,6 +38,7 @@ const ScreenContainer = (props: IScreenContainer) => {
   }));
   const insets = useSafeAreaInsets();
   const dispatch = useDispatch()
+  const { cancelRequest } = useAjaxRequest()
 
   useEffect(() => {
     const keyboardDidShowListener = Keyboard.addListener(
@@ -55,6 +59,15 @@ const ScreenContainer = (props: IScreenContainer) => {
       keyboardDidShowListener.remove();
     };
   }, []);
+
+  useFocusEffect(
+    useCallback(() => {
+      return () => {
+        if (props.requestIdsInPage?.length)
+          for (let i = 0; i < props.requestIdsInPage.length; i++)
+            cancelRequest(props.requestIdsInPage[i])
+      }
+    }, [props.requestIdsInPage, cancelRequest]))
 
   useEffect(() => {
 
