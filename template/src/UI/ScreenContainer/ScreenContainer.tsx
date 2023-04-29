@@ -8,7 +8,7 @@ import {
   Keyboard,
 } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
-import { ScreenHeader, ChangeDirectionStyle, RFValue, AnimatedDrawer, Colors, LoadingScreen, WIDTH, HEIGHT } from 'UI';
+import { ScreenHeader, ChangeDirectionStyle, RFValue, AnimatedDrawer, Colors, LoadingScreen, WIDTH, HEIGHT, NetworkDisconnected } from 'UI';
 import { useSelector } from 'react-redux';
 import { IRootState, IScreenHeader } from 'models';
 import { useDispatch } from 'react-redux';
@@ -33,9 +33,7 @@ const ScreenContainer = (props: IScreenContainer) => {
   const [isDrawerOpen, toggleDrawer] = useState(false)
   const AnimatedDrawerRef = useRef<any>()
   const [isKeyboardVisible, setKeyboardVisible] = useState(false);
-  const { actualHeight } = useSelector((state: IRootState) => ({
-    actualHeight: state.App.actualHeight,
-  }));
+  const { actualHeight } = useSelector((state: IRootState) => ({ actualHeight: state.App.actualHeight }));
   const insets = useSafeAreaInsets();
   const dispatch = useDispatch()
   const { cancelRequest } = useAjaxRequest()
@@ -98,6 +96,8 @@ const ScreenContainer = (props: IScreenContainer) => {
           backgroundColor='#fff' />
 
         <KeyboardAvoidingView style={{ width: '100%', flex: 1, }} behavior={Platform.OS == 'android' ? undefined : 'padding'}>
+
+          <NetworkDisconnected />
 
           {props.loading ?
             <LoadingScreen style={{ flex: 1 }} />

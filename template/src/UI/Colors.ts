@@ -33,6 +33,7 @@ export const Colors = (alpha = 1) => {
       Red: hexToRgbA('#FF3A44', alpha),
       Grey: hexToRgbA('#B3B2B2', alpha),
       Error: hexToRgbA('#F00', alpha),
+      Green: hexToRgbA('#73c365', alpha),
     },
     Text: {
       Primary: hexToRgbA('#0067CE', alpha),

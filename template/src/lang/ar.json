@@ -5,7 +5,8 @@
     "cancel": "رجوع",
     "capture": "التقاط",
     "gallery": "المعرض",
-    "CheckConnection": "من فضلك تاكد من اتصالك بالانترنت"
+    "CheckConnection": "من فضلك تاكد من اتصالك بالانترنت",
+    "noInternet": "لا يوجد اتصال بالانترنت"
   },
   "Welcome": {
     "Title": "مرحبا بك فى React Native Starter Template",
