@@ -11,7 +11,7 @@ export const View = (props: IView) => {
     <RNView
       {...props}
       style={[
-        { justifyContent: 'center', alignItems: 'center' }, ChangeDirectionStyle(style, noDirectionChange, showStyle),
+        { overflow: 'hidden', justifyContent: 'center', alignItems: 'center' }, ChangeDirectionStyle(style, noDirectionChange, showStyle),
       ]}>
       {Array.isArray(children) || children?.type ? (
         children

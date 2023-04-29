@@ -187,6 +187,21 @@ export const ChangeDirectionStyle = (style: any, noDirectionChange = false, show
     else if (originalStyle.textAlign === 'right')
       outputStyle.textAlign = 'left';
 
+    // 9- right and left values
+    if (originalStyle.right && originalStyle.left) {
+      let temp = originalStyle.right
+      originalStyle.right = originalStyle.left
+      originalStyle.left = temp
+    }
+    else if (originalStyle.right) {
+      originalStyle.left = originalStyle.right
+      originalStyle.right = 0
+    }
+    else if (originalStyle.left) {
+      originalStyle.right = originalStyle.left
+      originalStyle.left = 0
+    }
+
     if (showStyle) {
       console.log(originalStyle);
       console.log(outputStyle);
