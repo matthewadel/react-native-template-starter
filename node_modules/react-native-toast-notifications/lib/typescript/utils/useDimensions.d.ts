@@ -1,0 +1,2 @@
+import { ScaledSize } from "react-native";
+export declare function useDimensions(): ScaledSize;

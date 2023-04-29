@@ -4,7 +4,8 @@
     "ok": "Ok",
     "cancel": "Cancel",
     "capture": "Capture",
-    "gallery": "Gallery"
+    "gallery": "Gallery",
+    "CheckConnection": "Please Check Your Internet Connection First"
   },
   "Welcome": {
     "Title": "Welcome To React Native Starter Template",

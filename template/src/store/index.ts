@@ -3,9 +3,10 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import AsyncStorage from '@react-native-community/async-storage'
 import reducers from "./Reducers";
 import ReduxThunk from "redux-thunk"
+import { IRootState } from 'models';
 
-const migrations = {
-  0: (state) => {
+const migrations: any = {
+  0: (state: IRootState) => {
     return state
   },
   // 1: (state) => {

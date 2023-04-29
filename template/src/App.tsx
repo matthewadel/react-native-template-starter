@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { ActivityIndicator, View, Platform, } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -11,7 +11,7 @@ import I18n from "react-native-i18n";
 import LocalizationContext from 'lang/i18n';
 import Orientation from 'react-native-orientation';
 import FlashMessage from "react-native-flash-message";
-import { FlashMsg, Modal, ModalRef } from 'UI';
+import { FlashMsg, Modal, ModalRef, RFValue } from 'UI';
 import { PERMISSIONS, RESULTS, request, check, requestNotifications } from 'react-native-permissions';
 import { Settings } from 'react-native-fbsdk-next';
 import messaging from '@react-native-firebase/messaging';
@@ -19,10 +19,15 @@ import notifee, { AndroidImportance } from '@notifee/react-native';
 import codePush from "react-native-code-push";
 import crashlytics from '@react-native-firebase/crashlytics';
 import { navigationRef } from 'navigation/useNavigationHook';
+import { ToastProvider } from 'react-native-toast-notifications'
+import { useNetInfo } from "@react-native-community/netinfo";
+import { NetworkStatusStore } from 'context';
 
 const App: any = () => {
 
   const [locale, setLocale] = React.useState(I18n.locale);
+  const netInfo = useNetInfo()
+  const { dispatch } = useContext(NetworkStatusStore)
   const localizationContext = React.useMemo(
     () => ({
       t: (scope: any, options?: any) => I18n.t(scope, { locale, ...options }),
@@ -55,6 +60,31 @@ const App: any = () => {
       .catch(e => console.log(e))
 
   }, [])
+
+  useEffect(() => {
+    if (netInfo.isInternetReachable) {
+      dispatch({
+        type: "SET_NETOWORK_STATE",
+        payload: -1
+      })
+
+      setTimeout(() => {
+        dispatch({
+          type: "SET_NETOWORK_STATE",
+          payload: 1
+        })
+      }, 2000);
+    }
+    else if (netInfo.isInternetReachable != null) {
+      dispatch({
+        type: "SET_NETOWORK_STATE",
+        payload: 0
+      })
+    }
+
+    console.log(`isInternetReachable is ${netInfo.isInternetReachable}`)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [netInfo])
 
   const initFBSdk = async () => {
     Settings.initializeSDK();
@@ -133,22 +163,24 @@ const App: any = () => {
   }
 
   return (
-    <Provider store={store}>
-      <PersistGate loading={<View style={{ height: '100%', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
-        <ActivityIndicator />
-      </View>} persistor={persistor}>
-        <SafeAreaProvider>
-          <LocalizationContext.Provider value={localizationContext}>
-            <NavigationContainer ref={navigationRef}>
-              <AppStack />
-            </NavigationContainer>
-          </LocalizationContext.Provider>
-          <Modal ref={ModalRef} />
-          <FlashMessage duration={4000} animationDuration={500} autoHide={true} hideOnPress={true} position="top" MessageComponent={renderMessagesComponent} />
-        </SafeAreaProvider>
+    <ToastProvider warningColor="#FBCF13" offsetBottom={RFValue(60)} placement="bottom" duration={2000} swipeEnabled={false} animationType="slide-in">
+      <Provider store={store}>
+        <PersistGate loading={<View style={{ height: '100%', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
+          <ActivityIndicator />
+        </View>} persistor={persistor}>
+          <SafeAreaProvider>
+            <LocalizationContext.Provider value={localizationContext}>
+              <NavigationContainer ref={navigationRef}>
+                <AppStack />
+              </NavigationContainer>
+            </LocalizationContext.Provider>
+            <Modal ref={ModalRef} />
+            <FlashMessage duration={4000} animationDuration={500} autoHide={true} hideOnPress={true} position="top" MessageComponent={renderMessagesComponent} />
+          </SafeAreaProvider>
 
-      </PersistGate>
-    </Provider>
+        </PersistGate>
+      </Provider>
+    </ToastProvider>
   );
 };
 

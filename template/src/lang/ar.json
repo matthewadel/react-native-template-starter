@@ -4,7 +4,8 @@
     "ok": "موافق",
     "cancel": "رجوع",
     "capture": "التقاط",
-    "gallery": "المعرض"
+    "gallery": "المعرض",
+    "CheckConnection": "من فضلك تاكد من اتصالك بالانترنت"
   },
   "Welcome": {
     "Title": "مرحبا بك فى React Native Starter Template",

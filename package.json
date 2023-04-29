@@ -17,5 +17,8 @@
     "template",
     "boilerplate"
   ],
-  "author": "Matthew Adel | Andrew Emad"
+  "author": "Matthew Adel | Andrew Emad",
+  "dependencies": {
+    "react-native-toast-notifications": "^3.3.1"
+  }
 }
