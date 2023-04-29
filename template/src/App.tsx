@@ -1,11 +1,9 @@
 import React, { useContext, useEffect } from 'react';
-import { ActivityIndicator, View, Platform, } from 'react-native'
+import { Platform, } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import AppStack from './navigation/AppStack';
-import { store, persistor } from 'store';
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
+import { store } from 'store';
 import Reactotron from 'utils/Reactron';
 import I18n from "react-native-i18n";
 import LocalizationContext from 'lang/i18n';
@@ -164,22 +162,18 @@ const App: any = () => {
 
   return (
     <ToastProvider warningColor="#FBCF13" offsetBottom={RFValue(60)} placement="bottom" duration={2000} swipeEnabled={false} animationType="slide-in">
-      <Provider store={store}>
-        <PersistGate loading={<View style={{ height: '100%', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
-          <ActivityIndicator />
-        </View>} persistor={persistor}>
-          <SafeAreaProvider>
-            <LocalizationContext.Provider value={localizationContext}>
-              <NavigationContainer ref={navigationRef}>
-                <AppStack />
-              </NavigationContainer>
-            </LocalizationContext.Provider>
-            <Modal ref={ModalRef} />
-            <FlashMessage duration={4000} animationDuration={500} autoHide={true} hideOnPress={true} position="top" MessageComponent={renderMessagesComponent} />
-          </SafeAreaProvider>
 
-        </PersistGate>
-      </Provider>
+      <SafeAreaProvider>
+        <LocalizationContext.Provider value={localizationContext}>
+          <NavigationContainer ref={navigationRef}>
+            <AppStack />
+          </NavigationContainer>
+        </LocalizationContext.Provider>
+        <Modal ref={ModalRef} />
+        <FlashMessage duration={4000} animationDuration={500} autoHide={true} hideOnPress={true} position="top" MessageComponent={renderMessagesComponent} />
+      </SafeAreaProvider>
+
+
     </ToastProvider>
   );
 };

@@ -3,13 +3,23 @@ import App from './src/App';
 import React from 'react'
 import { name as appName } from './app.json';
 import { NetworkStatusProvider } from 'context/NetworkStatusContext';
+import { store, persistor } from 'store';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { ActivityIndicator, View, } from 'react-native'
 
 const AppContainer = () => {
 
   return (
-    <NetworkStatusProvider>
-      <App />
-    </NetworkStatusProvider>
+    <Provider store={store}>
+      <PersistGate loading={<View style={{ height: '100%', width: '100%', justifyContent: 'center', alignItems: 'center' }}>
+        <ActivityIndicator />
+      </View>} persistor={persistor}>
+        <NetworkStatusProvider>
+          <App />
+        </NetworkStatusProvider>
+      </PersistGate>
+    </Provider>
 
   )
 }
