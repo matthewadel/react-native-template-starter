@@ -6,7 +6,7 @@ interface IState {
 }
 
 const initialState: IState = {
-  isInternetReachable: 1,
+  isInternetReachable: -1,
 }
 
 const NetworkStatusStore = createContext({
