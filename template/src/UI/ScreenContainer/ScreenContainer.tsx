@@ -65,7 +65,7 @@ const ScreenContainer = (props: IScreenContainer) => {
           for (let i = 0; i < props.requestIdsInPage.length; i++)
             cancelRequest(props.requestIdsInPage[i])
       }
-    }, [props.requestIdsInPage, cancelRequest]))
+    }, []))
 
   useEffect(() => {
 
