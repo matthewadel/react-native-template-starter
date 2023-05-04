@@ -7,6 +7,8 @@ import { store, persistor } from 'store';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { ActivityIndicator, View, } from 'react-native'
+import { NavigationContainer } from '@react-navigation/native';
+import { navigationRef } from 'navigation/useNavigationHook';
 
 const AppContainer = () => {
 
@@ -16,7 +18,9 @@ const AppContainer = () => {
         <ActivityIndicator />
       </View>} persistor={persistor}>
         <NetworkStatusProvider>
-          <App />
+          <NavigationContainer ref={navigationRef}>
+            <App />
+          </NavigationContainer>
         </NetworkStatusProvider>
       </PersistGate>
     </Provider>

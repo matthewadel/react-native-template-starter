@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from 'react';
 import { Platform, } from 'react-native'
-import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import AppStack from './navigation/AppStack';
 import { store } from 'store';
@@ -16,7 +15,6 @@ import messaging from '@react-native-firebase/messaging';
 import notifee, { AndroidImportance } from '@notifee/react-native';
 import codePush from "react-native-code-push";
 import crashlytics from '@react-native-firebase/crashlytics';
-import { navigationRef } from 'navigation/useNavigationHook';
 import { ToastProvider } from 'react-native-toast-notifications'
 import { useNetInfo } from "@react-native-community/netinfo";
 import { NetworkStatusStore } from 'context';
@@ -165,9 +163,7 @@ const App: any = () => {
 
       <SafeAreaProvider>
         <LocalizationContext.Provider value={localizationContext}>
-          <NavigationContainer ref={navigationRef}>
-            <AppStack />
-          </NavigationContainer>
+          <AppStack />
         </LocalizationContext.Provider>
         <Modal ref={ModalRef} />
         <FlashMessage duration={4000} animationDuration={500} autoHide={true} hideOnPress={true} position="top" MessageComponent={renderMessagesComponent} />
