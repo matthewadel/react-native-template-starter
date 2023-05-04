@@ -78,7 +78,6 @@ const App: any = () => {
       })
     }
 
-    console.log(`isInternetReachable is ${netInfo.isInternetReachable}`)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [netInfo])
 
