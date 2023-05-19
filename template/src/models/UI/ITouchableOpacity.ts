@@ -10,6 +10,7 @@ export interface ITouchableOpacity extends TouchableOpacityProps, ITextProps {
   onPress?: any;
   children?: any;
   noDirectionChange?: boolean;
+  ActivityIndicatorColor?: string;
   showStyle?: boolean;
   disabled?: boolean;
   loading?: boolean;
