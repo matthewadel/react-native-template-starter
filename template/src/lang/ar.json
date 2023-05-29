@@ -6,7 +6,8 @@
     "capture": "التقاط",
     "gallery": "المعرض",
     "CheckConnection": "من فضلك تاكد من اتصالك بالانترنت",
-    "noInternet": "لا يوجد اتصال بالانترنت"
+    "noInternet": "لا يوجد اتصال بالانترنت",
+    "noData": "لا توجد بيانات"
   },
   "Welcome": {
     "Title": "مرحبا بك فى React Native Starter Template",

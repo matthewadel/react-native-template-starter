@@ -21,6 +21,7 @@ export * from './Fonts';
 export * from './Image';
 export * from './ImagePicker';
 export * from './Modal';
+export * from './NoData';
 
 export * from './ScreenContainer/ScreenContainer';
 export * from './ScreenContainer/ScreenHeader';

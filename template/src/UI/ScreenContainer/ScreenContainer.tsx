@@ -6,6 +6,7 @@ import {
   ScrollView,
   StatusBar,
   Keyboard,
+  View,
 } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ScreenHeader, ChangeDirectionStyle, RFValue, AnimatedDrawer, Colors, LoadingScreen, WIDTH, HEIGHT, NetworkDisconnected } from 'UI';
@@ -117,7 +118,9 @@ const ScreenContainer = (props: IScreenContainer) => {
               {props.children}
             </ScrollView>}
 
-          {!isKeyboardVisible && props.outScrollingComponents && props.outScrollingComponents()}
+          <View style={{ paddingHorizontal: RFValue(16), }}>
+            {!isKeyboardVisible && props.outScrollingComponents && props.outScrollingComponents()}
+          </View>
 
           {!!props.overlayLoading && <LoadingScreen style={{ height: '100%', position: 'absolute', width: WIDTH(), zIndex: 200, backgroundColor: Colors(0.4).App.Grey }} />}
 
