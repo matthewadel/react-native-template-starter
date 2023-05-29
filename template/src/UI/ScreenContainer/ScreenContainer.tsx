@@ -9,7 +9,7 @@ import {
   View,
 } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
-import { ScreenHeader, ChangeDirectionStyle, RFValue, AnimatedDrawer, Colors, LoadingScreen, WIDTH, HEIGHT, NetworkDisconnected } from 'UI';
+import { ScreenHeader, ChangeDirectionStyle, RFValue, AnimatedDrawer, Colors, LoadingScreen, WIDTH, HEIGHT, NetworkDisconnected, NoData } from 'UI';
 import { useSelector } from 'react-redux';
 import { IRootState, IScreenHeader } from 'models';
 import { useDispatch } from 'react-redux';
@@ -27,6 +27,8 @@ interface IScreenContainer {
   overlayLoading?: boolean;
   showStyle?: boolean
   requestIdsInPage?: number[]
+  noData?: boolean
+  NoDataTextString?: string
 }
 
 const ScreenContainer = (props: IScreenContainer) => {
@@ -79,7 +81,10 @@ const ScreenContainer = (props: IScreenContainer) => {
   }, [actualHeight])
 
   const openDrawer = () => AnimatedDrawerRef.current.openDrawer()
-  // const closeDrawer = () => AnimatedDrawerRef.current.closeDrawer()
+  let childrenStyle = [
+    { paddingHorizontal: RFValue(16), alignItems: 'center', height: 'auto', flexGrow: 0 },
+    props.noData ? { height: '100%' } : {},
+    ChangeDirectionStyle(props.style, props.noDirectionChange, props.showStyle)]
 
   return (
 
@@ -109,16 +114,13 @@ const ScreenContainer = (props: IScreenContainer) => {
               showsVerticalScrollIndicator={false}
               nestedScrollEnabled={true}
               style={{ flexGrow: 1, }}
-              contentContainerStyle={[
-                { paddingHorizontal: RFValue(16), alignItems: 'center', height: 'auto', flexGrow: 0 },
-                ChangeDirectionStyle(props.style, props.noDirectionChange, props.showStyle)
-              ]}
+              contentContainerStyle={childrenStyle}
               keyboardShouldPersistTaps='handled'
             >
-              {props.children}
+              {props.noData ? <NoData textString={props.NoDataTextString} /> : props.children}
             </ScrollView>}
 
-          <View style={{ paddingHorizontal: RFValue(16), }}>
+          <View style={{ paddingHorizontal: RFValue(16), marginBottom: RFValue(32) }}>
             {!isKeyboardVisible && props.outScrollingComponents && props.outScrollingComponents()}
           </View>
 
