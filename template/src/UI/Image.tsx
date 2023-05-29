@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { Image as RNImage, ImageProps, BackHandler } from 'react-native'
-import FastImage from 'react-native-fast-image'
-import { ChangeDirectionStyle, View, ActivityIndicator, TouchableOpacity, ConvertStyleToObject, RFValue, VectorIcons, Colors } from 'UI'
+import { Image as RNImage, ImageProps, BackHandler, Platform } from 'react-native'
+import FastImageComponent from 'react-native-fast-image'
+import { ChangeDirectionStyle, View, ActivityIndicator, TouchableOpacity, ConvertStyleToObject, RFValue, VectorIcons, Colors, WIDTH, HEIGHT } from 'UI'
 import { Modal } from 'react-native'
 import ImageViewer from 'react-native-image-zoom-viewer'
 import { SvgUri } from 'react-native-svg';
 import { ITouchableOpacity } from 'models';
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { store } from 'store'
 
 interface imageProps extends ImageProps, ITouchableOpacity {
   style?: any;
@@ -16,6 +17,8 @@ interface imageProps extends ImageProps, ITouchableOpacity {
   openImage?: boolean;
   onLayout?: any
   source: any
+  imageUrls?: { url: string }[]
+  index?: number
 }
 
 const Image = (props: imageProps) => {
@@ -62,7 +65,7 @@ const Image = (props: imageProps) => {
   }, [props.source.uri])
 
   const renderLoader = () => <ActivityIndicator size='large' />
-
+  let FastImage: any = FastImageComponent
   return (
     <>
       {!!props.openImage && <Modal onRequestClose={() => setShowModal(false)} visible={showModal} transparent={true}>
@@ -76,7 +79,23 @@ const Image = (props: imageProps) => {
               <VectorIcons noIconDirectionChange style={{ zIndex: 2, marginTop: RFValue(20) }} icon="Feather" name="arrow-left-circle" color={'#fff'} size={RFValue(30)} onPress={() => setShowModal(false)} />
             </SafeAreaView>
           )}
-          index={0} enableSwipeDown={true} onSwipeDown={() => setShowModal(false)} imageUrls={[{ url: props.source?.uri }]} />
+          index={props.index || 0}
+          imageUrls={Platform.OS == 'ios' ? (props.imageUrls ? props.imageUrls.map(item => ({ ...item, width: WIDTH(), height: store.getState().App.actualHeight })) : [{ url: props.source?.uri, width: WIDTH(), height: HEIGHT() }]) : (props.imageUrls || [{ url: props.source?.uri, }])}
+          renderImage={Platform.OS == 'ios' ? (inputImage) => (
+            <View style={{ width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center' }}>
+              <ActivityIndicator size='large' style={{ position: 'absolute' }} />
+              <FastImage
+                {...props}
+                style={{ width: '100%', height: '100%' }}
+                source={{
+                  uri: inputImage.source.uri,
+                  priority: FastImage.priority.normal,
+                }}
+                resizeMode={FastImage.resizeMode.contain}
+              />
+            </View>
+          ) : undefined}
+          enableSwipeDown={true} onSwipeDown={() => setShowModal(false)} />
       </Modal>}
 
       {props.source.uri?.endsWith(".svg") ?
