@@ -65,4 +65,3 @@ upcoming features:
 2- test notifications
 3- change side drawer with react-navigation-drawer
 4- flatlist auto calculate page number and use @shopify/flashlist for better performance
-5- check image caching on android and ios
