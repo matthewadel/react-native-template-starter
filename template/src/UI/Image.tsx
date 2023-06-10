@@ -102,7 +102,7 @@ const Image = (props: imageProps) => {
         <SvgUri
           width={props.style?.width}
           height={props.style?.height}
-          style={props.style}
+          style={ChangeDirectionStyle(props.style)}
           uri={props.source.uri}
         />
         :
