@@ -61,7 +61,7 @@ const Image = (props: imageProps) => {
 
   useEffect(() => {
     if (props.source.uri)
-      RNImage.prefetch(props.source.uri)
+      FastImage.preload(props.imageUrls || [{ uri: props.source.uri }])
   }, [props.source.uri])
 
   const renderLoader = () => <ActivityIndicator size='large' />
@@ -89,7 +89,7 @@ const Image = (props: imageProps) => {
                 style={{ width: '100%', height: '100%' }}
                 source={{
                   uri: inputImage.source.uri,
-                  priority: FastImage.priority.normal,
+                  priority: FastImage.priority.cacheOnly,
                 }}
                 resizeMode={FastImage.resizeMode.contain}
               />
@@ -114,7 +114,7 @@ const Image = (props: imageProps) => {
             onLoadEnd={() => props.renderLoader ? setLoading(false) : null}
             style={ChangeDirectionStyle(props.style, props.noDirectionChange, props.showStyle)}
             resizeMode={ConvertStyleToObject(props.style).resizeMode ? FastImage.resizeMode[ConvertStyleToObject(props.style).resizeMode] : FastImage.resizeMode.cover}
-            source={{ ...normalisedSource(), priority: FastImage.priority.normal, cache: FastImage.cacheControl.immutable }}
+            source={{ ...normalisedSource(), priority: FastImage.priority.high, cache: FastImage.cacheControl.immutable }}
           >
             <TouchableOpacity disabled={props.disabled} activeOpacity={1} onPress={(props.onPress || props.openImage) ? onPressImage : null} style={[{ width: '100%', height: '100%', }, props.renderLoader && (loading || error) ? { backgroundColor: Colors().App.Dark, justifyContent: 'center', alignItems: 'center' } : {}]}>
               {(props.renderLoader && loading) ? <ActivityIndicator /> : (props.renderLoader && error) ? <VectorIcons icon="AntDesign" name="exclamationcircle" size={RFValue(30)} color={Colors().App.Red} /> : props.children}
