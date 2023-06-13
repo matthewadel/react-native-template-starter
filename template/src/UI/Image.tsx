@@ -60,8 +60,10 @@ const Image = (props: imageProps) => {
   }, [onBackPress])
 
   useEffect(() => {
-    if (props.source.uri)
+    if (props.source.uri){
+      RNImage.prefetch(props.source.uri)
       FastImage.preload(props.imageUrls || [{ uri: props.source.uri }])
+    }
   }, [props.source.uri])
 
   const renderLoader = () => <ActivityIndicator size='large' />
