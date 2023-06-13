@@ -62,7 +62,10 @@ const Image = (props: imageProps) => {
   useEffect(() => {
     if (props.source.uri){
       RNImage.prefetch(props.source.uri)
-      FastImage.preload(props.imageUrls || [{ uri: props.source.uri }])
+      FastImage.preload([{ uri: props.source.uri }])
+    }
+    if (props.imageUrls) {
+      FastImage.preload(props.imageUrls.map(item => ({ uri: item.url })))
     }
   }, [props.source.uri])
 
