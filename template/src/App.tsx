@@ -6,7 +6,7 @@ import { store } from 'store';
 import Reactotron from 'utils/Reactron';
 import I18n from "react-native-i18n";
 import LocalizationContext from 'lang/i18n';
-import Orientation from 'react-native-orientation';
+import Orientation from 'react-native-orientation-locker';
 import FlashMessage from "react-native-flash-message";
 import { FlashMsg, Modal, ModalRef, RFValue } from 'UI';
 import { PERMISSIONS, RESULTS, request, check, requestNotifications } from 'react-native-permissions';

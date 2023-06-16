@@ -1,6 +1,6 @@
 import { createMigrate, persistReducer, persistStore } from 'redux-persist'
 import { createStore, applyMiddleware, compose } from 'redux'
-import AsyncStorage from '@react-native-community/async-storage'
+import FilesystemStorage from 'redux-persist-filesystem-storage'
 import reducers from "./Reducers";
 import ReduxThunk from "redux-thunk"
 import { IRootState } from 'models';
@@ -23,7 +23,7 @@ const migrations: any = {
 const persistConfig = {
   key: 'primary',
   version: 0,
-  storage: AsyncStorage,
+  storage: FilesystemStorage,
   migrate: createMigrate(migrations, { debug: false }),
 }
 
