@@ -1,3 +1,4 @@
+import 'react-native-gesture-handler';
 import { AppRegistry, LogBox } from 'react-native';
 import App from './src/App';
 import React from 'react'
@@ -28,7 +29,7 @@ const AppContainer = () => {
   )
 }
 
-function HeadlessCheck({ isHeadless }: { isHeadless: boolean }) {
+function HeadlessCheck({ isHeadless }) {
   if (isHeadless) {
     // App has been launched in the background by iOS, ignore
     return null;

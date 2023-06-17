@@ -1,23 +1,21 @@
-import React, { useRef, useState, useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import {
   KeyboardAvoidingView,
   Platform,
   ViewStyle,
   ScrollView,
   StatusBar,
-  Keyboard,
-  View,
 } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
-import { ScreenHeader, ChangeDirectionStyle, RFValue, AnimatedDrawer, Colors, LoadingScreen, WIDTH, HEIGHT, NetworkDisconnected, NoData } from 'UI';
+import { ScreenHeader, ChangeDirectionStyle, RFValue, Colors, LoadingScreen, WIDTH, HEIGHT, NetworkDisconnected, View, NoData } from 'UI';
 import { useSelector } from 'react-redux';
 import { IRootState, IScreenHeader } from 'models';
 import { useDispatch } from 'react-redux';
 import { SetActualhHeight, SetNotchHeight } from 'store/Actions';
-import { useFocusEffect } from '@react-navigation/native';
 import { useAjaxRequest } from 'API';
+import { useFocusEffect } from '@react-navigation/native';
 
-interface IScreenContainer {
+export interface IScreenContainer {
   style?: ViewStyle | ViewStyle[];
   children: any;
   headerProps?: IScreenHeader;
@@ -32,34 +30,10 @@ interface IScreenContainer {
 }
 
 const ScreenContainer = (props: IScreenContainer) => {
-
-  const [isDrawerOpen, toggleDrawer] = useState(false)
-  const AnimatedDrawerRef = useRef<any>()
-  const [isKeyboardVisible, setKeyboardVisible] = useState(false);
   const { actualHeight } = useSelector((state: IRootState) => ({ actualHeight: state.App.actualHeight }));
   const insets = useSafeAreaInsets();
   const dispatch = useDispatch()
   const { cancelRequest } = useAjaxRequest()
-
-  useEffect(() => {
-    const keyboardDidShowListener = Keyboard.addListener(
-      Platform.OS == "android" ? 'keyboardDidShow' : 'keyboardWillChangeFrame',
-      () => {
-        setKeyboardVisible(true); // or some other action
-      }
-    );
-    const keyboardDidHideListener = Keyboard.addListener(
-      Platform.OS == "android" ? 'keyboardDidHide' : 'keyboardWillHide',
-      () => {
-        setKeyboardVisible(false); // or some other action
-      }
-    );
-
-    return () => {
-      keyboardDidHideListener.remove();
-      keyboardDidShowListener.remove();
-    };
-  }, []);
 
   useFocusEffect(
     useCallback(() => {
@@ -68,7 +42,8 @@ const ScreenContainer = (props: IScreenContainer) => {
           for (let i = 0; i < props.requestIdsInPage.length; i++)
             cancelRequest(props.requestIdsInPage[i])
       }
-    }, [props.requestIdsInPage, cancelRequest]))
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []))
 
   useEffect(() => {
 
@@ -80,58 +55,62 @@ const ScreenContainer = (props: IScreenContainer) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [actualHeight])
 
-  const openDrawer = () => AnimatedDrawerRef.current.openDrawer()
   let childrenStyle = [
     { paddingHorizontal: RFValue(16), alignItems: 'center', height: 'auto', flexGrow: 0 },
     props.noData ? { height: '100%' } : {},
     ChangeDirectionStyle(props.style, props.noDirectionChange, props.showStyle)]
 
   return (
+    // <AnimatedDrawer isDrawerOpen={isDrawerOpen} onDrawerStatusChange={(x: boolean) => toggleDrawer(x)} ref={AnimatedDrawerRef}>
 
-    <AnimatedDrawer isDrawerOpen={isDrawerOpen} onDrawerStatusChange={(x: boolean) => toggleDrawer(x)} ref={AnimatedDrawerRef}>
+    <SafeAreaView
+      edges={['top']}
+      style={[{ height: '100%', backgroundColor: Colors().App.White }]}>
 
-      <SafeAreaView
-        edges={['top']}
-        style={[{ height: '100%', backgroundColor: Colors().App.White }, isDrawerOpen ? { borderWidth: 2, borderColor: Colors().App.Primary, borderRadius: RFValue(25), } : {}]}>
+      <ScreenHeader  {...props.headerProps} />
 
-        {props.headerProps && <ScreenHeader openDrawer={openDrawer} {...props.headerProps} />}
+      <StatusBar
+        animated={true}
+        barStyle={'dark-content'}
+        backgroundColor='#fff' />
 
-        <StatusBar
-          animated={true}
-          barStyle={'dark-content'}
-          backgroundColor='#fff' />
+      <KeyboardAvoidingView style={{ width: '100%', flex: 1, }} behavior={Platform.OS == 'android' ? undefined : 'padding'}>
 
-        <KeyboardAvoidingView style={{ width: '100%', flex: 1, }} behavior={Platform.OS == 'android' ? undefined : 'padding'}>
+        <NetworkDisconnected />
 
-          <NetworkDisconnected />
+        {props.loading ?
+          <LoadingScreen style={{ flex: 1 }} />
+          :
+          <ScrollView
+            scrollEnabled={true}
+            alwaysBounceVertical={false}
+            showsVerticalScrollIndicator={false}
+            nestedScrollEnabled={true}
+            style={{ flexGrow: 1, }}
+            contentContainerStyle={childrenStyle}
+            keyboardShouldPersistTaps='handled'
+          >
+            {props.noData ? <NoData textString={props.NoDataTextString} /> : props.children}
+          </ScrollView>}
 
-          {props.loading ?
-            <LoadingScreen style={{ flex: 1 }} />
-            :
-            <ScrollView
-              scrollEnabled={true}
-              alwaysBounceVertical={false}
-              showsVerticalScrollIndicator={false}
-              nestedScrollEnabled={true}
-              style={{ flexGrow: 1, }}
-              contentContainerStyle={childrenStyle}
-              keyboardShouldPersistTaps='handled'
-            >
-              {props.noData ? <NoData textString={props.NoDataTextString} /> : props.children}
-            </ScrollView>}
+        <View style={{ paddingHorizontal: RFValue(16), marginBottom: RFValue(32) }}>
+          {props.outScrollingComponents && props.outScrollingComponents()}
+        </View>
 
-          <View style={{ paddingHorizontal: RFValue(16), marginBottom: RFValue(32) }}>
-            {!isKeyboardVisible && props.outScrollingComponents && props.outScrollingComponents()}
-          </View>
+        {!!props.overlayLoading && <LoadingScreen style={{ height: '100%', position: 'absolute', width: WIDTH(), zIndex: 200, backgroundColor: Colors(0.4).App.Grey }} />}
 
-          {!!props.overlayLoading && <LoadingScreen style={{ height: '100%', position: 'absolute', width: WIDTH(), zIndex: 200, backgroundColor: Colors(0.4).App.Grey }} />}
+      </KeyboardAvoidingView>
 
-        </KeyboardAvoidingView>
-      </SafeAreaView>
+    </SafeAreaView>
 
-
-    </AnimatedDrawer>
+    // </AnimatedDrawer>
   );
 };
 
 export { ScreenContainer }
+
+
+
+// benefits of scrollview
+// 1- scroll if there is a keyboard in the screen
+// 2- in small mobile phones, if the content exceeded the height of the screen, it will be scrollable and no data will be missed of the screen

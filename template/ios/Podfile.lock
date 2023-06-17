@@ -404,30 +404,30 @@ PODS:
     - glog
   - react-native-blob-util (0.18.3):
     - React-Core
-  - react-native-date-picker (4.2.10):
+  - react-native-date-picker (4.2.13):
     - React-Core
-  - react-native-fbsdk-next (11.2.0):
+  - react-native-fbsdk-next (11.2.1):
     - React-Core
-    - react-native-fbsdk-next/Core (= 11.2.0)
-    - react-native-fbsdk-next/Login (= 11.2.0)
-    - react-native-fbsdk-next/Share (= 11.2.0)
-  - react-native-fbsdk-next/Core (11.2.0):
+    - react-native-fbsdk-next/Core (= 11.2.1)
+    - react-native-fbsdk-next/Login (= 11.2.1)
+    - react-native-fbsdk-next/Share (= 11.2.1)
+  - react-native-fbsdk-next/Core (11.2.1):
     - FBSDKCoreKit (~> 15.0.0)
     - React-Core
-  - react-native-fbsdk-next/Login (11.2.0):
+  - react-native-fbsdk-next/Login (11.2.1):
     - FBSDKLoginKit (~> 15.0.0)
     - React-Core
-  - react-native-fbsdk-next/Share (11.2.0):
+  - react-native-fbsdk-next/Share (11.2.1):
     - FBSDKGamingServicesKit (~> 15.0.0)
     - FBSDKShareKit (~> 15.0.0)
     - React-Core
-  - react-native-netinfo (9.3.9):
+  - react-native-netinfo (9.3.10):
     - React-Core
   - react-native-orientation-locker (1.5.0):
     - React-Core
   - react-native-safe-area (0.5.1):
     - React
-  - react-native-safe-area-context (4.5.0):
+  - react-native-safe-area-context (4.5.3):
     - RCT-Folly
     - RCTRequired
     - RCTTypeSafety
@@ -520,29 +520,31 @@ PODS:
     - React-Core
   - RNCMaskedView (0.1.11):
     - React
-  - RNCPushNotificationIOS (1.10.1):
+  - RNCPushNotificationIOS (1.11.0):
     - React-Core
   - RNFastImage (8.6.3):
     - React-Core
     - SDWebImage (~> 5.11.1)
     - SDWebImageWebPCoder (~> 0.8.4)
-  - RNFBAnalytics (17.4.1):
+  - RNFBAnalytics (17.5.0):
     - Firebase/Analytics (= 10.7.0)
     - React-Core
     - RNFBApp
-  - RNFBApp (17.4.1):
+  - RNFBApp (17.5.0):
     - Firebase/CoreOnly (= 10.7.0)
     - React-Core
-  - RNFBCrashlytics (17.4.1):
+  - RNFBCrashlytics (17.5.0):
     - Firebase/Crashlytics (= 10.7.0)
     - FirebaseCoreExtension (= 10.7.0)
     - React-Core
     - RNFBApp
-  - RNFBMessaging (17.4.1):
+  - RNFBMessaging (17.5.0):
     - Firebase/Messaging (= 10.7.0)
     - FirebaseCoreExtension (= 10.7.0)
     - React-Core
     - RNFBApp
+  - RNGestureHandler (2.12.0):
+    - React-Core
   - RNI18n (2.0.15):
     - React-Core
   - RNImageCropPicker (0.38.0):
@@ -554,14 +556,14 @@ PODS:
     - React-Core
     - React-RCTImage
     - TOCropViewController
-  - RNNotifee (7.6.1):
+  - RNNotifee (7.7.1):
     - React-Core
-    - RNNotifee/NotifeeCore (= 7.6.1)
-  - RNNotifee/NotifeeCore (7.6.1):
+    - RNNotifee/NotifeeCore (= 7.7.1)
+  - RNNotifee/NotifeeCore (7.7.1):
     - React-Core
   - RNPermissions (3.8.0):
     - React-Core
-  - RNReanimated (3.0.2):
+  - RNReanimated (3.3.0):
     - DoubleConversion
     - FBLazyVector
     - FBReactNativeSpec
@@ -588,7 +590,7 @@ PODS:
     - React-RCTText
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNScreens (3.20.0):
+  - RNScreens (3.21.0):
     - React-Core
     - React-RCTImage
   - RNSVG (13.9.0):
@@ -659,6 +661,7 @@ DEPENDENCIES:
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBCrashlytics (from `../node_modules/@react-native-firebase/crashlytics`)"
   - "RNFBMessaging (from `../node_modules/@react-native-firebase/messaging`)"
+  - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNI18n (from `../node_modules/react-native-i18n`)
   - RNImageCropPicker (from `../node_modules/react-native-image-crop-picker`)
   - "RNNotifee (from `../node_modules/@notifee/react-native`)"
@@ -808,6 +811,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-firebase/crashlytics"
   RNFBMessaging:
     :path: "../node_modules/@react-native-firebase/messaging"
+  RNGestureHandler:
+    :path: "../node_modules/react-native-gesture-handler"
   RNI18n:
     :path: "../node_modules/react-native-i18n"
   RNImageCropPicker:
@@ -879,12 +884,12 @@ SPEC CHECKSUMS:
   React-jsinspector: 14a342151ab810862998dfc99e2720746734e9b3
   React-logger: 94ec392ae471683635e4bf874d4e82f675399d2d
   react-native-blob-util: 2d36383bb52c15c5451be81cb7ddf22bc34a12a6
-  react-native-date-picker: 89c419d88fa8e3c5f2d3cbae0bb7f7454ae8ea55
-  react-native-fbsdk-next: b2dd3a5cebb2507c09e3ec880e1b94a491dbaece
-  react-native-netinfo: 22c082970cbd99071a4e5aa7a612ac20d66b08f0
+  react-native-date-picker: 04e866ba4e7857f83abd504ad42e787f0f02ae00
+  react-native-fbsdk-next: 5291a5d67aab4e649d072c50988033ff0d05b915
+  react-native-netinfo: ccbe1085dffd16592791d550189772e13bf479e2
   react-native-orientation-locker: 851f6510d8046ea2f14aa169b1e01fcd309a94ba
   react-native-safe-area: e8230b0017d76c00de6b01e2412dcf86b127c6a3
-  react-native-safe-area-context: 39c2d8be3328df5d437ac1700f4f3a4f75716acc
+  react-native-safe-area-context: b8979f5eda6ed5903d4dbc885be3846ea3daa753
   React-perflogger: 883a55a9a899535eaf06d0029108ef9ef22cce92
   React-RCTActionSheet: 1a3b8416688a3d291367be645022886f71d6842a
   React-RCTAnimation: e5560cb72d91ba35151d51e2eb0d467b42763f43
@@ -901,18 +906,19 @@ SPEC CHECKSUMS:
   ReactNativeART: 78edc68dd4a1e675338cd0cd113319cf3a65f2ab
   RNCAsyncStorage: b03032fdbdb725bea0bd9e5ec5a7272865ae7398
   RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
-  RNCPushNotificationIOS: 87b8d16d3ede4532745e05b03c42cff33a36cc45
+  RNCPushNotificationIOS: 64218f3c776c03d7408284a819b2abfda1834bc8
   RNFastImage: 5c9c9fed9c076e521b3f509fe79e790418a544e8
-  RNFBAnalytics: 79a41751a4dab4594ef14ff9a1be3c08d12f742f
-  RNFBApp: ac422b09f963ae32cd732953610553bddd4c2b12
-  RNFBCrashlytics: 1d413d478fd4fa302e43e53c93516b81d4c834a3
-  RNFBMessaging: 912d2ae75161a0c18238dd5893b8fae6cab5ccb4
+  RNFBAnalytics: b4e2f1fb446c4bd15a5e778b0554464a8a303a1e
+  RNFBApp: d59efa0872fff4e27de03cca3c528c203a436ae5
+  RNFBCrashlytics: f2dd2ad20eff4d5ceaa5c19936efff3b1607eb33
+  RNFBMessaging: 216693dd5ba4f18ba65fb39fc73a44a23c26190f
+  RNGestureHandler: dec4645026e7401a0899f2846d864403478ff6a5
   RNI18n: 5fa3974eb5050dee2cb6ad4876864e2774920b87
   RNImageCropPicker: ffbba608264885c241cbf3a8f78eb7aeeb978241
-  RNNotifee: bdc064c29f4d558046f51f0c3ae02bab4fd3cd85
+  RNNotifee: 05692d7bb42b6c718a3906aeb8431c48ff2e8097
   RNPermissions: df77613085e5cb11abbe34322bbf1f46c5a02fef
-  RNReanimated: f0dd6b881808e635ef0673f89642937d6c141314
-  RNScreens: 218801c16a2782546d30bd2026bb625c0302d70f
+  RNReanimated: ed60b6926aa075306cc69de64690d0c5e0c5a4be
+  RNScreens: d037903436160a4b039d32606668350d2a808806
   RNSVG: 53c661b76829783cdaf9b7a57258f3d3b4c28315
   RNVectorIcons: fcc2f6cb32f5735b586e66d14103a74ce6ad61f8
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
@@ -921,6 +927,6 @@ SPEC CHECKSUMS:
   TOCropViewController: edfd4f25713d56905ad1e0b9f5be3fbe0f59c863
   Yoga: cd7d7f509dbfac14ee7f31a6c750acb957cd5022
 
-PODFILE CHECKSUM: 156f65c3044549960bc86aedce59a3fea33890ce
+PODFILE CHECKSUM: dded2464778927d10dc28923d5ee8ed1204046bc
 
 COCOAPODS: 1.12.1
