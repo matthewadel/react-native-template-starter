@@ -118,6 +118,7 @@ export const useAjaxRequest = (inputloading?: boolean) => {
 
       return new Promise(function (_, reject) {
         reject(!!props.onError && props.onError())
+        !!props.onErrorWithMessage && props.onErrorWithMessage()
         !!props.onFinally && props.onFinally()
       });
     }
