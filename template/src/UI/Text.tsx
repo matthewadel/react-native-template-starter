@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text as RNText, Platform } from 'react-native';
 import { useLanguage } from 'lang/useLanguage';
-import { ChangeDirectionStyle, FONT_FAMILY, RFValue } from 'UI';
+import { ChangeDirectionStyle, Colors, FONT_FAMILY, RFValue } from 'UI';
 import { ITextProps } from 'models';
 
 export const Text = (props: ITextProps) => {
@@ -17,6 +17,7 @@ export const Text = (props: ITextProps) => {
       onPress={props.disabled ? () => null : props.onPress}
       style={[
         {
+          color: Colors().Text.Dark,
           fontSize: outputStyle?.fontSize || RFValue(16),
           textShadowOffset: { width: 0, height: 0 },
           marginVertical: -(outputStyle?.fontSize || RFValue(16)) * (locale === 'ar' ? 0.3 : 0.1),

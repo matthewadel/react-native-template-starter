@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Colors, WIDTH, RFValue, openModal, closeModal, TouchableOpacity } from 'UI';
 import RNDatePicker from 'react-native-date-picker';
-import LocalizationContext from 'lang/i18n';
+import I18n from 'react-native-i18n';
 
 interface DatePickerProps {
   onPress: (dateModalRef: Date) => void;
@@ -21,7 +21,6 @@ export const DatePickerView = (props: DatePickerProps) => {
   const [selectedDate, setSelectedDate] = useState(
     (props?.selectedDate && new Date(props?.selectedDate)) || new Date(),
   );
-  const { t } = React.useContext(LocalizationContext);
 
   return (
 
@@ -43,11 +42,11 @@ export const DatePickerView = (props: DatePickerProps) => {
             closeModal()
             props.onPress(selectedDate);
           }}>
-          {t('UI.ok')}
+          {I18n.t('UI.ok')}
         </TouchableOpacity>
 
         <TouchableOpacity style={{ height: '100%', paddingHorizontal: RFValue(15) }} onPress={closeModal}>
-          {t('UI.cancel')}
+          {I18n.t('UI.cancel')}
         </TouchableOpacity>
       </View>
 

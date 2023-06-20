@@ -105,7 +105,7 @@ export const useAjaxRequest = (inputloading?: boolean) => {
   const { t } = useLanguage()
   const API_Request = (props: IAPI_Request) => {
 
-    if (state.isInternetReachable) {
+    if (state.isInternetReachable == 1) {
       setloading(true)
       return handle_API_Request(props)
         .finally(() => setloading(false))
@@ -118,6 +118,7 @@ export const useAjaxRequest = (inputloading?: boolean) => {
 
       return new Promise(function (_, reject) {
         reject(!!props.onError && props.onError())
+        !!props.onErrorWithMessage && props.onErrorWithMessage()
         !!props.onFinally && props.onFinally()
       });
     }

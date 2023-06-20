@@ -10,4 +10,5 @@ export interface ITextInput extends TextInputProps {
   onChangeText?: any
   hasError?: boolean,
   changeDirecton?: boolean
+  isButtonPressed?: number
 }

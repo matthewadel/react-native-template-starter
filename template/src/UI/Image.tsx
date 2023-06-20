@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { Image as RNImage, ImageProps, BackHandler } from 'react-native'
-import FastImage from 'react-native-fast-image'
-import { ChangeDirectionStyle, View, ActivityIndicator, TouchableOpacity, ConvertStyleToObject, RFValue, VectorIcons, Colors } from 'UI'
+import { Image as RNImage, ImageProps, BackHandler, Platform } from 'react-native'
+import FastImageComponent from 'react-native-fast-image'
+import { ChangeDirectionStyle, View, ActivityIndicator, TouchableOpacity, ConvertStyleToObject, RFValue, VectorIcons, Colors, WIDTH, HEIGHT } from 'UI'
 import { Modal } from 'react-native'
 import ImageViewer from 'react-native-image-zoom-viewer'
 import { SvgUri } from 'react-native-svg';
 import { ITouchableOpacity } from 'models';
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { store } from 'store'
 
 interface imageProps extends ImageProps, ITouchableOpacity {
   style?: any;
@@ -16,6 +17,8 @@ interface imageProps extends ImageProps, ITouchableOpacity {
   openImage?: boolean;
   onLayout?: any
   source: any
+  imageUrls?: { url: string }[]
+  index?: number
 }
 
 const Image = (props: imageProps) => {
@@ -57,12 +60,17 @@ const Image = (props: imageProps) => {
   }, [onBackPress])
 
   useEffect(() => {
-    if (props.source.uri)
+    if (props.source.uri){
       RNImage.prefetch(props.source.uri)
+      FastImage.preload([{ uri: props.source.uri }])
+    }
+    if (props.imageUrls) {
+      FastImage.preload(props.imageUrls.map(item => ({ uri: item.url })))
+    }
   }, [props.source.uri])
 
   const renderLoader = () => <ActivityIndicator size='large' />
-
+  let FastImage: any = FastImageComponent
   return (
     <>
       {!!props.openImage && <Modal onRequestClose={() => setShowModal(false)} visible={showModal} transparent={true}>
@@ -76,14 +84,30 @@ const Image = (props: imageProps) => {
               <VectorIcons noIconDirectionChange style={{ zIndex: 2, marginTop: RFValue(20) }} icon="Feather" name="arrow-left-circle" color={'#fff'} size={RFValue(30)} onPress={() => setShowModal(false)} />
             </SafeAreaView>
           )}
-          index={0} enableSwipeDown={true} onSwipeDown={() => setShowModal(false)} imageUrls={[{ url: props.source?.uri }]} />
+          index={props.index || 0}
+          imageUrls={Platform.OS == 'ios' ? (props.imageUrls ? props.imageUrls.map(item => ({ ...item, width: WIDTH(), height: store.getState().App.actualHeight })) : [{ url: props.source?.uri, width: WIDTH(), height: HEIGHT() }]) : (props.imageUrls || [{ url: props.source?.uri, }])}
+          renderImage={Platform.OS == 'ios' ? (inputImage) => (
+            <View style={{ width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center' }}>
+              <ActivityIndicator size='large' style={{ position: 'absolute' }} />
+              <FastImage
+                {...props}
+                style={{ width: '100%', height: '100%' }}
+                source={{
+                  uri: inputImage.source.uri,
+                  priority: FastImage.priority.cacheOnly,
+                }}
+                resizeMode={FastImage.resizeMode.contain}
+              />
+            </View>
+          ) : undefined}
+          enableSwipeDown={true} onSwipeDown={() => setShowModal(false)} />
       </Modal>}
 
       {props.source.uri?.endsWith(".svg") ?
         <SvgUri
           width={props.style?.width}
           height={props.style?.height}
-          style={props.style}
+          style={ChangeDirectionStyle(props.style)}
           uri={props.source.uri}
         />
         :
@@ -95,7 +119,7 @@ const Image = (props: imageProps) => {
             onLoadEnd={() => props.renderLoader ? setLoading(false) : null}
             style={ChangeDirectionStyle(props.style, props.noDirectionChange, props.showStyle)}
             resizeMode={ConvertStyleToObject(props.style).resizeMode ? FastImage.resizeMode[ConvertStyleToObject(props.style).resizeMode] : FastImage.resizeMode.cover}
-            source={{ ...normalisedSource(), priority: FastImage.priority.normal, cache: FastImage.cacheControl.immutable }}
+            source={{ ...normalisedSource(), priority: FastImage.priority.high, cache: FastImage.cacheControl.immutable }}
           >
             <TouchableOpacity disabled={props.disabled} activeOpacity={1} onPress={(props.onPress || props.openImage) ? onPressImage : null} style={[{ width: '100%', height: '100%', }, props.renderLoader && (loading || error) ? { backgroundColor: Colors().App.Dark, justifyContent: 'center', alignItems: 'center' } : {}]}>
               {(props.renderLoader && loading) ? <ActivityIndicator /> : (props.renderLoader && error) ? <VectorIcons icon="AntDesign" name="exclamationcircle" size={RFValue(30)} color={Colors().App.Red} /> : props.children}

@@ -1,8 +1,7 @@
 import React from 'react'
 import { StyleProp, TextStyle, ViewStyle } from 'react-native'
 import RNCheckbox from 'react-native-checkbox-animated'
-import { RFValue, Colors } from 'UI'
-import * as Animatable from 'react-native-animatable';
+import { RFValue, Colors, AnimatableView } from 'UI'
 import { store } from 'store';
 
 interface ICheckBox {
@@ -11,6 +10,7 @@ interface ICheckBox {
   unCheckedBorderColor?: string
   checked: boolean
   hasError?: boolean
+  isButtonPressed?: number
   onValueChange?: Function
   size?: number
   labelContainerStyle?: any
@@ -24,7 +24,7 @@ interface ICheckBox {
 const CheckBox = (props: ICheckBox) => {
 
   return (
-    <Animatable.View style={[{ alignItems: 'center', }, props.containerStyle]} animation={props.hasError ? 'shake' : ''}>
+    <AnimatableView isButtonPressed={props.isButtonPressed} style={[{ alignItems: 'center', }, props.containerStyle]} animation={props.hasError}>
       <RNCheckbox
         label={props.label || ''}
         containerStyle={{ flexDirection: store.getState().App.lang == 'ar' ? 'row-reverse' : 'row' }}
@@ -42,7 +42,7 @@ const CheckBox = (props: ICheckBox) => {
         customMarker={props.customMarker}
         boxStyle={{ width: RFValue(32), height: RFValue(32) }}
       />
-    </Animatable.View>
+    </AnimatableView>
   )
 
 }

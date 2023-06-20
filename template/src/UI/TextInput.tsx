@@ -1,23 +1,21 @@
 import { ITextInput } from 'models';
 import React, { useState } from 'react';
 import { TextInput as RNTextInput } from 'react-native';
-import * as Animatable from 'react-native-animatable';
-import { ChangeDirectionStyle, Colors, ConvertStyleToObject, SVGImage, Text, VectorIcons, RFValue } from 'UI';
+import { ChangeDirectionStyle, Colors, ConvertStyleToObject, SVGImage, Text, VectorIcons, RFValue, AnimatableView } from 'UI';
 import { FONT_FAMILY } from 'UI/Fonts';
 import { digitsArToEn } from "@persian-tools/persian-tools";
 
 const TextInput = React.forwardRef((props: ITextInput, ref: any) => {
 
   const [showPassword, togglePassword] = useState(false)
-
-  let AnimatableView: any = Animatable.View
   return (
     <>
 
       {!!props.label && <Text style={[{ marginVertical: RFValue(14), width: '100%' }, props.labelStyle]}>{props.label}</Text>}
 
       <AnimatableView
-        animation={props.hasError ? 'shake' : ''}
+        animation={props.hasError}
+        isButtonPressed={props.isButtonPressed}
         style={ChangeDirectionStyle([
           { flexDirection: 'row', alignItems: 'center', borderWidth: 1, borderColor: props.hasError ? Colors().App.Red : Colors().App.Secondary, borderRadius: RFValue(8), height: RFValue(50) },
           ConvertStyleToObject(props.style),

@@ -1,13 +1,12 @@
 import React, { useContext, useEffect } from 'react';
 import { Platform, } from 'react-native'
-import { NavigationContainer } from '@react-navigation/native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import AppStack from './navigation/AppStack';
 import { store } from 'store';
 import Reactotron from 'utils/Reactron';
 import I18n from "react-native-i18n";
 import LocalizationContext from 'lang/i18n';
-import Orientation from 'react-native-orientation';
+import Orientation from 'react-native-orientation-locker';
 import FlashMessage from "react-native-flash-message";
 import { FlashMsg, Modal, ModalRef, RFValue } from 'UI';
 import { PERMISSIONS, RESULTS, request, check, requestNotifications } from 'react-native-permissions';
@@ -16,7 +15,6 @@ import messaging from '@react-native-firebase/messaging';
 import notifee, { AndroidImportance } from '@notifee/react-native';
 import codePush from "react-native-code-push";
 import crashlytics from '@react-native-firebase/crashlytics';
-import { navigationRef } from 'navigation/useNavigationHook';
 import { ToastProvider } from 'react-native-toast-notifications'
 import { useNetInfo } from "@react-native-community/netinfo";
 import { NetworkStatusStore } from 'context';
@@ -80,7 +78,6 @@ const App: any = () => {
       })
     }
 
-    console.log(`isInternetReachable is ${netInfo.isInternetReachable}`)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [netInfo])
 
@@ -165,9 +162,7 @@ const App: any = () => {
 
       <SafeAreaProvider>
         <LocalizationContext.Provider value={localizationContext}>
-          <NavigationContainer ref={navigationRef}>
-            <AppStack />
-          </NavigationContainer>
+          <AppStack />
         </LocalizationContext.Provider>
         <Modal ref={ModalRef} />
         <FlashMessage duration={4000} animationDuration={500} autoHide={true} hideOnPress={true} position="top" MessageComponent={renderMessagesComponent} />

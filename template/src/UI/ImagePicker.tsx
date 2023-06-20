@@ -21,6 +21,7 @@ export const ImagePicker = (props: IImagePicker) => {
       width: 400,
       height: 400,
       cropping: false,
+      forceJpg: props.type === 'video' ? false : true,
     };
 
     setTimeout(() => {
@@ -43,6 +44,7 @@ export const ImagePicker = (props: IImagePicker) => {
     const options: any = {
       mediaType: props.type === 'video' ? 'video' : 'photo',
       includeBase64: props.type === 'video' ? false : true,
+      forceJpg: props.type === 'video' ? false : true,
     };
 
     // {

@@ -6,7 +6,8 @@
     "capture": "Capture",
     "gallery": "Gallery",
     "CheckConnection": "Please Check Your Internet Connection First",
-    "noInternet": "No Internet Connection"
+    "noInternet": "No Internet Connection",
+    "noData": "No Data Found"
   },
   "Welcome": {
     "Title": "Welcome To React Native Starter Template",

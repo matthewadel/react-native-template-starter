@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Keyboard, TouchableOpacity as RNTouchableOpacity } from 'react-native';
-import { ConvertStyleToObject, Text, ChangeDirectionStyle, ActivityIndicator } from 'UI';
+import { ConvertStyleToObject, Text, ChangeDirectionStyle, ActivityIndicator, Colors } from 'UI';
 import { ITouchableOpacity } from 'models';
 
 
@@ -44,7 +44,7 @@ const TouchableOpacity = React.forwardRef((props: ITouchableOpacity, ref: any) =
         ]}
     >
       {props.loading ?
-        <ActivityIndicator size='small' />
+        <ActivityIndicator size='small' color={props.ActivityIndicatorColor || Colors().App.White} />
         :
         (Array.isArray(children) || children?.type) ?
           children
