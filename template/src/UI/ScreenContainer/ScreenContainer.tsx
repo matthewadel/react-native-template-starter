@@ -93,9 +93,9 @@ const ScreenContainer = (props: IScreenContainer) => {
             {props.noData ? <NoData textString={props.NoDataTextString} /> : props.children}
           </ScrollView>}
 
-        <View style={{ paddingHorizontal: RFValue(16), marginBottom: RFValue(32) }}>
-          {props.outScrollingComponents && props.outScrollingComponents()}
-        </View>
+        {props.outScrollingComponents && <View style={{ paddingHorizontal: RFValue(16), marginBottom: RFValue(32) }}>
+          {props.outScrollingComponents()}
+        </View>}
 
         {!!props.overlayLoading && <LoadingScreen style={{ height: '100%', position: 'absolute', width: WIDTH(), zIndex: 200, backgroundColor: Colors(0.4).App.Grey }} />}
 
