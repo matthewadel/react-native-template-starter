@@ -8,7 +8,7 @@
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
-    "postinstall": "react-native setup-ios-permissions && patch-package"
+    "postinstall": "npx react-native setup-ios-permissions && patch-package && cd ios && pod install"
   },
   "reactNativePermissionsIOS": [
     "AppTrackingTransparency"
