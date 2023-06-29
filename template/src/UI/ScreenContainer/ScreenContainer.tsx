@@ -5,6 +5,7 @@ import {
   ViewStyle,
   ScrollView,
   StatusBar,
+  RefreshControl,
 } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
 import { ScreenHeader, ChangeDirectionStyle, RFValue, Colors, LoadingScreen, WIDTH, HEIGHT, NetworkDisconnected, View, NoData } from 'UI';
@@ -27,6 +28,8 @@ export interface IScreenContainer {
   requestIdsInPage?: number[]
   noData?: boolean
   NoDataTextString?: string
+  refreshing?: boolean
+  onRefresh?: (() => void) | undefined
 }
 
 const ScreenContainer = (props: IScreenContainer) => {
@@ -83,6 +86,11 @@ const ScreenContainer = (props: IScreenContainer) => {
           :
           <ScrollView
             scrollEnabled={true}
+            refreshControl={
+              <RefreshControl
+                refreshing={props.refreshing || false}
+                onRefresh={props.onRefresh}
+              />}
             alwaysBounceVertical={false}
             showsVerticalScrollIndicator={false}
             nestedScrollEnabled={true}
@@ -93,7 +101,7 @@ const ScreenContainer = (props: IScreenContainer) => {
             {props.noData ? <NoData textString={props.NoDataTextString} /> : props.children}
           </ScrollView>}
 
-        {props.outScrollingComponents && <View style={{ paddingHorizontal: RFValue(16), marginBottom: RFValue(32) }}>
+        {props.outScrollingComponents && <View style={{ paddingHorizontal: RFValue(16), marginBottom: RFValue(32), marginTop: RFValue(25) }}>
           {props.outScrollingComponents()}
         </View>}
 

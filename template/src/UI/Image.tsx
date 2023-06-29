@@ -60,7 +60,7 @@ const Image = (props: imageProps) => {
   }, [onBackPress])
 
   useEffect(() => {
-    if (props.source.uri){
+    if (props.source.uri) {
       RNImage.prefetch(props.source.uri)
       FastImage.preload([{ uri: props.source.uri }])
     }
@@ -127,7 +127,7 @@ const Image = (props: imageProps) => {
           </FastImage>
 
           :
-          <View style={[ChangeDirectionStyle(props.style, props.noDirectionChange, props.showStyle)]}>
+          <View style={[props.style, props.noDirectionChange, props.showStyle]}>
             <RNImage {...props} children={null} style={{ resizeMode: ConvertStyleToObject(props.style).resizeMode || 'cover', width: '100%', height: '100%' }} />
             <TouchableOpacity activeOpacity={1} onPress={(props.onPress || props.openImage) ? onPressImage : null} style={{ position: 'absolute', right: 0, left: 0, top: 0, bottom: 0 }} >
               {props.children}

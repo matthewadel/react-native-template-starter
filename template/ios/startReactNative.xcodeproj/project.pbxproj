@@ -723,6 +723,7 @@
 			baseConfigurationReference = 7EEE7DF400A4F84AC999EFE3 /* Pods-startReactNative.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = startReactNative/startReactNative.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
@@ -757,6 +758,7 @@
 			baseConfigurationReference = 50385300403F0B076D281682 /* Pods-startReactNative.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = startReactNative/startReactNative.entitlements;
 				CURRENT_PROJECT_VERSION = 1;

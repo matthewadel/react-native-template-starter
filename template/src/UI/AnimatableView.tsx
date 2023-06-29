@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import * as Animatable from 'react-native-animatable';
 
-const AnimatableView = (props: { animation?: boolean, style: any, children?: any, isButtonPressed?: number }) => {
+const AnimatableView = (props: { pointerEvents?: "box-none" | "none" | "box-only" | "auto", animation?: boolean, style: any, children?: any, isButtonPressed?: number }) => {
   const [dontShake, setDontShake] = useState(false)
 
   useEffect(() => {
@@ -14,6 +14,7 @@ const AnimatableView = (props: { animation?: boolean, style: any, children?: any
 
   return (
     <Animatable.View
+      {...props}
       animation={(props.animation && !dontShake) ? 'shake' : ''}
       style={props.style}
       children={props.children} />
