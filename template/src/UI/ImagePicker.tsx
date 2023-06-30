@@ -28,8 +28,7 @@ export const ImagePicker = (props: IImagePicker) => {
 
       RNImagePicker.openCamera(options)
         .then((response: any) => {
-          const _file = response;
-          props.onSelect(_file);
+          props.onSelect({ ...response, filename: response.filename || response.path.split('/')[response.path.split('/').length - 1] });
         })
         .catch((err) => {
           console.log(err);
@@ -68,9 +67,8 @@ export const ImagePicker = (props: IImagePicker) => {
     //     :
     RNImagePicker.openPicker(options)
       .then((response: any) => {
-        const _file = Array.isArray(response) ? response[0] : response;
-        console.log(_file)
-        props.onSelect(_file);
+        console.log(response)
+        props.onSelect({ ...response, filename: response.filename || response.path.split('/')[response.path.split('/').length - 1] });
         closeModal();
       })
       .catch((err) => {
