@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { View, Colors, WIDTH, RFValue, openModal, closeModal, TouchableOpacity } from 'UI';
 import RNDatePicker from 'react-native-date-picker';
 import I18n from 'react-native-i18n';
+import { Platform } from 'react-native';
 
 interface DatePickerProps {
-  onPress: (dateModalRef: Date) => void;
+  onPress: Function;
   selectedDate?: string;
   maximumDate?: Date;
 }
@@ -21,7 +22,7 @@ export const DatePickerView = (props: DatePickerProps) => {
   const [selectedDate, setSelectedDate] = useState(
     (props?.selectedDate && new Date(props?.selectedDate)) || new Date(),
   );
-
+  console.log(selectedDate)
   return (
 
     <View style={{ width: '100%' }}>
@@ -50,19 +51,43 @@ export const DatePickerView = (props: DatePickerProps) => {
         </TouchableOpacity>
       </View>
 
-      <RNDatePicker
-        maximumDate={props?.maximumDate}
-        locale="en"
-        date={selectedDate}
-        onDateChange={(dateOfbirth) => setSelectedDate(dateOfbirth)}
-        mode="date"
-        style={{
-          backgroundColor: Colors().App.White,
-          width: WIDTH(),
-          margin: 0,
-          padding: 0,
-        }}
-      />
+      {Platform.OS == 'ios' ?
+        <RNDatePicker
+          maximumDate={props?.maximumDate}
+          locale="en"
+          modal
+          open
+          date={selectedDate}
+          onConfirm={(date) => {
+            props.onPress(date);
+            setSelectedDate(date)
+            closeModal()
+          }}
+          onCancel={() => {
+            closeModal()
+          }}
+          mode="date"
+          style={{
+            backgroundColor: Colors().App.White,
+            width: WIDTH(),
+            margin: 0,
+            padding: 0,
+          }}
+        />
+        :
+        <RNDatePicker
+          maximumDate={props?.maximumDate}
+          locale="en"
+          date={selectedDate}
+          onDateChange={(dateOfbirth) => setSelectedDate(dateOfbirth)}
+          mode="date"
+          style={{
+            backgroundColor: Colors().App.White,
+            width: WIDTH(),
+            margin: 0,
+            padding: 0,
+          }}
+        />}
     </View>
 
   );

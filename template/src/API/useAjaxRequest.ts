@@ -64,6 +64,11 @@ const handle_API_Request = ({
       headers,
       requestId: noCancellation ? null : `${receivedUrl.requestId}`
     }, body)
+  else if (method?.toLowerCase() == 'put')
+    request = axios.put(url, body, {
+      headers,
+      requestId: noCancellation ? null : `${receivedUrl.requestId}`
+    })
   else
     request = axios.post(url, body, {
       headers,

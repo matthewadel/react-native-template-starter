@@ -25,12 +25,13 @@ const TextInput = React.forwardRef((props: ITextInput, ref: any) => {
 
         <RNTextInput
           autoCorrect={false}
+          autoCapitalize={props.togglePasswordButton ? 'none' : 'sentences'}
           ref={ref}
           placeholderTextColor={props.hasError ? Colors().Text.Error : "#A7A7A7"}
           secureTextEntry={!!props.togglePasswordButton && !showPassword}
           {...props}
           onChangeText={text => !!props.onChangeText && props.onChangeText(props.keyboardType ? digitsArToEn(text || "")?.replace(/\D/g, '') : text)}
-          style={ChangeDirectionStyle([{ textAlign: 'left', fontFamily: FONT_FAMILY("MEDIUM"), fontSize: RFValue(14), flex: 1, paddingVertical: 0, paddingHorizontal: '3%' },
+          style={ChangeDirectionStyle([{ color: Colors().App.Dark, textAlign: 'left', fontFamily: FONT_FAMILY("MEDIUM"), fontSize: RFValue(14), flex: 1, paddingVertical: 0, paddingHorizontal: '3%' },
           props.togglePasswordButton ? { paddingRight: '15%', paddingLeft: '3%' } : {},
           ConvertStyleToObject(props.textInputStyle)], props.noDirectionChange)}
         />

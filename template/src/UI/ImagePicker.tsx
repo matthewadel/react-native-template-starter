@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Button, Text, VectorIcons, Colors, closeModal, openModal, RFValue, WIDTH } from 'UI';
+import { View, Button, Text, VectorIcons, Colors, closeModal, openModal, RFValue } from 'UI';
 import RNImagePicker from 'react-native-image-crop-picker';
 import I18n from 'react-native-i18n';
 import { FONT_FAMILY } from 'UI/Fonts';
@@ -28,8 +28,7 @@ export const ImagePicker = (props: IImagePicker) => {
 
       RNImagePicker.openCamera(options)
         .then((response: any) => {
-          const _file = response;
-          props.onSelect(_file);
+          props.onSelect({ ...response, filename: response.filename || response.path.split('/')[response.path.split('/').length - 1] });
         })
         .catch((err) => {
           console.log(err);
@@ -68,9 +67,8 @@ export const ImagePicker = (props: IImagePicker) => {
     //     :
     RNImagePicker.openPicker(options)
       .then((response: any) => {
-        const _file = Array.isArray(response) ? response[0] : response;
-        console.log(_file)
-        props.onSelect(_file);
+        console.log(response)
+        props.onSelect({ ...response, filename: response.filename || response.path.split('/')[response.path.split('/').length - 1] });
         closeModal();
       })
       .catch((err) => {
@@ -83,53 +81,51 @@ export const ImagePicker = (props: IImagePicker) => {
 
   return openModal({
     children: (
-      <View style={{ width: WIDTH() }}>
-        <View
+      <View
+        style={{
+          borderRadius: RFValue(15),
+          paddingVertical: RFValue(30),
+          width: '70%',
+          backgroundColor: Colors().App.White,
+        }}>
+        <Button
+          onPress={takeImage}
           style={{
-            borderRadius: RFValue(15),
-            paddingVertical: RFValue(30),
-            width: '70%',
-            backgroundColor: Colors().App.White,
+            width: '80%',
+            borderRadius: RFValue(14),
           }}>
-          <Button
-            onPress={takeImage}
-            style={{
-              width: '80%',
-              borderRadius: RFValue(14),
-            }}>
-            <VectorIcons
-              icon="FontAwesome"
-              name="camera"
-              color={Colors().Text.White}
-              size={RFValue(30)}
-              style={{ marginRight: RFValue(20) }}
-            />
-            <Text
-              style={{ color: Colors().Text.White, fontFamily: FONT_FAMILY("BOLD"), }}>
-              {I18n.t('UI.capture')}
-            </Text>
-          </Button>
+          <VectorIcons
+            icon="FontAwesome"
+            name="camera"
+            color={Colors().Text.White}
+            size={RFValue(30)}
+            style={{ marginRight: RFValue(20) }}
+          />
+          <Text
+            style={{ color: Colors().Text.White, fontFamily: FONT_FAMILY("BOLD"), }}>
+            {I18n.t('UI.capture')}
+          </Text>
+        </Button>
 
-          <Button
-            onPress={showImagePicker}
-            style={{
-              width: '80%',
-              borderRadius: RFValue(14),
-              marginTop: RFValue(20),
-            }}>
-            <VectorIcons
-              icon="EvilIcons"
-              name="image"
-              color={Colors().Text.White}
-              size={RFValue(40)}
-              style={{ marginRight: RFValue(20) }}
-            />
-            <Text
-              style={{ color: Colors().Text.White, fontFamily: FONT_FAMILY("BOLD"), }}>
-              {I18n.t('UI.gallery')}
-            </Text>
-          </Button>
-        </View>
+        <Button
+          onPress={showImagePicker}
+          style={{
+            width: '80%',
+            borderRadius: RFValue(14),
+            marginTop: RFValue(20),
+          }}>
+          <VectorIcons
+            icon="EvilIcons"
+            name="image"
+            color={Colors().Text.White}
+            size={RFValue(40)}
+            style={{ marginRight: RFValue(20) }}
+          />
+          <Text
+            style={{ color: Colors().Text.White, fontFamily: FONT_FAMILY("BOLD"), }}>
+            {I18n.t('UI.gallery')}
+          </Text>
+        </Button>
       </View>
     )
   })

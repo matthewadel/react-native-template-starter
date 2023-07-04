@@ -13,6 +13,7 @@ interface SwiperProps extends IView {
   loop?: boolean
   data: any
   renderItem: Function
+  activeSlideAlignment?: 'center' | 'start' | 'end'
 }
 
 export const Swiper = forwardRef((props: SwiperProps, ref) => {
@@ -59,8 +60,10 @@ export const Swiper = forwardRef((props: SwiperProps, ref) => {
       {...props}
       style={[{ width: '100%', flex: 1 }, ConvertStyleToObject(props.style)]}>
       <Carousel
+        layoutCardOffset={0}
         keyboardShouldPersistTaps={'always'}
-
+        inverted={locale == 'ar'}
+        activeSlideAlignment={props.activeSlideAlignment || 'center'}
         onSnapToItem={(i: number) => {
           if (props.showPagination)
             setIndex(i);
