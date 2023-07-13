@@ -7,7 +7,8 @@ import FilesystemStorage from 'redux-persist-filesystem-storage'
 const persistConfig = {
   key: 'root',
   storage: FilesystemStorage,
-  blacklist: []
+  blacklist: [],
+  timeout: 10000
 };
 
 const rootReducer = combineReducers({
