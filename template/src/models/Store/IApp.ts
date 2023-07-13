@@ -4,5 +4,5 @@ export interface IApp {
     top: number | null
     bottom: number | null
   }
-  actualHeight: number
+  actualHeight?: number
 }

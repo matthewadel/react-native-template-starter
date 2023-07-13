@@ -17,11 +17,13 @@ const NetworkDisconnected = () => {
         useNativeDriver: false
       }).start()
     else if (state.isInternetReachable == 1)
-      Animated.timing(networkLabelHeight, {
-        toValue: 0,
-        duration: 500,
-        useNativeDriver: false
-      }).start()
+      setTimeout(() => {
+        Animated.timing(networkLabelHeight, {
+          toValue: 0,
+          duration: 500,
+          useNativeDriver: false
+        }).start()
+      }, 2000);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state.isInternetReachable])
 

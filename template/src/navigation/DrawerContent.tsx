@@ -8,8 +8,6 @@ interface IDrawerContent {
 
 const DrawerContent = (props: IDrawerContent) => {
 
-  console.log(props.navigation)
-
   return (
 
     <SafeAreaView
