@@ -7,7 +7,8 @@
     "gallery": "المعرض",
     "CheckConnection": "من فضلك تاكد من اتصالك بالانترنت",
     "noInternet": "لا يوجد اتصال بالانترنت",
-    "noData": "لا توجد بيانات"
+    "noData": "لا توجد بيانات",
+    "BackOnline": "الرجوع اونلاين"
   },
   "Welcome": {
     "Title": "مرحبا بك فى React Native Starter Template",

@@ -40,3 +40,4 @@ export * from './View';
 export const RFValue = (x: number) => RNRFValue(x, 896)
 export const WIDTH = () => Dimensions.get('window').width;
 export const HEIGHT = () => Dimensions.get('window').height;
+export const PADDING_HORIZONTAL = RFValue(16)

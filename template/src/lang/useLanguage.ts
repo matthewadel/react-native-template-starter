@@ -1,8 +1,8 @@
 import React from "react";
 import LocalizationContext from "./i18n";
 import I18n from 'react-native-i18n';
-import { SaveLang } from 'store/Actions';
 import { useDispatch } from 'react-redux';
+import { SaveLang } from "store";
 
 export const useLanguage = () => {
 

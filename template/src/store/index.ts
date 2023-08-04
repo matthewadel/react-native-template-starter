@@ -1,32 +1,28 @@
-import { createMigrate, persistReducer, persistStore } from 'redux-persist'
-import { createStore, applyMiddleware, compose } from 'redux'
+import AppReducer from './AppReducer'
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import UserReducer from './UserReducer';
+import { persistStore, persistReducer } from 'redux-persist';
 import FilesystemStorage from 'redux-persist-filesystem-storage'
-import reducers from "./Reducers";
-import ReduxThunk from "redux-thunk"
-import { IRootState } from 'models';
-
-const migrations: any = {
-  0: (state: IRootState) => {
-    return state
-  },
-  // 1: (state) => {
-  //   return {
-  //     ...state,
-  //     User: {
-  //       ...state.User,
-  //       max_5: 'max_5'
-  //     }
-  //   }
-  // },
-}
 
 const persistConfig = {
-  key: 'primary',
-  version: 0,
+  key: 'root',
   storage: FilesystemStorage,
-  migrate: createMigrate(migrations, { debug: false }),
-}
+  blacklist: [],
+  timeout: 10000
+};
 
-const finalReducer = persistReducer(persistConfig, reducers)
-export const store = createStore(finalReducer, {}, compose(applyMiddleware(ReduxThunk)))
-export const persistor = persistStore(store)
+const rootReducer = combineReducers({
+  App: AppReducer,
+  User: UserReducer,
+})
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+const store = configureStore({
+  reducer: persistedReducer,
+  devTools: true,
+});
+
+export { store }
+export const persistor = persistStore(store);
+export * from './AppReducer'
+export * from './UserReducer'

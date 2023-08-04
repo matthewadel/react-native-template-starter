@@ -16,13 +16,14 @@ import notifee, { AndroidImportance } from '@notifee/react-native';
 import codePush from "react-native-code-push";
 import crashlytics from '@react-native-firebase/crashlytics';
 import { ToastProvider } from 'react-native-toast-notifications'
-import { useNetInfo } from "@react-native-community/netinfo";
+import NetInfo from "@react-native-community/netinfo";
 import { NetworkStatusStore } from 'context';
+import { useSelector } from 'react-redux';
+import { IRootState } from 'models';
 
 const App: any = () => {
 
   const [locale, setLocale] = React.useState(I18n.locale);
-  const netInfo = useNetInfo()
   const { dispatch } = useContext(NetworkStatusStore)
   const localizationContext = React.useMemo(
     () => ({
@@ -33,14 +34,20 @@ const App: any = () => {
     [locale]
   );
 
+  const storeData = useSelector((state: IRootState) => ({
+    lang: state.App.lang || "en"
+  }));
+
+  useEffect(() => {
+    if (store.getState().App.lang) {
+      I18n.locale = storeData.lang
+      setLocale(storeData.lang)
+    }
+  }, [storeData.lang])
+
   useEffect(() => {
 
-    // 1- setting the language
-    setTimeout(() => {
-      I18n.locale = store.getState().App.lang
-      setLocale(store.getState().App.lang)
-    }, 100);
-
+    // lock the orientation
     Orientation.lockToPortrait();
 
     // 2- notifications request and set local notifications
@@ -58,28 +65,26 @@ const App: any = () => {
   }, [])
 
   useEffect(() => {
-    if (netInfo.isInternetReachable) {
-      dispatch({
-        type: "SET_NETOWORK_STATE",
-        payload: -1
-      })
 
-      setTimeout(() => {
+    const unsubscribe = NetInfo.addEventListener((res) => {
+
+      if (res.isConnected) {
         dispatch({
           type: "SET_NETOWORK_STATE",
           payload: 1
         })
-      }, 2000);
-    }
-    else if (netInfo.isInternetReachable != null) {
-      dispatch({
-        type: "SET_NETOWORK_STATE",
-        payload: 0
-      })
-    }
+      }
+      else
+        dispatch({
+          type: "SET_NETOWORK_STATE",
+          payload: 0
+        })
 
+    })
+
+    return () => unsubscribe();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [netInfo])
+  }, [])
 
   const initFBSdk = async () => {
     Settings.initializeSDK();

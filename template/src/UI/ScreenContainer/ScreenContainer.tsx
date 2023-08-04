@@ -8,13 +8,13 @@ import {
   RefreshControl,
 } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
-import { ScreenHeader, ChangeDirectionStyle, RFValue, Colors, LoadingScreen, WIDTH, HEIGHT, NetworkDisconnected, View, NoData } from 'UI';
+import { ScreenHeader, ChangeDirectionStyle, RFValue, Colors, LoadingScreen, WIDTH, HEIGHT, NetworkDisconnected, View, NoData, PADDING_HORIZONTAL } from 'UI';
 import { useSelector } from 'react-redux';
 import { IRootState, IScreenHeader } from 'models';
 import { useDispatch } from 'react-redux';
-import { SetActualhHeight, SetNotchHeight } from 'store/Actions';
 import { useAjaxRequest } from 'API';
 import { useFocusEffect } from '@react-navigation/native';
+import { SetActualhHeight, SetNotchHeight } from 'store';
 
 export interface IScreenContainer {
   style?: ViewStyle | ViewStyle[];
@@ -59,13 +59,11 @@ const ScreenContainer = (props: IScreenContainer) => {
   }, [actualHeight])
 
   let childrenStyle = [
-    { paddingHorizontal: RFValue(16), alignItems: 'center', height: 'auto', flexGrow: 0 },
+    { paddingHorizontal: PADDING_HORIZONTAL, alignItems: 'center', height: 'auto', flexGrow: 0 },
     props.noData ? { height: '100%' } : {},
     ChangeDirectionStyle(props.style, props.noDirectionChange, props.showStyle)]
 
   return (
-    // <AnimatedDrawer isDrawerOpen={isDrawerOpen} onDrawerStatusChange={(x: boolean) => toggleDrawer(x)} ref={AnimatedDrawerRef}>
-
     <SafeAreaView
       edges={['top']}
       style={[{ height: '100%', backgroundColor: Colors().App.White }]}>
@@ -101,7 +99,7 @@ const ScreenContainer = (props: IScreenContainer) => {
             {props.noData ? <NoData textString={props.NoDataTextString} /> : props.children}
           </ScrollView>}
 
-        {props.outScrollingComponents && <View style={{ paddingHorizontal: RFValue(16), marginBottom: RFValue(32), marginTop: RFValue(25) }}>
+        {props.outScrollingComponents && <View style={{ paddingHorizontal: PADDING_HORIZONTAL, marginBottom: RFValue(32), marginTop: RFValue(25) }}>
           {props.outScrollingComponents()}
         </View>}
 
@@ -110,8 +108,6 @@ const ScreenContainer = (props: IScreenContainer) => {
       </KeyboardAvoidingView>
 
     </SafeAreaView>
-
-    // </AnimatedDrawer>
   );
 };
 

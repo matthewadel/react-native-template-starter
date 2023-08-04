@@ -42,10 +42,9 @@ const handle_API_Request = ({
   let headers = incomingHeaders ?
     incomingHeaders
     :
-    store.getState().User.User ?
+    store.getState().User.token ?
       {
-        token: store.getState().User.User.token,
-        user_id: store.getState().User.User.user_id,
+        token: store.getState().User.token,
       }
       :
       {}
