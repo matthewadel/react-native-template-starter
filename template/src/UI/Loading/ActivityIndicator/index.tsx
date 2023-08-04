@@ -18,7 +18,7 @@ export const ActivityIndicator = (props: IActivityIndicatorProps) => {
     <View style={[{ justifyContent: 'center', alignItems: 'center', width: '100%', height: '100%' }, props.style]}>
       <RNActivityIndicator
         size={props.size || 'small'}
-        color={props.color || Colors().App.White}
+        color={props.color || Colors().App.Primary}
       />
     </View>
   );
