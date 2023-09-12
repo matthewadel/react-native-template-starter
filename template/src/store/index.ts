@@ -1,14 +1,30 @@
 import AppReducer from './AppReducer'
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import UserReducer from './UserReducer';
-import { persistStore, persistReducer } from 'redux-persist';
+import { persistStore, persistReducer, createMigrate } from 'redux-persist';
 import FilesystemStorage from 'redux-persist-filesystem-storage'
+
+const migrations = {
+  1: (state: any) => {
+    return state
+  },
+  // 5: (state: any) => {
+  //   return {
+  //     ...state,
+  //     NationalIDs: {
+  //       national_ids: [],
+  //     }
+  //   }
+  // }
+}
 
 const persistConfig = {
   key: 'root',
+  version: 1,
   storage: FilesystemStorage,
   blacklist: [],
-  timeout: 10000
+  timeout: 10000,
+  migrate: createMigrate(migrations, { debug: false }),
 };
 
 const rootReducer = combineReducers({
@@ -19,6 +35,10 @@ const rootReducer = combineReducers({
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 const store = configureStore({
   reducer: persistedReducer,
+  middleware: getDefaultMiddleware({
+    serializableCheck: false
+
+  }),
   devTools: true,
 });
 
