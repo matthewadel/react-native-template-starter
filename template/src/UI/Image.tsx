@@ -11,7 +11,7 @@ import { store } from 'store'
 
 interface imageProps extends ImageProps, ITouchableOpacity {
   style?: any;
-  renderLoader?: boolean;
+  hideLoader?: boolean;
   noDirectionChange?: boolean;
   showStyle?: boolean;
   openImage?: boolean;
@@ -60,14 +60,16 @@ const Image = (props: imageProps) => {
   }, [onBackPress])
 
   useEffect(() => {
-    if (props.source.uri) {
-      RNImage.prefetch(props.source.uri)
-      FastImage.preload([{ uri: props.source.uri }])
-    }
     if (props.imageUrls) {
       FastImage.preload(props.imageUrls.map(item => ({ uri: item.url })))
     }
-  }, [props.source.uri])
+
+    else if (props.source.uri) {
+      RNImage.prefetch(props.source.uri)
+      FastImage.preload([{ uri: props.source.uri }])
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const renderLoader = () => <ActivityIndicator size='large' />
   let FastImage: any = FastImageComponent
@@ -115,14 +117,14 @@ const Image = (props: imageProps) => {
 
           <FastImage
             {...props}
-            onError={() => props.renderLoader ? setError(true) : null}
-            onLoadEnd={() => props.renderLoader ? setLoading(false) : null}
+            onError={() => !props.hideLoader ? setError(true) : null}
+            onLoadEnd={() => !props.hideLoader ? setLoading(false) : null}
             style={ChangeDirectionStyle(props.style, props.noDirectionChange, props.showStyle)}
             resizeMode={ConvertStyleToObject(props.style).resizeMode ? FastImage.resizeMode[ConvertStyleToObject(props.style).resizeMode] : FastImage.resizeMode.cover}
             source={{ ...normalisedSource(), priority: FastImage.priority.high, cache: FastImage.cacheControl.immutable }}
           >
-            <TouchableOpacity disabled={props.disabled} activeOpacity={1} onPress={(props.onPress || props.openImage) ? onPressImage : null} style={[{ width: '100%', height: '100%', }, props.renderLoader && (loading || error) ? { backgroundColor: Colors().App.Dark, justifyContent: 'center', alignItems: 'center' } : {}]}>
-              {(props.renderLoader && loading) ? <ActivityIndicator /> : (props.renderLoader && error) ? <VectorIcons icon="AntDesign" name="exclamationcircle" size={RFValue(30)} color={Colors().App.Red} /> : props.children}
+            <TouchableOpacity disabled={props.disabled} activeOpacity={1} onPress={(props.onPress || props.openImage) ? onPressImage : null} style={[{ width: '100%', height: '100%', }, !props.hideLoader && (loading || error) ? { backgroundColor: Colors().App.Dark, justifyContent: 'center', alignItems: 'center' } : {}]}>
+              {(!props.hideLoader && loading) ? <ActivityIndicator /> : (!props.hideLoader && error) ? <VectorIcons icon="AntDesign" name="exclamationcircle" size={RFValue(30)} color={Colors().App.Red} /> : props.children}
             </TouchableOpacity>
           </FastImage>
 
