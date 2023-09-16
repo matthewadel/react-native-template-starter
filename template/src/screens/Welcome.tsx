@@ -18,7 +18,6 @@ export const Welcome = () => {
         {t('Welcome.Title')}
       </Text>
 
-      {/* <TextInput style={{ width: '100%', height: RFValue(56), borderWidth: 2 }} /> */}
       <TouchableOpacity
         onPress={setLocale}
         style={{
