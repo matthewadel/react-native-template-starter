@@ -8,7 +8,7 @@
     "CheckConnection": "Please Check Your Internet Connection First",
     "noInternet": "No Internet Connection",
     "noData": "No Data Found",
-    "0BackOnline": "Back Online"
+    "BackOnline": "Back Online"
   },
   "Welcome": {
     "Title": "Welcome To React Native Starter Template",

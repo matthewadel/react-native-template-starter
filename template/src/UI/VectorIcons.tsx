@@ -12,6 +12,7 @@ import Fontisto from 'react-native-vector-icons/Fontisto';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import Foundation from 'react-native-vector-icons/Foundation';
+import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 
 import { ConvertStyleToObject, TouchableOpacity, ActivityIndicator } from 'UI';
 import { ViewStyle } from 'react-native';
@@ -44,6 +45,7 @@ export const VectorIcons = (props: VectorIconsProps) => {
     MaterialIcons,
     SimpleLineIcons,
     Foundation,
+    FontAwesome6
   };
 
   let {
