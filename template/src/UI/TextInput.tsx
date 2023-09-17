@@ -1,7 +1,7 @@
 import { ITextInput } from 'models';
 import React, { useState } from 'react';
 import { TextInput as RNTextInput } from 'react-native';
-import { ChangeDirectionStyle, Colors, ConvertStyleToObject, SVGImage, Text, VectorIcons, RFValue, AnimatableView } from 'UI';
+import { ChangeDirectionStyle, Colors, ConvertStyleToObject, SVGImage, Text, VectorIcons, RFValue, AnimatableView, View } from 'UI';
 import { FONT_FAMILY } from 'UI/Fonts';
 import { digitsArToEn } from "@persian-tools/persian-tools";
 
@@ -21,7 +21,7 @@ const TextInput = React.forwardRef((props: ITextInput, ref: any) => {
           ConvertStyleToObject(props.style),
         ], props.noDirectionChange)}>
 
-        {!!props.svgSource && <SVGImage source={props.svgSource} width='70%' height='60%' style={{ borderTopLeftRadius: RFValue(10), borderBottomLeftRadius: RFValue(10), height: '100%', width: RFValue(50), backgroundColor: Colors().App.White }} />}
+        {!!props.svgSource ? <SVGImage source={props.svgSource} width={props.svgSourceWidth} height={props.svgSourceHeight} style={{ borderTopLeftRadius: RFValue(10), borderBottomLeftRadius: RFValue(10), height: '100%', paddingHorizontal: RFValue(12), backgroundColor: Colors().App.White }} /> : <View style={{ marginRight: RFValue(12) }} />}
 
         <RNTextInput
           autoCorrect={false}
@@ -31,7 +31,7 @@ const TextInput = React.forwardRef((props: ITextInput, ref: any) => {
           secureTextEntry={!!props.togglePasswordButton && !showPassword}
           {...props}
           onChangeText={text => !!props.onChangeText && props.onChangeText(props.keyboardType ? digitsArToEn(text || "")?.replace(/\D/g, '') : text)}
-          style={ChangeDirectionStyle([{ color: Colors().App.Dark, textAlign: 'left', fontFamily: FONT_FAMILY("MEDIUM"), fontSize: RFValue(14), flex: 1, paddingVertical: 0, paddingHorizontal: '3%' },
+          style={ChangeDirectionStyle([{ color: Colors().App.Dark, textAlign: 'left', fontFamily: FONT_FAMILY("MEDIUM"), fontSize: RFValue(14), flex: 1, paddingVertical: 0, marginRight: RFValue(12) },
           props.togglePasswordButton ? { paddingRight: '15%', paddingLeft: '3%' } : {},
           ConvertStyleToObject(props.textInputStyle)], props.noDirectionChange)}
         />
