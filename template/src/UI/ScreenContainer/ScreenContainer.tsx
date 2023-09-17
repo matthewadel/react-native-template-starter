@@ -25,6 +25,7 @@ export interface IScreenContainer {
   loading?: boolean;
   overlayLoading?: boolean;
   showStyle?: boolean
+  viewOnly?: boolean
   requestIdsInPage?: number[]
   noData?: boolean
   NoDataTextString?: string
@@ -82,22 +83,28 @@ const ScreenContainer = (props: IScreenContainer) => {
         {props.loading ?
           <LoadingScreen style={{ flex: 1 }} />
           :
-          <ScrollView
-            scrollEnabled={true}
-            refreshControl={
-              <RefreshControl
-                refreshing={props.refreshing || false}
-                onRefresh={props.onRefresh}
-              />}
-            alwaysBounceVertical={false}
-            showsVerticalScrollIndicator={false}
-            nestedScrollEnabled={true}
-            style={{ flexGrow: 1, }}
-            contentContainerStyle={childrenStyle}
-            keyboardShouldPersistTaps='handled'
-          >
-            {props.noData ? <NoData textString={props.NoDataTextString} /> : props.children}
-          </ScrollView>}
+          props.viewOnly
+            ?
+            <View style={[{ width: '100%', height: '100%' }, ...childrenStyle]}>
+              {props.children}
+            </View>
+            :
+            <ScrollView
+              scrollEnabled={true}
+              refreshControl={
+                <RefreshControl
+                  refreshing={props.refreshing || false}
+                  onRefresh={props.onRefresh}
+                />}
+              alwaysBounceVertical={false}
+              showsVerticalScrollIndicator={false}
+              nestedScrollEnabled={true}
+              style={{ flexGrow: 1, }}
+              contentContainerStyle={childrenStyle}
+              keyboardShouldPersistTaps='handled'
+            >
+              {props.noData ? <NoData textString={props.NoDataTextString} /> : props.children}
+            </ScrollView>}
 
         {props.outScrollingComponents && <View style={{ paddingHorizontal: PADDING_HORIZONTAL, marginBottom: RFValue(32), marginTop: RFValue(25) }}>
           {props.outScrollingComponents()}
