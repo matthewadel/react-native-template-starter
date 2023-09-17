@@ -9,7 +9,7 @@ const Light = 'Poppins-Light'
 
 // arabic fonts
 const ARBold = 'Cairo-Bold'
-const ARMedium = 'Cairo-Medium'
+const ARMedium = 'Cairo-Regular'
 const ARSemiBold = 'Cairo-SemiBold'
 const ARRegular = 'Cairo-Regular'
 const ARLight = 'Cairo-Light'
