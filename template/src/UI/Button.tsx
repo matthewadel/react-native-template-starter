@@ -14,12 +14,11 @@ export interface IButtonProps extends ITouchableOpacity {
 }
 
 export const Button = (props: IButtonProps) => {
-  let { onPress, style, textStyle, loading, disabled } = props;
+  let { style, textStyle, disabled } = props;
 
   return (
     <TouchableOpacity
-      onPress={onPress}
-      disabled={loading || disabled}
+      {...props}
       textStyle={[
         {
           color:
@@ -48,6 +47,6 @@ export const Button = (props: IButtonProps) => {
           }
           : {},
         ConvertStyleToObject(style),
-      ]} loading={!!loading} children={props.children} />
+      ]} />
   );
 };
