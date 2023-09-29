@@ -10,6 +10,7 @@ function RNRFValue(fontSize: number, deviceHeight: number) {
 export * from './Loading/ActivityIndicator';
 export * from './Loading/LoadingScreen';
 export * from './ChangeDirectionStyle';
+export * from './Alert';
 export * from './Button';
 export * from './AnimatableView';
 export * from './CheckBox';

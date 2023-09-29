@@ -11,4 +11,6 @@ export interface ITextInput extends TextInputProps {
   hasError?: boolean,
   changeDirecton?: boolean
   isButtonPressed?: number
+  svgSourceWidth?: number
+  svgSourceHeight?: number
 }
