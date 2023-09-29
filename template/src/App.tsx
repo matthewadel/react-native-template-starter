@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useCallback, useContext, useEffect } from 'react';
 import { Platform, } from 'react-native'
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import AppStack from './navigation/AppStack';
@@ -7,7 +7,7 @@ import I18n from "react-native-i18n";
 import LocalizationContext from 'lang/i18n';
 import Orientation from 'react-native-orientation-locker';
 import FlashMessage from "react-native-flash-message";
-import { FlashMsg, Modal, ModalRef, RFValue } from 'UI';
+import { Colors, FlashMsg, Modal, ModalRef, RFValue, Text, View, WIDTH } from 'UI';
 import { PERMISSIONS, RESULTS, request, check, requestNotifications } from 'react-native-permissions';
 import { Settings } from 'react-native-fbsdk-next';
 import messaging from '@react-native-firebase/messaging';
@@ -19,6 +19,7 @@ import NetInfo from "@react-native-community/netinfo";
 import { NetworkStatusStore } from 'context';
 import { useSelector } from 'react-redux';
 import { IRootState } from 'models';
+import { ToastProps } from 'react-native-toast-notifications/lib/typescript/toast';
 
 const App: any = () => {
 
@@ -159,8 +160,17 @@ const App: any = () => {
     return (<FlashMsg msg={msg} />)
   }
 
+  const RenderToast = useCallback((toastOptions: ToastProps) => {
+    let backgroundColor = toastOptions.type == "success" ? "rgb(46, 125, 50)" : toastOptions.type == "danger" ? "rgb(211, 47, 47)" : toastOptions.type == "warning" ? "rgb(237, 108, 2)" : "#333"
+    return (
+      <View style={{ backgroundColor, borderRadius: RFValue(5), maxWidth: WIDTH() * 0.85, padding: RFValue(12), paddingVertical: RFValue(16), }}>
+        <Text numberOfLines={0} style={{ color: Colors().Text.White }}>{toastOptions.message}</Text>
+      </View>
+    )
+  }, [])
+
   return (
-    <ToastProvider warningColor="#FBCF13" offsetBottom={RFValue(60)} placement="bottom" duration={2000} swipeEnabled={false} animationType="slide-in">
+    <ToastProvider renderToast={RenderToast} warningColor="#FBCF13" offsetBottom={RFValue(60)} placement="bottom" duration={2000} swipeEnabled={false} animationType="slide-in">
 
       <SafeAreaProvider>
         <LocalizationContext.Provider value={localizationContext}>

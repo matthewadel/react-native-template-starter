@@ -91,11 +91,11 @@ const ScreenContainer = (props: IScreenContainer) => {
             :
             <ScrollView
               scrollEnabled={true}
-              refreshControl={
+              refreshControl={props.refreshing ?
                 <RefreshControl
                   refreshing={props.refreshing || false}
                   onRefresh={props.onRefresh}
-                />}
+                /> : undefined}
               alwaysBounceVertical={false}
               showsVerticalScrollIndicator={false}
               nestedScrollEnabled={true}
