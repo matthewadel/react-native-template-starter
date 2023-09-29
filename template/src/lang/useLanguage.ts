@@ -9,7 +9,7 @@ export const useLanguage = () => {
   let { t, locale, setLocale } = React.useContext(LocalizationContext);
   const dispatch = useDispatch();
 
-  const changeLanguage = (inputLang?: string) => {
+  const changeLanguage = (inputLang?: "ar" | "en") => {
     let lang = (typeof inputLang == 'string') ? inputLang : locale == 'ar' ? 'en' : 'ar';
     I18n.locale = lang;
     dispatch(SaveLang(lang));

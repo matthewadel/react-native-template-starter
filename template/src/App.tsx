@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from 'react';
 import { Platform, } from 'react-native'
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import AppStack from './navigation/AppStack';
-import { store } from 'store';
 import Reactotron from 'utils/Reactron';
 import I18n from "react-native-i18n";
 import LocalizationContext from 'lang/i18n';
@@ -23,7 +22,7 @@ import { IRootState } from 'models';
 
 const App: any = () => {
 
-  const [locale, setLocale] = React.useState(I18n.locale);
+  const [locale, setLocale] = React.useState<"ar" | "en">();
   const { dispatch } = useContext(NetworkStatusStore)
   const localizationContext = React.useMemo(
     () => ({
@@ -35,14 +34,12 @@ const App: any = () => {
   );
 
   const storeData = useSelector((state: IRootState) => ({
-    lang: state.App.lang || "en"
+    lang: state.App.lang
   }));
 
   useEffect(() => {
-    if (store.getState().App.lang) {
-      I18n.locale = storeData.lang
-      setLocale(storeData.lang)
-    }
+    I18n.locale = storeData.lang
+    setLocale(storeData.lang)
   }, [storeData.lang])
 
   useEffect(() => {

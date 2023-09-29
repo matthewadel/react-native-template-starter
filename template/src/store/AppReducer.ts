@@ -1,7 +1,9 @@
 import { IApp } from 'models'
 import { PayloadAction, createSlice } from "@reduxjs/toolkit"
 
-const initialState: IApp = {}
+const initialState: IApp = {
+  lang: 'en'
+}
 
 const AppSlice = createSlice({
   name: "App",
