@@ -1,5 +1,5 @@
 import React from 'react';
-import { ConvertStyleToObject, TouchableOpacity } from 'UI';
+import { ConvertStyleToObject, TouchableOpacity, View } from 'UI';
 import { ITouchableOpacity } from 'models';
 
 interface SVGImageInterface extends ITouchableOpacity {
@@ -11,11 +11,11 @@ interface SVGImageInterface extends ITouchableOpacity {
 
 export const SVGImage = (props: SVGImageInterface) => {
   let RNSvgImage: any = props.source;
+  let TopComponent: any = props.onPress ? TouchableOpacity : View
 
   return (
     // <View />
-    <TouchableOpacity
-      disabled={!props.onPress}
+    <TopComponent
       {...props}
       style={[
         { justifyContent: 'center', alignItems: 'center', opacity: 1 },
@@ -27,6 +27,6 @@ export const SVGImage = (props: SVGImageInterface) => {
         height={props.height || '100%'}
         width={props.width || '100%'}
       />
-    </TouchableOpacity>
+    </TopComponent>
   );
 };

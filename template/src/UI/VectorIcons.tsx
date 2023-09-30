@@ -12,9 +12,8 @@ import Fontisto from 'react-native-vector-icons/Fontisto';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import Foundation from 'react-native-vector-icons/Foundation';
-import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 
-import { ConvertStyleToObject, TouchableOpacity, ActivityIndicator } from 'UI';
+import { ConvertStyleToObject, TouchableOpacity, ActivityIndicator, View } from 'UI';
 import { ViewStyle } from 'react-native';
 import { useLanguage } from 'lang/useLanguage';
 import { ITouchableOpacity } from 'models';
@@ -45,7 +44,6 @@ export const VectorIcons = (props: VectorIconsProps) => {
     MaterialIcons,
     SimpleLineIcons,
     Foundation,
-    FontAwesome6
   };
 
   let {
@@ -74,8 +72,9 @@ export const VectorIcons = (props: VectorIconsProps) => {
     } else iconName = name;
   } else iconName = name;
 
+  let TopComponent: any = props.onPress ? TouchableOpacity : View
   return (
-    <TouchableOpacity
+    <TopComponent
       activeOpacity={props.activeOpacity || !!onPress ? 0 : 1}
       {...props}
       style={[
@@ -90,6 +89,6 @@ export const VectorIcons = (props: VectorIconsProps) => {
       )}
 
       {children}
-    </TouchableOpacity>
+    </TopComponent>
   );
 };
