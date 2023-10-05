@@ -29,9 +29,8 @@ const Image = (props: imageProps) => {
   const normalisedSource = () => {
     const { source } = props;
     const NormalisedSource =
-      source && typeof source.uri === "string" && !source.uri.split("http")[1]
-        ? null
-        : source;
+      source && typeof source.uri === "string"
+        ? source : null
     return props.source && props.source.uri
       ? NormalisedSource
       : source;

@@ -76,9 +76,8 @@ const handle_API_Request = ({
 
   return request
     .then((res: any) => {
-      console.log(url)
-      console.log(res)
       !!onResponse && onResponse(res)
+      return res
     })
     .catch((res: any) => {
       console.log(url)
