@@ -63,7 +63,7 @@ const Image = (props: imageProps) => {
       FastImage.preload(props.imageUrls.map(item => ({ uri: item.url })))
     }
 
-    else if (props.source.uri) {
+    else if (props.source.uri && props.source.uri.startsWith('http')) {
       RNImage.prefetch(props.source.uri)
       FastImage.preload([{ uri: props.source.uri }])
     }
