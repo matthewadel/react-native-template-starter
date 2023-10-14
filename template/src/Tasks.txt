@@ -62,9 +62,10 @@ handle safe area view for android and ios
 
 
 upcoming features:
-1- test code push
-2- test notifications
-3- flatlist auto calculate page number and use @shopify/flashlist for better performance
+1- general modal before requesting permissions especially ImagePicker component 
+2- test code push
+3- flatlist auto calculate page number
+4- use @shopify/flashlist for better performance
 
 
 rm -rf ~/Library/Caches/CocoaPods
