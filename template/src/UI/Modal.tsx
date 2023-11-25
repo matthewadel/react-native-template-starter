@@ -1,7 +1,7 @@
 import React, { forwardRef, useImperativeHandle, useState } from 'react';
-import { ChangeDirectionStyle, ConvertStyleToObject, WIDTH } from 'UI';
+import { ChangeDirectionStyle, ConvertStyleToObject } from 'UI';
 import RNModal from 'react-native-modal';
-import { KeyboardAvoidingView, Platform, ViewStyle, TouchableWithoutFeedback, Keyboard, } from 'react-native';
+import { KeyboardAvoidingView, Platform, ViewStyle, TouchableWithoutFeedback, Keyboard, useWindowDimensions, } from 'react-native';
 
 interface ModalProps {
   isVisible?: boolean;
@@ -30,6 +30,7 @@ export const Modal = forwardRef((_, ref) => {
 
   const [props, setProps] = useState<ModalProps>({});
   const [showModal, setShowModal] = useState(!!props.isVisible);
+  const { width: WIDTH } = useWindowDimensions()
 
   const handleModal = () => {
     setShowModal((val) => !val);
@@ -82,7 +83,7 @@ export const Modal = forwardRef((_, ref) => {
           {
             alignItems: 'center',
             justifyContent: 'center',
-            width: WIDTH(),
+            width: WIDTH,
           },
           props.containerStyle,
         ]}
@@ -91,7 +92,7 @@ export const Modal = forwardRef((_, ref) => {
             alignItems: 'center',
             justifyContent: 'center',
             alignSelf: 'center',
-            width: WIDTH(),
+            width: WIDTH,
           },
           ConvertStyleToObject(props.containerStyle),
         ]}>

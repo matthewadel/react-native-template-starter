@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useEffect } from 'react';
-import { Platform, } from 'react-native'
+import { Platform, useWindowDimensions, } from 'react-native'
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import AppStack from './navigation/AppStack';
 import Reactotron from 'utils/Reactron';
@@ -7,7 +7,7 @@ import I18n from "react-native-i18n";
 import LocalizationContext from 'lang/i18n';
 import Orientation from 'react-native-orientation-locker';
 import FlashMessage from "react-native-flash-message";
-import { Colors, FlashMsg, Modal, ModalRef, RFValue, Text, View, WIDTH } from 'UI';
+import { Colors, FlashMsg, Modal, ModalRef, RFValue, Text, View } from 'UI';
 import { PERMISSIONS, RESULTS, request, check, requestNotifications } from 'react-native-permissions';
 import { Settings } from 'react-native-fbsdk-next';
 import messaging from '@react-native-firebase/messaging';
@@ -24,6 +24,7 @@ import { ToastProps } from 'react-native-toast-notifications/lib/typescript/toas
 const App: any = () => {
 
   const [locale, setLocale] = React.useState<"ar" | "en">();
+  const { width: WIDTH } = useWindowDimensions()
   const { dispatch } = useContext(NetworkStatusStore)
   const localizationContext = React.useMemo(
     () => ({
@@ -163,11 +164,11 @@ const App: any = () => {
   const RenderToast = useCallback((toastOptions: ToastProps) => {
     let backgroundColor = toastOptions.type == "success" ? "rgb(46, 125, 50)" : toastOptions.type == "danger" ? "rgb(211, 47, 47)" : toastOptions.type == "warning" ? "rgb(237, 108, 2)" : "#333"
     return (
-      <View style={{ backgroundColor, borderRadius: RFValue(5), maxWidth: WIDTH() * 0.85, padding: RFValue(12), paddingVertical: RFValue(16), }}>
+      <View style={{ backgroundColor, borderRadius: RFValue(5), maxWidth: WIDTH * 0.85, padding: RFValue(12), paddingVertical: RFValue(16), }}>
         <Text numberOfLines={0} style={{ color: Colors().Text.White }}>{toastOptions.message}</Text>
       </View>
     )
-  }, [])
+  }, [WIDTH])
 
   return (
     <ToastProvider renderToast={RenderToast} warningColor="#FBCF13" offsetBottom={RFValue(60)} placement="bottom" duration={2000} swipeEnabled={false} animationType="slide-in">

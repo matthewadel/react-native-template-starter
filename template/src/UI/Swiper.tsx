@@ -1,9 +1,9 @@
 import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react';
-import { TouchableOpacity, Colors, ConvertStyleToObject, RFValue, View, WIDTH } from 'UI';
+import { TouchableOpacity, Colors, ConvertStyleToObject, RFValue, View } from 'UI';
 import Carousel from 'react-native-snap-carousel';
 import { useLanguage } from 'lang/useLanguage';
 import { IView } from 'models';
-import { ViewStyle } from 'react-native';
+import { ViewStyle, useWindowDimensions } from 'react-native';
 
 interface SwiperProps extends IView {
   paginationContainerStyle?: ViewStyle | ViewStyle[];
@@ -19,6 +19,7 @@ interface SwiperProps extends IView {
 export const Swiper = forwardRef((props: SwiperProps, ref) => {
   let [index, setIndex] = useState(0);
   const swiper = useRef<any>(null);
+  const { width: WIDTH } = useWindowDimensions()
 
   const { locale } = useLanguage()
   useImperativeHandle(ref, () => ({
@@ -73,8 +74,8 @@ export const Swiper = forwardRef((props: SwiperProps, ref) => {
         inactiveSlideScale={1}
         lockScrollWhileSnapping
         ref={swiper}
-        itemWidth={WIDTH()}
-        sliderWidth={WIDTH()}
+        itemWidth={WIDTH}
+        sliderWidth={WIDTH}
         firstItem={props.initialIndex || 0}
         containerCustomStyle={{ flex: 1 }}
         data={props.data}

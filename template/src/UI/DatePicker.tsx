@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { View, Colors, WIDTH, RFValue, openModal, closeModal, TouchableOpacity } from 'UI';
+import { View, Colors, RFValue, openModal, closeModal, TouchableOpacity } from 'UI';
 import RNDatePicker from 'react-native-date-picker';
 import I18n from 'react-native-i18n';
-import { Platform } from 'react-native';
+import { Platform, useWindowDimensions } from 'react-native';
 
 interface DatePickerProps {
   onPress: Function;
@@ -22,14 +22,15 @@ export const DatePickerView = (props: DatePickerProps) => {
   const [selectedDate, setSelectedDate] = useState(
     (props?.selectedDate && new Date(props?.selectedDate)) || new Date(),
   );
-  console.log(selectedDate)
+  const { width: WIDTH } = useWindowDimensions()
+
   return (
 
     <View style={{ width: '100%' }}>
       <View
         style={{
           zIndex: 100,
-          width: WIDTH(),
+          width: WIDTH,
           paddingHorizontal: '3%',
           height: RFValue(35),
           borderBottomWidth: 1,
@@ -69,7 +70,7 @@ export const DatePickerView = (props: DatePickerProps) => {
           mode="date"
           style={{
             backgroundColor: Colors().App.White,
-            width: WIDTH(),
+            width: WIDTH,
             margin: 0,
             padding: 0,
           }}
@@ -83,7 +84,7 @@ export const DatePickerView = (props: DatePickerProps) => {
           mode="date"
           style={{
             backgroundColor: Colors().App.White,
-            width: WIDTH(),
+            width: WIDTH,
             margin: 0,
             padding: 0,
           }}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { Image as RNImage, ImageProps, BackHandler, Platform } from 'react-native'
+import { Image as RNImage, ImageProps, BackHandler, Platform, useWindowDimensions } from 'react-native'
 import FastImageComponent from 'react-native-fast-image'
-import { ChangeDirectionStyle, View, ActivityIndicator, TouchableOpacity, ConvertStyleToObject, RFValue, VectorIcons, Colors, WIDTH, HEIGHT } from 'UI'
+import { ChangeDirectionStyle, View, ActivityIndicator, TouchableOpacity, ConvertStyleToObject, RFValue, VectorIcons, Colors, } from 'UI'
 import { Modal } from 'react-native'
 import ImageViewer from 'react-native-image-zoom-viewer'
 import { SvgUri } from 'react-native-svg';
@@ -26,6 +26,7 @@ const Image = (props: imageProps) => {
   const [showModal, setShowModal] = useState(false)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
+  const { height: HEIGHT, width: WIDTH } = useWindowDimensions()
   const normalisedSource = () => {
     const { source } = props;
     const NormalisedSource =
@@ -86,7 +87,7 @@ const Image = (props: imageProps) => {
             </SafeAreaView>
           )}
           index={props.index || 0}
-          imageUrls={Platform.OS == 'ios' ? (props.imageUrls ? props.imageUrls.map(item => ({ ...item, width: WIDTH(), height: store.getState().App.actualHeight })) : [{ url: props.source?.uri, width: WIDTH(), height: HEIGHT() }]) : (props.imageUrls || [{ url: props.source?.uri, }])}
+          imageUrls={Platform.OS == 'ios' ? (props.imageUrls ? props.imageUrls.map(item => ({ ...item, width: WIDTH, height: store.getState().App.actualHeight })) : [{ url: props.source?.uri, width: WIDTH, height: HEIGHT }]) : (props.imageUrls || [{ url: props.source?.uri, }])}
           renderImage={Platform.OS == 'ios' ? (inputImage) => (
             <View style={{ width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center' }}>
               <ActivityIndicator size='large' style={{ position: 'absolute' }} />

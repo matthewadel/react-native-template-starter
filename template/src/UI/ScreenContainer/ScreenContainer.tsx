@@ -6,9 +6,10 @@ import {
   ScrollView,
   StatusBar,
   RefreshControl,
+  useWindowDimensions,
 } from 'react-native';
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
-import { ScreenHeader, ChangeDirectionStyle, RFValue, Colors, LoadingScreen, WIDTH, HEIGHT, NetworkDisconnected, View, NoData, PADDING_HORIZONTAL } from 'UI';
+import { ScreenHeader, ChangeDirectionStyle, RFValue, Colors, LoadingScreen, NetworkDisconnected, View, NoData, PADDING_HORIZONTAL } from 'UI';
 import { useSelector } from 'react-redux';
 import { IRootState, IScreenHeader } from 'models';
 import { useDispatch } from 'react-redux';
@@ -38,7 +39,7 @@ const ScreenContainer = (props: IScreenContainer) => {
   const insets = useSafeAreaInsets();
   const dispatch = useDispatch()
   const { cancelRequest } = useAjaxRequest()
-
+  const { height: HEIGHT, width: WIDTH } = useWindowDimensions()
   useFocusEffect(
     useCallback(() => {
       return () => {
@@ -53,7 +54,7 @@ const ScreenContainer = (props: IScreenContainer) => {
 
     let statusBarHeight = StatusBar.currentHeight ? 2 * StatusBar.currentHeight : 0
     if (!actualHeight) {
-      dispatch(SetActualhHeight(HEIGHT() - (insets.top + statusBarHeight)))
+      dispatch(SetActualhHeight(HEIGHT - (insets.top + statusBarHeight)))
       dispatch(SetNotchHeight({ top: insets.top + statusBarHeight, bottom: 0 }))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -110,7 +111,7 @@ const ScreenContainer = (props: IScreenContainer) => {
           {props.outScrollingComponents()}
         </View>}
 
-        {!!props.overlayLoading && <LoadingScreen style={{ height: '100%', position: 'absolute', width: WIDTH(), zIndex: 200, backgroundColor: Colors(0.4).App.Grey }} />}
+        {!!props.overlayLoading && <LoadingScreen style={{ height: '100%', position: 'absolute', width: WIDTH, zIndex: 200, backgroundColor: Colors(0.4).App.Grey }} />}
 
       </KeyboardAvoidingView>
 
