@@ -186,5 +186,5 @@ const App: any = () => {
   );
 };
 
-let codePushOptions = { checkFrequency: codePush.CheckFrequency.ON_APP_RESUME };
+let codePushOptions = { installMode: codePush.InstallMode.IMMEDIATE, checkFrequency: codePush.CheckFrequency.ON_APP_RESUME };
 export default __DEV__ ? Reactotron.overlay(App) : codePush(codePushOptions)(App)
