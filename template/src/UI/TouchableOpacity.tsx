@@ -31,7 +31,7 @@ const TouchableOpacity = React.forwardRef((props: ITouchableOpacity, ref: any) =
         !props.dontClosekeyboard && Keyboard.dismiss()
         props.onPress && props.onPress()
       }}
-      disabled={!props.onPress || props.disabled || props.loading}
+      disabled={!props.onPress || !!props.disabled || !!props.loading}
       style={
         [
           {

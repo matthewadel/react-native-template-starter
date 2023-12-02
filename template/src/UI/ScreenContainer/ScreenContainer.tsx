@@ -54,7 +54,7 @@ const ScreenContainer = (props: IScreenContainer) => {
 
     let statusBarHeight = StatusBar.currentHeight ? 2 * StatusBar.currentHeight : 0
     if (!actualHeight) {
-      dispatch(SetActualhHeight(HEIGHT - (insets.top + statusBarHeight)))
+      dispatch(SetActualhHeight(HEIGHT - (insets.top + statusBarHeight + insets.bottom)))
       dispatch(SetNotchHeight({ top: insets.top + statusBarHeight, bottom: 0 }))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -67,7 +67,7 @@ const ScreenContainer = (props: IScreenContainer) => {
 
   return (
     <SafeAreaView
-      edges={['top']}
+      edges={['top', 'bottom']}
       style={[{ height: '100%', backgroundColor: Colors().App.White }]}>
 
       <ScreenHeader  {...props.headerProps} />

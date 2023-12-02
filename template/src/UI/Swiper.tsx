@@ -11,7 +11,9 @@ interface SwiperProps extends IView {
   showPagination?: boolean;
   initialIndex?: number
   loop?: boolean
+  scrollEnabled?: boolean
   data: any
+  itemWidth?: number
   renderItem: Function
   activeSlideAlignment?: 'center' | 'start' | 'end'
 }
@@ -61,6 +63,7 @@ export const Swiper = forwardRef((props: SwiperProps, ref) => {
       {...props}
       style={[{ width: '100%', flex: 1 }, ConvertStyleToObject(props.style)]}>
       <Carousel
+        scrollEnabled={props.scrollEnabled}
         layoutCardOffset={0}
         keyboardShouldPersistTaps={'always'}
         inverted={locale == 'ar'}
@@ -74,7 +77,8 @@ export const Swiper = forwardRef((props: SwiperProps, ref) => {
         inactiveSlideScale={1}
         lockScrollWhileSnapping
         ref={swiper}
-        itemWidth={WIDTH}
+        removeClippedSubviews={false}
+        itemWidth={props.itemWidth || WIDTH}
         sliderWidth={WIDTH}
         firstItem={props.initialIndex || 0}
         containerCustomStyle={{ flex: 1 }}
