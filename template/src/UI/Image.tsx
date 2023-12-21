@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import { Image as RNImage, ImageProps, BackHandler, Platform, useWindowDimensions } from 'react-native'
 import FastImageComponent from 'react-native-fast-image'
-import { ChangeDirectionStyle, View, ActivityIndicator, TouchableOpacity, ConvertStyleToObject, RFValue, VectorIcons, Colors, } from 'UI'
+import { ChangeDirectionStyle, View, ActivityIndicator, TouchableOpacity, ConvertStyleToObject, RFValue, VectorIcons, Colors } from 'UI'
 import { Modal } from 'react-native'
 import ImageViewer from 'react-native-image-zoom-viewer'
 import { SvgUri } from 'react-native-svg';
@@ -26,7 +26,9 @@ const Image = (props: imageProps) => {
   const [showModal, setShowModal] = useState(false)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
+  const [errorIconSize, setErrorIconSize] = useState(0)
   const { height: HEIGHT, width: WIDTH } = useWindowDimensions()
+
   const normalisedSource = () => {
     const { source } = props;
     const NormalisedSource =
@@ -71,6 +73,13 @@ const Image = (props: imageProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  const onLayout = (x: { nativeEvent: { layout: { width: number, height: number } } }) => {
+    let { width, height } = x.nativeEvent.layout
+    if (props.onLayout)
+      props.onLayout(x)
+    setErrorIconSize((width < height ? width : height) / 2)
+  }
+
   const renderLoader = () => <ActivityIndicator size='large' />
   let FastImage: any = FastImageComponent
   return (
@@ -114,9 +123,9 @@ const Image = (props: imageProps) => {
         />
         :
         props.source.uri && !(props.source.uri.startsWith('data')) ?
-
           <FastImage
             {...props}
+            onLayout={onLayout}
             onError={() => !props.hideLoader ? setError(true) : null}
             onLoadEnd={() => !props.hideLoader ? setLoading(false) : null}
             style={ChangeDirectionStyle(props.style, props.noDirectionChange, props.showStyle)}
@@ -124,10 +133,9 @@ const Image = (props: imageProps) => {
             source={{ ...normalisedSource(), priority: FastImage.priority.high, cache: FastImage.cacheControl.immutable }}
           >
             <TouchableOpacity disabled={props.disabled} activeOpacity={1} onPress={(props.onPress || props.openImage) ? onPressImage : null} style={[{ width: '100%', height: '100%', }, !props.hideLoader && (loading || error) ? { backgroundColor: Colors().App.Dark, justifyContent: 'center', alignItems: 'center' } : {}]}>
-              {(!props.hideLoader && loading) ? <ActivityIndicator /> : (!props.hideLoader && error) ? <VectorIcons icon="AntDesign" name="exclamationcircle" size={RFValue(30)} color={Colors().App.Red} /> : props.children}
+              {(!props.hideLoader && loading) ? <ActivityIndicator /> : (!props.hideLoader && error) ? <VectorIcons icon="AntDesign" name="exclamationcircle" size={errorIconSize} color={Colors().App.Red} /> : props.children}
             </TouchableOpacity>
           </FastImage>
-
           :
           <View style={[props.style, props.noDirectionChange, props.showStyle]}>
             <RNImage {...props} children={null} style={{ resizeMode: ConvertStyleToObject(props.style).resizeMode || 'cover', width: '100%', height: '100%' }} />
