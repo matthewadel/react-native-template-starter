@@ -13,7 +13,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import Foundation from 'react-native-vector-icons/Foundation';
 
-import { ConvertStyleToObject, TouchableOpacity, ActivityIndicator, View } from 'UI';
+import { ConvertStyleToObject, TouchableOpacity, ActivityIndicator, View, Colors } from 'UI';
 import { ViewStyle } from 'react-native';
 import { useLanguage } from 'lang/useLanguage';
 import { ITouchableOpacity } from 'models';
@@ -82,7 +82,7 @@ export const VectorIcons = (props: VectorIconsProps) => {
         ConvertStyleToObject(style),
       ]}>
       {!loading && (
-        <Icon name={iconName} size={size} color={color} style={iconStyle} />
+        <Icon name={iconName} size={size} color={color || Colors().App.Dark} style={iconStyle} />
       )}
       {!!loading && (
         <ActivityIndicator size="large" style={{ position: 'absolute' }} />

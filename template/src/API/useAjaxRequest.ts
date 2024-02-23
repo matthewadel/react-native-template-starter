@@ -81,20 +81,24 @@ const handle_API_Request = ({
     })
     .catch((res: any) => {
       console.log(url)
-      console.log(res.response)
-      if (body)
-        console.log(body)
+      if (res.code != "ERR_CANCELED") {
+        console.log(res.response)
+        if (body)
+          console.log(body)
 
-      if (onErrorWithMessage)
-        onErrorWithMessage()
+        if (onErrorWithMessage)
+          onErrorWithMessage()
 
-      if (onError)
-        onError(res.response)
+        if (onError)
+          onError(res.response)
+        else
+          showMessage({
+            message: res.response.data.msg || res.response.data.message,
+            type: 'danger'
+          })
+      }
       else
-        showMessage({
-          message: res.response.data.msg || res.response.data.message,
-          type: 'danger'
-        })
+        console.log('cancelled request', res)
     })
     .finally(() => !!onFinally && onFinally())
 }

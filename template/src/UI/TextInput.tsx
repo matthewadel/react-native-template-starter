@@ -24,6 +24,7 @@ const TextInput = React.forwardRef((props: ITextInput, ref: any) => {
         {!!props.svgSource ? <SVGImage source={props.svgSource} width={props.svgSourceWidth} height={props.svgSourceHeight} style={{ borderTopLeftRadius: RFValue(10), borderBottomLeftRadius: RFValue(10), height: '100%', paddingHorizontal: RFValue(12), backgroundColor: Colors().App.White }} /> : <View style={{ marginRight: RFValue(12) }} />}
 
         <RNTextInput
+          allowFontScaling={false}
           autoCorrect={false}
           autoCapitalize={props.togglePasswordButton ? 'none' : 'sentences'}
           ref={ref}

@@ -58,6 +58,7 @@ export const DatePickerView = (props: DatePickerProps) => {
           locale="en"
           modal
           open
+          textColor="#000"
           date={selectedDate}
           onConfirm={(date) => {
             props.onPress(date);
@@ -80,6 +81,7 @@ export const DatePickerView = (props: DatePickerProps) => {
           maximumDate={props?.maximumDate}
           locale="en"
           date={selectedDate}
+          textColor="#000"
           onDateChange={(dateOfbirth) => setSelectedDate(dateOfbirth)}
           mode="date"
           style={{
