@@ -1,0 +1,10 @@
+{
+  "UI": {
+    "NoData": "No Data Found",
+    "noInternet": "No Internet Connection",
+    "BackOnline": "Back Online"
+  },
+  "Home": {
+    "Home": "welcome to home screen"
+  }
+}

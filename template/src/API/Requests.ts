@@ -1,1 +1,0 @@
-export const login = { url: `user/login`, requestId: 1 };

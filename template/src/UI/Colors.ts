@@ -30,9 +30,8 @@ export const Colors = (alpha = 1) => {
       Secondary: hexToRgbA('#C2DBF3', alpha),
       White: hexToRgbA('#FFF', alpha),
       Dark: hexToRgbA('#000', alpha),
-      Red: hexToRgbA('#FF3A44', alpha),
-      Grey: hexToRgbA('#B3B2B2', alpha),
-      Error: hexToRgbA('#F00', alpha),
+      Red: hexToRgbA('#F00', alpha),
+      Error: hexToRgbA('#FF3A44', alpha),
       Green: hexToRgbA('#73c365', alpha),
     },
     Text: {
@@ -40,16 +39,9 @@ export const Colors = (alpha = 1) => {
       Secondary: hexToRgbA('#C2DBF3', alpha),
       White: hexToRgbA('#FFF', alpha),
       Dark: hexToRgbA('#000', alpha),
-      Red: hexToRgbA('#FF3A44', alpha),
-      Error: hexToRgbA('#F00', alpha),
-    },
-    MessageBox: {
-      Header: hexToRgbA('#ccc', alpha),
-      Title: hexToRgbA('#000', alpha),
-      CloseBackground: hexToRgbA('#aaa', alpha),
-      CloseIcon: hexToRgbA('#ccc', alpha),
-      Body: hexToRgbA('#FFF', alpha),
-      Message: hexToRgbA('#000', alpha),
+      Red: hexToRgbA('#F00', alpha),
+      Error: hexToRgbA('#FF3A44', alpha),
+      placeholderTextColor: hexToRgbA('#A7A7A7', alpha),
     },
   };
 };

@@ -1,0 +1,43 @@
+diff --git a/node_modules/react-native-localization-settings/lib/typescript/languageDetector.d.ts b/node_modules/react-native-localization-settings/lib/typescript/languageDetector.d.ts
+index e0fc6c3..2a19b9f 100644
+--- a/node_modules/react-native-localization-settings/lib/typescript/languageDetector.d.ts
++++ b/node_modules/react-native-localization-settings/lib/typescript/languageDetector.d.ts
+@@ -1,19 +1,19 @@
+ interface I18nLanguageDetectorModule {
+-    type: 'languageDetector';
+-    init?(): void;
+-    detect(): string | readonly string[] | undefined;
+-    cacheUserLanguage?(lang: string): void;
++  type: 'languageDetector';
++  init?(): void;
++  detect(): string | readonly string[] | undefined;
++  cacheUserLanguage?(lang: string): void;
+ }
+ interface I18nLanguageDetectorAsyncModule {
+-    type: 'languageDetector';
+-    async: true;
+-    init?(): void;
+-    detect(callback: (lng: string | readonly string[] | undefined) => void | undefined): void | Promise<string | readonly string[] | undefined>;
+-    cacheUserLanguage?(lng: string): void | Promise<void>;
++  type: 'languageDetector';
++  async: true;
++  init?(): void;
++  detect(callback?: (lng: string | readonly string[] | undefined) => void | undefined): void | Promise<string | readonly string[] | undefined>;
++  cacheUserLanguage?(lng: string): void | Promise<void>;
+ }
+ type LanguageDetectorOptions = {
+-    cacheCurrentLanguage?: boolean;
+-    async?: boolean;
++  cacheCurrentLanguage?: boolean;
++  async?: boolean;
+ };
+ /**
+  * @deprecated Use createLanguageDetector instead
+@@ -33,5 +33,5 @@ export declare const ReactNativeLanguageDetector: I18nLanguageDetectorModule;
+  *   });
+  */
+ export declare const createLanguageDetector: (options?: LanguageDetectorOptions) => I18nLanguageDetectorModule | I18nLanguageDetectorAsyncModule;
+-export {};
++export { };
+ //# sourceMappingURL=languageDetector.d.ts.map
+\ No newline at end of file

@@ -1,4 +1,4 @@
 module.exports = {
-  placeholderName: 'startReactNative',
+  placeholderName: 'mashrouk',
   templateDir: './template',
 }

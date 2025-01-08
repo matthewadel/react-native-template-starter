@@ -1,28 +1,113 @@
-module.exports = {
-  root: true,
-  extends: '@react-native-community',
-  rules: {
-    'prettier/prettier': 0,
-    "semi": 0,
-    "react-native/no-inline-styles": 0,
-    "no-unused-vars": 0,
-    "eol-last": 0,
-    "comma-dangle": 0,
-    "no-trailing-spaces": 0,
-    "quotes": 0,
-    "react/self-closing-comp": 0,
-    "no-lone-blocks": 0,
-    "jsx-quotes": 0,
-    "curly": 0,
-    "no-sequences": 0,
-    "no-alert": 0,
-    "eqeqeq": 0,
-    "no-return-assign": 0,
-    'no-debugger': 0,
-    "no-extra-boolean-cast": 0,
-    "dot-notation": 0,
-    "consistent-this": 0,
-    "@typescript-eslint/no-unused-vars": 0
-  },
-};
+const path = require("path");
 
+module.exports = {
+  // Configuration for JavaScript files
+  extends: ["@react-native-community", "plugin:prettier/recommended"],
+  plugins: ["unicorn"],
+  rules: {
+    "prettier/prettier": [
+      "error",
+      {
+        singleQuote: true,
+        endOfLine: "auto",
+      },
+    ],
+    "unicorn/filename-case": [
+      "error",
+      {
+        case: "kebabCase",
+        ignore: ["/android", "/ios"],
+      },
+    ],
+  },
+  overrides: [
+    // Configuration for TypeScript and JavaScript files
+    {
+      files: ["**/*.ts", "**/*.tsx", "**/*.js"],
+      plugins: ["@typescript-eslint", "unused-imports", "simple-import-sort"],
+      extends: ["@react-native-community", "plugin:prettier/recommended"],
+      parserOptions: {
+        project: "./tsconfig.json",
+      },
+      rules: {
+        "prettier/prettier": [
+          "error",
+          {
+            singleQuote: true,
+            endOfLine: "auto",
+          },
+        ],
+        // "max-lines-per-function": ["error", 70],
+        "react/destructuring-assignment": "off", // Vscode doesn't support automatically destructuring, it's a pain to add a new variable
+        "react/require-default-props": "off", // Allow non-defined react props as undefined
+        "@typescript-eslint/comma-dangle": "off", // Avoid conflict rule between Eslint and Prettier
+        // '@typescript-eslint/consistent-type-imports': 'error', // Ensure `import type` is used when it's necessary
+        "import/prefer-default-export": "off", // Named export is easier to refactor automatically
+        "simple-import-sort/imports": "error", // Import configuration for `eslint-plugin-simple-import-sort`
+        "simple-import-sort/exports": "error", // Export configuration for `eslint-plugin-simple-import-sort`
+        "@typescript-eslint/no-unused-vars": "off",
+        "unused-imports/no-unused-imports": "error",
+        "unused-imports/no-unused-vars": [
+          "error",
+          {
+            argsIgnorePattern: "^_",
+            varsIgnorePattern: "^_",
+            caughtErrorsIgnorePattern: "^_",
+          },
+        ],
+      },
+    },
+    // Configuration for this exact file
+    {
+      files: ["**/.eslintrc.js"],
+      rules: {
+        "prettier/prettier": [
+          "error",
+          {
+            singleQuote: false,
+            endOfLine: "auto",
+          },
+        ],
+      },
+    },
+    // Configuration for  translations files (i18next)
+    {
+      files: ["src/translations/*.json"],
+      extends: ["plugin:i18n-json/recommended"],
+      rules: {
+        "i18n-json/valid-message-syntax": [
+          2,
+          {
+            syntax: path.resolve("./scripts/i18next-syntax-validation.js"),
+          },
+        ],
+        "i18n-json/valid-json": 2,
+        "i18n-json/sorted-keys": [
+          2,
+          {
+            order: "asc",
+            indentSpaces: 2,
+          },
+        ],
+        "i18n-json/identical-keys": [
+          2,
+          {
+            filePath: path.resolve("./src/translations/en.json"),
+          },
+        ],
+        "prettier/prettier": [
+          0,
+          {
+            singleQuote: true,
+            endOfLine: "auto",
+          },
+        ],
+      },
+    },
+    // Configuration for testing files
+    {
+      files: ["**/__tests__/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)"],
+      extends: ["plugin:testing-library/react"],
+    },
+  ],
+};

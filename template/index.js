@@ -1,38 +1,24 @@
-import 'react-native-gesture-handler';
-import { AppRegistry, LogBox } from 'react-native';
-import App from './src/App';
-import React from 'react'
-import { name as appName } from './app.json';
-import { NetworkStatusProvider } from 'context/NetworkStatusContext';
 import { NavigationContainer } from '@react-navigation/native';
-import { navigationRef } from 'navigation/useNavigationHook';
+import React from 'react';
+import { AppRegistry } from 'react-native';
 import { Provider } from 'react-redux';
-import { store, persistor } from 'store';
-import { PersistGate } from 'redux-persist/integration/react';
 
-const AppContainer = () => {
+import App from '@/app';
+import { NetworkStatusProvider } from '@/context';
+import { navigationRef } from '@/navigation/use-navigation-handler';
+import { store } from '@/store';
 
+import { name as appName } from './app.json';
+
+function AppContainer() {
   return (
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <NetworkStatusProvider>
-          <NavigationContainer ref={navigationRef}>
-            <App />
-          </NavigationContainer>
-        </NetworkStatusProvider>
-      </PersistGate>
+      <NetworkStatusProvider>
+        <NavigationContainer ref={navigationRef}>
+          <App />
+        </NavigationContainer>
+      </NetworkStatusProvider>
     </Provider>
-  )
+  );
 }
-
-function HeadlessCheck({ isHeadless }) {
-  if (isHeadless) {
-    // App has been launched in the background by iOS, ignore
-    return null;
-  }
-
-  return <AppContainer />;
-}
-
-LogBox.ignoreAllLogs()
-AppRegistry.registerComponent(appName, () => HeadlessCheck);
+AppRegistry.registerComponent(appName, () => AppContainer);

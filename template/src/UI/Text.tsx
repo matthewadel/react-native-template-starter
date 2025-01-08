@@ -1,38 +1,46 @@
 import React from 'react';
-import { Text as RNText, Platform } from 'react-native';
-import { useLanguage } from 'lang/useLanguage';
-import { ChangeDirectionStyle, Colors, FONT_FAMILY, RFValue } from 'UI';
-import { ITextProps } from 'models';
+import { Platform, StyleSheet, Text as RNText, TextStyle } from 'react-native';
+import { s } from 'react-native-size-matters';
 
-export const Text = (props: ITextProps) => {
-  let style = props.style;
-  let outputStyle = ChangeDirectionStyle(style, props.noDirectionChange, props.showStyle);
+import { getCurrentLanguage } from '@/translation';
+import { IText } from '@/types';
 
-  const { locale } = useLanguage()
+import { Colors } from './colors';
+import { FONT_FAMILY } from './fonts';
+
+const Text = (props: IText) => {
+  let defaultStyle = {
+    fontSize: s(16),
+    color: Colors().Text.Dark,
+    textShadowOffset: { width: 0, height: 0 },
+    fontFamily: FONT_FAMILY(),
+  };
+
+  let textAlignmentStyle: TextStyle = props.noDirectionChange
+    ? {}
+    : { textAlign: getCurrentLanguage() === 'ar' ? 'right' : 'left' };
+
+  let textWeightStyle: TextStyle =
+    StyleSheet.flatten(props.style)?.fontWeight === 'bold'
+      ? {
+          fontFamily: FONT_FAMILY('BOLD'),
+          fontWeight: Platform.OS === 'android' ? 'normal' : 'bold',
+        }
+      : {};
+
   return (
     <RNText
       allowFontScaling={false}
-      numberOfLines={props.numberOfLines !== undefined ? props.numberOfLines : 1}
       {...props}
       onPress={props.disabled ? () => null : props.onPress}
       style={[
-        {
-          color: Colors().Text.Dark,
-          fontSize: outputStyle?.fontSize || RFValue(16),
-          textShadowOffset: { width: 0, height: 0 },
-          marginVertical: -(outputStyle?.fontSize || RFValue(16)) * (locale === 'ar' ? 0.3 : 0.1),
-          fontFamily: FONT_FAMILY(),
-        },
-        props.noDirectionChange ? {} : { textAlign: locale === 'ar' ? 'right' : 'left', },
-        outputStyle,
-        outputStyle && outputStyle.fontWeight === 'bold'
-          ? {
-            fontFamily: props.boldFontFamily
-              ? props.boldFontFamily
-              : FONT_FAMILY("BOLD"),
-            fontWeight: Platform.OS == 'android' ? 'normal' : 'bold',
-          }
-          : {},
-      ]}></RNText>
+        defaultStyle,
+        textAlignmentStyle,
+        StyleSheet.flatten(props.style),
+        textWeightStyle,
+      ]}
+    />
   );
 };
+
+export { Text };

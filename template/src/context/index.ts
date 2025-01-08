@@ -1,1 +1,1 @@
-export * from './NetworkStatusContext'
+export * from './network-status-context';
