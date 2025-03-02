@@ -23,10 +23,6 @@
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[astro]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "bradlc.vscode-tailwindcss"
-  },
   "cSpell.diagnosticLevel": "Hint",
   "i18n-ally.localesPaths": ["src/translations/"],
   "i18n-ally.keystyle": "nested",
