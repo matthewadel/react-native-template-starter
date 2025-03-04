@@ -1,8 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
 
-import AppReducer from '@/store/app-reducer';
-import UserReducer from '@/store/user-reducer';
+import { AppReducer, UserReducer } from '@/redux';
 
 const rootReducer = combineReducers({
   App: AppReducer,

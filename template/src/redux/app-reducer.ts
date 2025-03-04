@@ -21,4 +21,4 @@ const AppSlice = createSlice({
 });
 
 export const { SetNotchHeight, SetActualhHeight } = AppSlice.actions;
-export default AppSlice.reducer;
+export const AppReducer = AppSlice.reducer;

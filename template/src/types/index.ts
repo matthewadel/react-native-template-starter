@@ -1,3 +1,3 @@
 export * from './i-network-status';
-export * from './store';
+export * from './redux';
 export * from './ui';
