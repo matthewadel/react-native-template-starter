@@ -1,6 +1,6 @@
 import { digitsArToEn } from '@persian-tools/persian-tools';
 import React, { useImperativeHandle, useRef, useState } from 'react';
-import { StyleSheet, TextInput as RNTextInput } from 'react-native';
+import { StyleSheet, TextInput as RNTextInput, Keyboard } from 'react-native';
 import * as Animatable from 'react-native-animatable';
 import { s, vs } from 'react-native-size-matters';
 
@@ -50,6 +50,9 @@ const TextInput = React.forwardRef((props: ITextInput, ref: any) => {
 
       <RNTextInput
         allowFontScaling={false}
+        onSubmitEditing={() => Keyboard.dismiss()}
+        blurOnSubmit={true}
+        returnKeyType="done"
         autoCorrect={false}
         autoCapitalize={props.secureTextEntry ? 'none' : 'sentences'}
         ref={ref}
